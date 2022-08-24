@@ -369,13 +369,13 @@
       titleFormat: 'yyyy LMM',
       titleLinkFormat: '/archives/yyyy/MM/',
       headArrows: {previous: '<span class="cal-prev"></span>', next: '<span class="cal-next"></span>'},
-      footArrows: {previous: '? ', next: ' ?'},
+      footArrows: {previous: '« ', next: ' »'},
       weekOffset: 0,
       single: true,
       root: '/calendar/',
       url: '/calendar.json'
     };
-    $(document).ready(function () {
-        $('#calendar').aCalendar('zh-CN');//'zh-CN'������Լ����͵�����ѡ��
+    $(document).ready(function () { 
+      $('#calendar').aCalendar('zh-CN');//'zh-CN'
     });
   }(jQuery));
