@@ -26,10 +26,7 @@
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在做项目时需要将Xilinx工具生成的IP导入到自己的项目工程中，布局布线由ISE完成，综合由Synplify完成；难点在于如何通过ISE调用Synplify综合工具以及如何让工具识别IP。</p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在做项目时需要将Xilinx工具生成的IP导入到自己的项目工程中，布局布线由ISE完成，综合由Synplify完成；难点在于如何通过ISE调</summary>
-      
+    <summary type="html">Synplify调用IP的方式</summary>
     
     
     
