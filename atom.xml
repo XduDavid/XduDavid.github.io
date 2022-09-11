@@ -30,6 +30,8 @@
     
     
     
+    <category term="HDLBits" scheme="http://example.com/categories/HDLBits/"/>
+    
     
     <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
     
@@ -48,6 +50,8 @@
     <summary type="html">HDLBits答案(3)</summary>
     
     
+    
+    <category term="HDLBits" scheme="http://example.com/categories/HDLBits/"/>
     
     
     <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
@@ -68,6 +72,8 @@
     
     
     
+    <category term="HDLBits" scheme="http://example.com/categories/HDLBits/"/>
+    
     
     <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
     
@@ -86,6 +92,8 @@
     <summary type="html">HDLBits答案(1)</summary>
     
     
+    
+    <category term="HDLBits" scheme="http://example.com/categories/HDLBits/"/>
     
     
     <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
@@ -106,8 +114,10 @@
     
     
     
+    <category term="FPGA_Tools" scheme="http://example.com/categories/FPGA-Tools/"/>
     
-    <category term="Proj" scheme="http://example.com/tags/Proj/"/>
+    
+    <category term="FPGA_Tools" scheme="http://example.com/tags/FPGA-Tools/"/>
     
   </entry>
   

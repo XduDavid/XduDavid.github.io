@@ -2,6 +2,60 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/categories/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/statistics/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/chats/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tools/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2022-09-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/love/index.html</loc>
     
     <lastmod>2022-09-08</lastmod>
@@ -11,16 +65,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
-    
-    <lastmod>2022-09-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
+    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(2)_Verilog%E5%90%91%E9%87%8F%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -29,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(2)_Verilog%E5%90%91%E9%87%8F%E5%9F%BA%E7%A1%80/</loc>
+    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -73,19 +118,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://example.com/tags/index.html</loc>
-    
-    <lastmod>2022-09-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-09-08</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -93,18 +129,32 @@
   
   <url>
     <loc>http://example.com/tags/HDLBits/</loc>
-    <lastmod>2022-09-08</lastmod>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Proj/</loc>
-    <lastmod>2022-09-08</lastmod>
+    <loc>http://example.com/tags/FPGA-Tools/</loc>
+    <lastmod>2022-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
 
+  
+  <url>
+    <loc>http://example.com/categories/HDLBits/</loc>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/FPGA-Tools/</loc>
+    <lastmod>2022-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
