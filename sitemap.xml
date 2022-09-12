@@ -2,6 +2,213 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(25)_%E7%BC%96%E5%86%99Testbench/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(24)_%E7%94%B1%E6%B3%A2%E5%BD%A2%E5%9B%BE%E6%8F%8F%E8%BF%B0%E7%94%B5%E8%B7%AF/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(23)_%E6%89%BEBUG/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(22)_%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(21)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(8)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(20)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(7)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(19)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(6)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(18)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(5)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(17)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(4)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(16)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(3)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(15)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(2)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(14)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(1)/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(13)_Verilog%E7%A7%BB%E4%BD%8D%E5%AF%84%E5%AD%98%E5%99%A8%E9%99%84%E5%8A%A0%E9%A2%98/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(12)_Verilog%E7%A7%BB%E4%BD%8D%E5%AF%84%E5%AD%98%E5%99%A8/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(11)_Verilog%E8%AE%A1%E6%95%B0%E5%99%A8/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(10)_D%E8%A7%A6%E5%8F%91%E5%99%A8%E3%80%81%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E3%80%81%E8%84%89%E5%86%B2%E8%BE%B9%E6%B2%BF%E6%A3%80%E6%B5%8B/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(9)_%E5%8D%A1%E8%AF%BA%E5%9B%BE%E4%B8%8E%E6%9C%80%E7%AE%80SOP%E5%BC%8F/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(8)_Verilog%E5%8D%8A%E5%8A%A0%E5%99%A8%E3%80%81%E5%85%A8%E5%8A%A0%E5%99%A8%E5%92%8C%E8%A1%8C%E6%B3%A2%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(7)_Verilog%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(6)_%E7%A1%AC%E4%BB%B6%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2022/09/12/HDLBits/HDLBits%E7%AD%94%E6%A1%88(5)_Generate%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%A8%A1%E5%9D%97/</loc>
+    
+    <lastmod>2022-09-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/categories/index.html</loc>
     
     <lastmod>2022-09-11</lastmod>
@@ -47,15 +254,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
-    
-    <lastmod>2022-09-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/love/index.html</loc>
     
     <lastmod>2022-09-08</lastmod>
@@ -65,7 +263,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(2)_Verilog%E5%90%91%E9%87%8F%E5%9F%BA%E7%A1%80/</loc>
+    <loc>http://example.com/2022/09/03/HDLBits/HDLBits%E7%AD%94%E6%A1%88(2)_Verilog%E5%90%91%E9%87%8F%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -74,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
+    <loc>http://example.com/2022/09/03/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -83,7 +281,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
+    <loc>http://example.com/2022/09/03/HDLBits/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -101,7 +299,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/02/HDLBits%E7%AD%94%E6%A1%88(1)_Verilog%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
+    <loc>http://example.com/2022/09/02/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -110,7 +308,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/02/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/</loc>
+    <loc>http://example.com/2022/09/02/HDLBits/HDLBits%E7%AD%94%E6%A1%88(1)_Verilog%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -121,22 +319,22 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-09-11</lastmod>
+    <lastmod>2022-09-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/HDLBits/</loc>
-    <lastmod>2022-09-11</lastmod>
+    <loc>http://example.com/tags/FPGA-Tools/</loc>
+    <lastmod>2022-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/FPGA-Tools/</loc>
-    <lastmod>2022-09-11</lastmod>
+    <loc>http://example.com/tags/HDLBits/</loc>
+    <lastmod>2022-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -144,15 +342,15 @@
 
   
   <url>
-    <loc>http://example.com/categories/HDLBits/</loc>
-    <lastmod>2022-09-11</lastmod>
+    <loc>http://example.com/categories/FPGA-Tools/</loc>
+    <lastmod>2022-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/FPGA-Tools/</loc>
-    <lastmod>2022-09-11</lastmod>
+    <loc>http://example.com/categories/HDLBits/</loc>
+    <lastmod>2022-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
