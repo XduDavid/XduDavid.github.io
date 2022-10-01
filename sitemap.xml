@@ -362,7 +362,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
+    <loc>http://example.com/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -371,7 +371,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
+    <loc>http://example.com/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
     
@@ -430,7 +430,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE/</loc>
+    <loc>http://example.com/tags/Proj/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -444,14 +444,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Proj/</loc>
-    <lastmod>2022-10-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/HDLBits/</loc>
+    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -459,6 +452,13 @@
   
   <url>
     <loc>http://example.com/tags/Basics/</loc>
+    <lastmod>2022-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/HDLBits/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -474,13 +474,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/interview/</loc>
-    <lastmod>2022-10-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/FPGA/FPGA-Tools/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -488,7 +481,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/Misc/</loc>
+    <loc>http://example.com/categories/interview/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -502,6 +495,13 @@
   </url>
   
   <url>
+    <loc>http://example.com/categories/Misc/</loc>
+    <lastmod>2022-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/categories/IC/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -509,14 +509,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
+    <loc>http://example.com/categories/Misc/Ubuntu/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Misc/Ubuntu/</loc>
+    <loc>http://example.com/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2022-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
