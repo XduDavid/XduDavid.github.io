@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>http://example.com/chats/index.html</loc>
     
     <lastmod>2022-10-07</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/chats/index.html</loc>
+    <loc>http://example.com/about/index.html</loc>
     
     <lastmod>2022-10-07</lastmod>
     
@@ -457,13 +457,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE/</loc>
-    <lastmod>2022-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/Ubuntu/</loc>
     <lastmod>2022-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -472,6 +465,13 @@
   
   <url>
     <loc>http://example.com/tags/photography/</loc>
+    <lastmod>2022-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2022-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -543,13 +543,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
-    <lastmod>2022-10-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/Misc/Ubuntu/</loc>
     <lastmod>2022-10-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -558,6 +551,13 @@
   
   <url>
     <loc>http://example.com/categories/Misc/photography/</loc>
+    <lastmod>2022-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2022-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
