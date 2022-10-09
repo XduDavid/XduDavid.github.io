@@ -503,14 +503,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Basics/</loc>
+    <loc>http://example.com/tags/Proj/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Proj/</loc>
+    <loc>http://example.com/tags/Basics/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -554,14 +554,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/IC/</loc>
+    <loc>http://example.com/categories/Proj/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Proj/</loc>
+    <loc>http://example.com/categories/IC/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
