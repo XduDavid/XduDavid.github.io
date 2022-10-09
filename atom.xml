@@ -3,11 +3,11 @@
   <title>大卫和小王的博客园</title>
   
   <subtitle>Welcome!</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://david-luge.cn/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://david-luge.cn/"/>
   <updated>2022-10-09T08:54:39.000Z</updated>
-  <id>http://example.com/</id>
+  <id>http://david-luge.cn/</id>
   
   <author>
     <name>DavidGu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>FPGA输入输出信号的IOB约束方式</title>
-    <link href="http://example.com/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/"/>
-    <id>http://example.com/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/</id>
+    <link href="http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/"/>
+    <id>http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/</id>
     <published>2022-10-09T08:54:39.000Z</published>
     <updated>2022-10-09T08:54:39.000Z</updated>
     
@@ -30,19 +30,19 @@
     
     
     
-    <category term="FPGA" scheme="http://example.com/categories/FPGA/"/>
+    <category term="FPGA" scheme="http://david-luge.cn/categories/FPGA/"/>
     
-    <category term="FPGA_Tools" scheme="http://example.com/categories/FPGA/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/categories/FPGA/FPGA-Tools/"/>
     
     
-    <category term="FPGA_Tools" scheme="http://example.com/tags/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/tags/FPGA-Tools/"/>
     
   </entry>
   
   <entry>
     <title>为什么需要门级仿真</title>
-    <link href="http://example.com/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/"/>
-    <id>http://example.com/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/</id>
+    <link href="http://david-luge.cn/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/"/>
+    <id>http://david-luge.cn/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/</id>
     <published>2022-10-07T07:14:39.000Z</published>
     <updated>2022-10-07T07:14:39.000Z</updated>
     
@@ -53,19 +53,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="Basics" scheme="http://example.com/categories/IC/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/categories/IC/Basics/"/>
     
     
-    <category term="Basics" scheme="http://example.com/tags/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/tags/Basics/"/>
     
   </entry>
   
   <entry>
     <title>Blog图像加载失败解决方法</title>
-    <link href="http://example.com/2022/10/07/Misc/Blog%E5%9B%BE%E5%83%8F%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://example.com/2022/10/07/Misc/Blog%E5%9B%BE%E5%83%8F%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <link href="http://david-luge.cn/2022/10/07/Misc/Blog%E5%9B%BE%E5%83%8F%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://david-luge.cn/2022/10/07/Misc/Blog%E5%9B%BE%E5%83%8F%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
     <published>2022-10-07T04:50:00.000Z</published>
     <updated>2022-10-07T04:50:00.000Z</updated>
     
@@ -76,19 +76,19 @@
     
     
     
-    <category term="Misc" scheme="http://example.com/categories/Misc/"/>
+    <category term="Misc" scheme="http://david-luge.cn/categories/Misc/"/>
     
-    <category term="Git" scheme="http://example.com/categories/Misc/Git/"/>
+    <category term="Git" scheme="http://david-luge.cn/categories/Misc/Git/"/>
     
     
-    <category term="Git" scheme="http://example.com/tags/Git/"/>
+    <category term="Git" scheme="http://david-luge.cn/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>摄影入门知识</title>
-    <link href="http://example.com/2022/10/07/Misc/%E6%91%84%E5%BD%B1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/"/>
-    <id>http://example.com/2022/10/07/Misc/%E6%91%84%E5%BD%B1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/</id>
+    <link href="http://david-luge.cn/2022/10/07/Misc/%E6%91%84%E5%BD%B1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/"/>
+    <id>http://david-luge.cn/2022/10/07/Misc/%E6%91%84%E5%BD%B1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/</id>
     <published>2022-10-07T02:50:00.000Z</published>
     <updated>2022-10-07T02:50:00.000Z</updated>
     
@@ -99,19 +99,19 @@
     
     
     
-    <category term="Misc" scheme="http://example.com/categories/Misc/"/>
+    <category term="Misc" scheme="http://david-luge.cn/categories/Misc/"/>
     
-    <category term="photography" scheme="http://example.com/categories/Misc/photography/"/>
+    <category term="photography" scheme="http://david-luge.cn/categories/Misc/photography/"/>
     
     
-    <category term="photography" scheme="http://example.com/tags/photography/"/>
+    <category term="photography" scheme="http://david-luge.cn/tags/photography/"/>
     
   </entry>
   
   <entry>
     <title>我的秋招小结</title>
-    <link href="http://example.com/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/"/>
-    <id>http://example.com/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/</id>
+    <link href="http://david-luge.cn/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/"/>
+    <id>http://david-luge.cn/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/</id>
     <published>2022-09-30T02:54:39.000Z</published>
     <updated>2022-09-30T02:54:39.000Z</updated>
     
@@ -122,17 +122,17 @@
     
     
     
-    <category term="interview" scheme="http://example.com/categories/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/categories/interview/"/>
     
     
-    <category term="interview" scheme="http://example.com/tags/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/tags/interview/"/>
     
   </entry>
   
   <entry>
     <title>跨复位域小结</title>
-    <link href="http://example.com/2022/09/29/Interview/%E8%B7%A8%E5%A4%8D%E4%BD%8D%E5%9F%9F%E5%B0%8F%E7%BB%93/"/>
-    <id>http://example.com/2022/09/29/Interview/%E8%B7%A8%E5%A4%8D%E4%BD%8D%E5%9F%9F%E5%B0%8F%E7%BB%93/</id>
+    <link href="http://david-luge.cn/2022/09/29/Interview/%E8%B7%A8%E5%A4%8D%E4%BD%8D%E5%9F%9F%E5%B0%8F%E7%BB%93/"/>
+    <id>http://david-luge.cn/2022/09/29/Interview/%E8%B7%A8%E5%A4%8D%E4%BD%8D%E5%9F%9F%E5%B0%8F%E7%BB%93/</id>
     <published>2022-09-29T07:00:39.000Z</published>
     <updated>2022-09-29T07:00:39.000Z</updated>
     
@@ -143,17 +143,17 @@
     
     
     
-    <category term="interview" scheme="http://example.com/categories/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/categories/interview/"/>
     
     
-    <category term="interview" scheme="http://example.com/tags/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/tags/interview/"/>
     
   </entry>
   
   <entry>
     <title>Questasim安装与破解教程</title>
-    <link href="http://example.com/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    <id>http://example.com/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
+    <link href="http://david-luge.cn/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>http://david-luge.cn/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
     <published>2022-09-29T06:54:39.000Z</published>
     <updated>2022-09-29T06:54:39.000Z</updated>
     
@@ -164,19 +164,19 @@
     
     
     
-    <category term="FPGA" scheme="http://example.com/categories/FPGA/"/>
+    <category term="FPGA" scheme="http://david-luge.cn/categories/FPGA/"/>
     
-    <category term="FPGA_Tools" scheme="http://example.com/categories/FPGA/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/categories/FPGA/FPGA-Tools/"/>
     
     
-    <category term="FPGA_Tools" scheme="http://example.com/tags/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/tags/FPGA-Tools/"/>
     
   </entry>
   
   <entry>
     <title>Vivado与Modelsim联合仿真</title>
-    <link href="http://example.com/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/"/>
-    <id>http://example.com/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/</id>
+    <link href="http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/"/>
+    <id>http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/</id>
     <published>2022-09-29T05:54:39.000Z</published>
     <updated>2022-09-29T05:54:39.000Z</updated>
     
@@ -187,19 +187,19 @@
     
     
     
-    <category term="FPGA" scheme="http://example.com/categories/FPGA/"/>
+    <category term="FPGA" scheme="http://david-luge.cn/categories/FPGA/"/>
     
-    <category term="FPGA_Tools" scheme="http://example.com/categories/FPGA/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/categories/FPGA/FPGA-Tools/"/>
     
     
-    <category term="FPGA_Tools" scheme="http://example.com/tags/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/tags/FPGA-Tools/"/>
     
   </entry>
   
   <entry>
     <title>Vivado中RTL封装IP流程</title>
-    <link href="http://example.com/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/"/>
-    <id>http://example.com/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/</id>
+    <link href="http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/"/>
+    <id>http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/</id>
     <published>2022-09-29T05:54:39.000Z</published>
     <updated>2022-09-29T05:54:39.000Z</updated>
     
@@ -210,19 +210,19 @@
     
     
     
-    <category term="FPGA" scheme="http://example.com/categories/FPGA/"/>
+    <category term="FPGA" scheme="http://david-luge.cn/categories/FPGA/"/>
     
-    <category term="FPGA_Tools" scheme="http://example.com/categories/FPGA/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/categories/FPGA/FPGA-Tools/"/>
     
     
-    <category term="FPGA_Tools" scheme="http://example.com/tags/FPGA-Tools/"/>
+    <category term="FPGA_Tools" scheme="http://david-luge.cn/tags/FPGA-Tools/"/>
     
   </entry>
   
   <entry>
     <title>NVDLA阅读笔记</title>
-    <link href="http://example.com/2022/09/29/Proj/NVDLA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
-    <id>http://example.com/2022/09/29/Proj/NVDLA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://david-luge.cn/2022/09/29/Proj/NVDLA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    <id>http://david-luge.cn/2022/09/29/Proj/NVDLA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</id>
     <published>2022-09-29T02:04:39.000Z</published>
     <updated>2022-09-29T02:04:39.000Z</updated>
     
@@ -233,17 +233,17 @@
     
     
     
-    <category term="Proj" scheme="http://example.com/categories/Proj/"/>
+    <category term="Proj" scheme="http://david-luge.cn/categories/Proj/"/>
     
     
-    <category term="Proj" scheme="http://example.com/tags/Proj/"/>
+    <category term="Proj" scheme="http://david-luge.cn/tags/Proj/"/>
     
   </entry>
   
   <entry>
     <title>Verilog各类分频器设计详解</title>
-    <link href="http://example.com/2022/09/29/IC/Basic/Verilog%E5%90%84%E7%B1%BB%E5%88%86%E9%A2%91%E5%99%A8%E8%AE%BE%E8%AE%A1%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://example.com/2022/09/29/IC/Basic/Verilog%E5%90%84%E7%B1%BB%E5%88%86%E9%A2%91%E5%99%A8%E8%AE%BE%E8%AE%A1%E8%AF%A6%E8%A7%A3/</id>
+    <link href="http://david-luge.cn/2022/09/29/IC/Basic/Verilog%E5%90%84%E7%B1%BB%E5%88%86%E9%A2%91%E5%99%A8%E8%AE%BE%E8%AE%A1%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://david-luge.cn/2022/09/29/IC/Basic/Verilog%E5%90%84%E7%B1%BB%E5%88%86%E9%A2%91%E5%99%A8%E8%AE%BE%E8%AE%A1%E8%AF%A6%E8%A7%A3/</id>
     <published>2022-09-29T01:50:39.000Z</published>
     <updated>2022-09-29T01:44:39.000Z</updated>
     
@@ -254,19 +254,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="Basics" scheme="http://example.com/categories/IC/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/categories/IC/Basics/"/>
     
     
-    <category term="Basics" scheme="http://example.com/tags/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/tags/Basics/"/>
     
   </entry>
   
   <entry>
     <title>为什么D触发器需要建立时间和保持时间</title>
-    <link href="http://example.com/2022/09/29/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88D%E8%A7%A6%E5%8F%91%E5%99%A8%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/"/>
-    <id>http://example.com/2022/09/29/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88D%E8%A7%A6%E5%8F%91%E5%99%A8%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/</id>
+    <link href="http://david-luge.cn/2022/09/29/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88D%E8%A7%A6%E5%8F%91%E5%99%A8%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/"/>
+    <id>http://david-luge.cn/2022/09/29/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88D%E8%A7%A6%E5%8F%91%E5%99%A8%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/</id>
     <published>2022-09-29T01:44:39.000Z</published>
     <updated>2022-09-29T01:44:39.000Z</updated>
     
@@ -277,19 +277,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="Basics" scheme="http://example.com/categories/IC/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/categories/IC/Basics/"/>
     
     
-    <category term="Basics" scheme="http://example.com/tags/Basics/"/>
+    <category term="Basics" scheme="http://david-luge.cn/tags/Basics/"/>
     
   </entry>
   
   <entry>
     <title>Ubuntu开发环境打造</title>
-    <link href="http://example.com/2022/09/23/Misc/Ubuntu%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/"/>
-    <id>http://example.com/2022/09/23/Misc/Ubuntu%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/</id>
+    <link href="http://david-luge.cn/2022/09/23/Misc/Ubuntu%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/"/>
+    <id>http://david-luge.cn/2022/09/23/Misc/Ubuntu%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%89%93%E9%80%A0/</id>
     <published>2022-09-23T04:50:00.000Z</published>
     <updated>2022-09-23T04:50:00.000Z</updated>
     
@@ -300,19 +300,19 @@
     
     
     
-    <category term="Misc" scheme="http://example.com/categories/Misc/"/>
+    <category term="Misc" scheme="http://david-luge.cn/categories/Misc/"/>
     
-    <category term="Ubuntu" scheme="http://example.com/categories/Misc/Ubuntu/"/>
+    <category term="Ubuntu" scheme="http://david-luge.cn/categories/Misc/Ubuntu/"/>
     
     
-    <category term="Ubuntu" scheme="http://example.com/tags/Ubuntu/"/>
+    <category term="Ubuntu" scheme="http://david-luge.cn/tags/Ubuntu/"/>
     
   </entry>
   
   <entry>
     <title>我的实习小结</title>
-    <link href="http://example.com/2022/09/12/Interview/%E5%AE%9E%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
-    <id>http://example.com/2022/09/12/Interview/%E5%AE%9E%E4%B9%A0%E5%B0%8F%E7%BB%93/</id>
+    <link href="http://david-luge.cn/2022/09/12/Interview/%E5%AE%9E%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
+    <id>http://david-luge.cn/2022/09/12/Interview/%E5%AE%9E%E4%B9%A0%E5%B0%8F%E7%BB%93/</id>
     <published>2022-09-12T11:54:39.000Z</published>
     <updated>2022-09-12T12:00:00.000Z</updated>
     
@@ -323,17 +323,17 @@
     
     
     
-    <category term="interview" scheme="http://example.com/categories/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/categories/interview/"/>
     
     
-    <category term="interview" scheme="http://example.com/tags/interview/"/>
+    <category term="interview" scheme="http://david-luge.cn/tags/interview/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案汇总</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/</id>
     <published>2022-09-12T03:25:39.000Z</published>
     <updated>2022-09-12T03:25:39.000Z</updated>
     
@@ -344,19 +344,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案(25)_编写TestBench</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(25)_%E7%BC%96%E5%86%99Testbench/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(25)_%E7%BC%96%E5%86%99Testbench/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(25)_%E7%BC%96%E5%86%99Testbench/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(25)_%E7%BC%96%E5%86%99Testbench/</id>
     <published>2022-09-12T01:14:39.000Z</published>
     <updated>2022-09-12T01:14:39.000Z</updated>
     
@@ -367,19 +367,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案(24)_由波形图描述电路</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(24)_%E7%94%B1%E6%B3%A2%E5%BD%A2%E5%9B%BE%E6%8F%8F%E8%BF%B0%E7%94%B5%E8%B7%AF/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(24)_%E7%94%B1%E6%B3%A2%E5%BD%A2%E5%9B%BE%E6%8F%8F%E8%BF%B0%E7%94%B5%E8%B7%AF/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(24)_%E7%94%B1%E6%B3%A2%E5%BD%A2%E5%9B%BE%E6%8F%8F%E8%BF%B0%E7%94%B5%E8%B7%AF/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(24)_%E7%94%B1%E6%B3%A2%E5%BD%A2%E5%9B%BE%E6%8F%8F%E8%BF%B0%E7%94%B5%E8%B7%AF/</id>
     <published>2022-09-12T01:13:39.000Z</published>
     <updated>2022-09-12T01:13:39.000Z</updated>
     
@@ -390,19 +390,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案(23)_Finding bugs in code</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(23)_%E6%89%BEBUG/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(23)_%E6%89%BEBUG/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(23)_%E6%89%BEBUG/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(23)_%E6%89%BEBUG/</id>
     <published>2022-09-12T01:12:39.000Z</published>
     <updated>2022-09-12T01:12:39.000Z</updated>
     
@@ -413,19 +413,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案(22)_基于有限状态机的计数器</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(22)_%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(22)_%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(22)_%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(22)_%E5%9F%BA%E4%BA%8E%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E8%AE%A1%E6%95%B0%E5%99%A8/</id>
     <published>2022-09-12T01:11:39.000Z</published>
     <updated>2022-09-12T01:11:39.000Z</updated>
     
@@ -436,19 +436,19 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
   <entry>
     <title>HDLBits答案(21)_Verilog有限状态机(8)</title>
-    <link href="http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(21)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(8)/"/>
-    <id>http://example.com/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(21)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(8)/</id>
+    <link href="http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(21)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(8)/"/>
+    <id>http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(21)_Verilog%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA(8)/</id>
     <published>2022-09-12T01:10:39.000Z</published>
     <updated>2022-09-12T01:10:39.000Z</updated>
     
@@ -459,12 +459,12 @@
     
     
     
-    <category term="IC" scheme="http://example.com/categories/IC/"/>
+    <category term="IC" scheme="http://david-luge.cn/categories/IC/"/>
     
-    <category term="HDLBits" scheme="http://example.com/categories/IC/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/categories/IC/HDLBits/"/>
     
     
-    <category term="HDLBits" scheme="http://example.com/tags/HDLBits/"/>
+    <category term="HDLBits" scheme="http://david-luge.cn/tags/HDLBits/"/>
     
   </entry>
   
