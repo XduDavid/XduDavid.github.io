@@ -1,3 +1,4 @@
+http://david-luge.cn/tools/index.html
 http://david-luge.cn/chats/index.html
 http://david-luge.cn/about/index.html
 http://david-luge.cn/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/
@@ -7,7 +8,6 @@ http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4
 http://david-luge.cn/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/
 http://david-luge.cn/2022/10/07/Misc/Blog%E5%9B%BE%E5%83%8F%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/
 http://david-luge.cn/2022/10/07/Misc/%E6%91%84%E5%BD%B1%E5%85%A5%E9%97%A8%E7%9F%A5%E8%AF%86/
-http://david-luge.cn/tools/index.html
 http://david-luge.cn/disk/index.html
 http://david-luge.cn/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/
 http://david-luge.cn/statistics/index.html
@@ -55,8 +55,8 @@ http://david-luge.cn/tags/FPGA-Tools/
 http://david-luge.cn/tags/interview/
 http://david-luge.cn/tags/Git/
 http://david-luge.cn/tags/Ubuntu/
-http://david-luge.cn/tags/photography/
 http://david-luge.cn/tags/%E6%AF%95%E8%AE%BE/
+http://david-luge.cn/tags/photography/
 http://david-luge.cn/tags/Proj/
 http://david-luge.cn/tags/Basics/
 http://david-luge.cn/tags/HDLBits/
@@ -68,7 +68,7 @@ http://david-luge.cn/categories/Proj/
 http://david-luge.cn/categories/IC/
 http://david-luge.cn/categories/Misc/Git/
 http://david-luge.cn/categories/Misc/Ubuntu/
-http://david-luge.cn/categories/Misc/photography/
 http://david-luge.cn/categories/Misc/%E6%AF%95%E8%AE%BE/
+http://david-luge.cn/categories/Misc/photography/
 http://david-luge.cn/categories/IC/HDLBits/
 http://david-luge.cn/categories/IC/Basics/
