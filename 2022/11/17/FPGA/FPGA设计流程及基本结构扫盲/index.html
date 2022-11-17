@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>FPGA设计流程及基本结构扫盲 | 大卫和小王的博客园</title><meta name="keywords" content="FPGA"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="FPGA设计流程及基本结构扫盲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPGA设计流程及基本结构扫盲">
+<meta property="og:url" content="http://david-luge.cn/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/index.html">
+<meta property="og:site_name" content="大卫和小王的博客园">
+<meta property="og:description" content="FPGA设计流程及基本结构扫盲">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg">
+<meta property="article:published_time" content="2022-11-17T01:54:39.000Z">
+<meta property="article:modified_time" content="2022-11-17T01:54:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="FPGA_Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫和小王的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FPGA设计流程及基本结构扫盲',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-17 09:54:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫和小王的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/xilinx.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫和小王的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FPGA设计流程及基本结构扫盲</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-17T01:54:39.000Z" title="发表于 2022-11-17 09:54:39">2022-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-17T01:54:39.000Z" title="更新于 2022-11-17 09:54:39">2022-11-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/">FPGA</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/FPGA-Tools/">FPGA_Tools</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FPGA设计流程及基本结构扫盲"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="FPGA设计流程及基本结构扫盲"><a href="#FPGA设计流程及基本结构扫盲" class="headerlink" title="FPGA设计流程及基本结构扫盲"></a>FPGA设计流程及基本结构扫盲</h1><h2 id="FPGA设计流程"><a href="#FPGA设计流程" class="headerlink" title="FPGA设计流程"></a>FPGA设计流程</h2><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211170957764.png" alt="image-20221117095749634"></p>
+<p>传统的FPGA设计流程如图所示。设计输入支持HDL代码比如VHDL、Verilog和System Verilog，也支持厂商提供的IP，同时还应提供FPGA工程约束文件如引脚分配、时序约束文件等。</p>
+<p><strong>设计综合（Synthesis）</strong>完成HDL代码到硬件电路的转化与映射并生成网表文件，这一步与FPGA内部结构紧密相关。为了便于说明，以Verilog代码为例，其对应的硬件电路结构如图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171001320.png" alt="image-20221117100151255"></p>
+<p>采用Virtex-7作为目标芯片，综合后的结果如图所示。可见，此时D触发器被映射为FDRE，异或运算被映射为查找表。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171003466.png" alt="image-20221117100214928"></p>
+<p><strong>设计实现（Implementation）</strong>阶段主要完成布局布线（Place and Route）。布局是将综合后的各个电路元件根据约束放置在FPGA内部，布线则是完成元件之间的走线。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171004282.png" alt="image-20221117100339937"></p>
+<p>设计调试是将程序下载到FPGA中，借助测试仪器对设计进行分析。由于SRAM工艺的FPGA在掉电后程序会消失，因此需要将生成的下载程序转换为厂商要求的文件存储在片外Flash中，这就是程序固化。</p>
+<p>设计验证贯穿于FPGA设计的整个过程，包括两个部分：仿真和静态时序分析（STA：Static Timing Analysis）。设计输入时除了提供可综合的HDL代码外还应提供用于仿真的测试文件（Testbench）。测试文件有两个功能：一是提供输入激励，二是对测试结果进行对比分析。设计输入完成后即可以进行行为级仿真（Behavioral Simulation），该阶段的仿真没有延时信息，只是功能上的验证，但在FPGA设计验证环节至关重要。</p>
+<p>综合后仿真分为功能仿真和时序仿真两种。前者目的在于验证综合后的电路与原本HDL所描述的电路功能是否保持一致；后者则加入了门级延时信息，可进一步用于分析设计时序。</p>
+<p>实现后仿真也分为功能仿真和时序仿真，其目的和综合后仿真一致，只是实现后的时序仿真不仅加入了门级延时信息还包含了走线延时信息，使得仿真与FPGA真实的运行状态更加接近。仿真工具既可以使用FPGA厂商自己的工具，也可以选用第三方工具。</p>
+<p>静态时序分析建立在约束（时序约束和物理约束如面积约束、位置约束等）的基础上，对设计进行时序检查和分析。之所以进行时序分析是因为FPGA本身存在固有的延时，而综合和布局布线又会引入门级延时和走线延时，这些延时可能会导致时序违例（建立时间或保持时间不能满足FPGA要求）。因此，只有仿真通过且没有时序违例的设计才可能在FPGA中正常运行。（Vivado中有时会在Worst情况下分析时序，但我们平时运行的环境并非Worst环境，所以Vivado工具有时报一些时序违例情况不严重的情况时，实际上板功能也不会出问题。）</p>
+<p>综上FPGA设计是一个反复迭代的过程，如在设计实现后发现时序违例，那么可能要修改实现策略，也可能需要返回到设计输入阶段优化HDL代码，然后重新综合、实现。</p>
+<h2 id="FPGA内部结构分析"><a href="#FPGA内部结构分析" class="headerlink" title="FPGA内部结构分析"></a>FPGA内部结构分析</h2><p>从第一颗FPGA产生至今，FPGA已有近40年的历史，其内部结构也愈加丰富。但万变不离其宗，所有的Xilinx FPGA包含有相同的基本资源—可编程逻辑单元、可编程I&#x2F;O单元和布线资源构成了FPGA内部三大主要资源。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171004049.png" alt="image-20221117100420947"></p>
+<h3 id="CLB"><a href="#CLB" class="headerlink" title="CLB"></a>CLB</h3><p>CLB是指可编程逻辑功能块（Configurable Logic Blocks），顾名思义就是可编程的数字逻辑电路。CLB是FPGA内的三个基本逻辑单元。CLB的实际数量和特性会依器件的不同而不同，但是每个CLB都可配置，在Xilinx公司的FPGA器件中，CLB由2个相同的SliceL或则一个SliceL和一个SliceM构成。每个Slice不仅可以用于实现组合逻辑、时序逻辑。其中，SliceM还可以配置为分布式RAM和分布式ROM。含有两个SliceL的CLB又被称为CLBLL，含有一个SliceL和SliceM的CLB又被称为CLBLM。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171004107.png" alt="image-20221117100438063"></p>
+<h4 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h4><p>SliceL和SliceM内部都包含4个6输入查找表（LUT6）、3个数据选择器（MUX）、1个进位链（Carry Chain）和8个触发器（Flip-Flop）。尽管如此，SliceM和SliceL在LUT6的结构上略有不同，正是这个不同导致SliceL和SliceM的区别。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171005231.png" alt="image-20221117100449882"></p>
+<h4 id="LUT6"><a href="#LUT6" class="headerlink" title="LUT6"></a>LUT6</h4><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171005517.png" alt="image-20221117100538462"></p>
+<p>LUT6的结构如图所示，其基本功能已在表中说明。该表也体现了SliceM和SliceL的区别。</p>
+<table>
+<thead>
+<tr>
+<th align="center">LUT功能</th>
+<th align="center">SliceL</th>
+<th align="center">SliceM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">逻辑函数发生器</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">ROM</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">分布式RAM</td>
+<td align="center"></td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">移位寄存器</td>
+<td align="center"></td>
+<td align="center">√</td>
+</tr>
+</tbody></table>
+<p>用作<strong>逻辑函数发生器</strong>时，查找表就扮演着真值表的角色，真值表的内容可以在Vivado中查看，例如实现异或的LUT的真值表。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171007867.png" alt="image-20221117100720829"></p>
+<p>结合LUT6的结构图，我们可以知道LUT6可以满足以下情形的逻辑运算。<u>LUT6器件的延时与其实现的功能是没有关系的。</u>（涉及到FPGA上逻辑级数的估算）</p>
+<p>1）任意6输入布尔表达式，此时运算结果由O6输出；</p>
+<p>2）两个共享输入端口的5输入布尔表达式，此时A6&#x3D;1，运算结果分别由O6和O5输出；（举例说明）</p>
+<p>3）一个x输入布尔表达式和一个y输入表达式，只要满足x+y≤5，此时A6&#x3D;1，运算结果分别由O6和O5输出；（举例说明）</p>
+<p>LUT6还可以用作ROM（Read-Only Memory），每个Slice中的LUT6可配置为64×1（占用1个LUT6,64代表ROM深度，1代表ROM宽度）、128×1（占用2个LUT6）和256×1（占用4个LUT6）的ROM。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171008526.png" alt="image-20221117100801457"></p>
+<p>SliceM中的查找表可配置为RAM（Random Access Memory），称为分布式RAM（Distributed RAM）。其中RAM的写操作为同步，而读操作是异步的，与时钟信号无关。如果需要实现同步读操作，则要占用额外的触发器，从而增加了一个时钟的Latency，但提升了系统的性能。一个LUT6可配置为64×1的RAM，当RAM的深度大于64时，会占用额外的MUX（F7AMUX、F7BMUX、F8MUX）。对于分布式存储单元（RAM和ROM），Vivado提供了相应的IP：Distributed Memory Generator。</p>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171009351.png" alt="image-20221117100822902"></p>
+<p>SliceM中的查找表还可配置为移位寄存器，每个LUT6可实现深度为32的移位寄存器，且同一个SliceM中的LUT6可级联实现128深度的移位寄存器。需要注意的是，这里的移位寄存器均没有复位端，这是因为LUT6本身不支持复位。一旦代码描述中使用了复位，无论是同步复位还是异步复位，都会导致移位寄存器采用触发器级联的方式实现。（移位寄存器的实现方式看具体应用场景，在航空航天领域对安全性可靠性要求较高的领域，其对所有寄存器的要求都是可复位的，此时尽量别用LUT的SRL功能）。基于LUT6的移位寄存器除了使用HDL代码描述的方式外，还可以采用原语（Primitive，SRL16E或SRLC32E）或者在Vivado中直接调用IP：RAM-based Shift Register。</p>
+<h4 id="Multiplexer"><a href="#Multiplexer" class="headerlink" title="Multiplexer"></a>Multiplexer</h4><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171010166.png" alt="4-1Mux"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171010494.png" alt="image-20221117101036432"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171010277.png" alt="image-20221117101048223"></p>
+<p>SLICE中的三个MUX可以和LUT6联合共同实现更大的MUX，事实上一个LUT6可以实现4选1的MUX。</p>
+<p>SLICE中的F7MUX的输入数据来自相邻的两个LUT6的O6端口。一个F7MUX和相邻的两个LUT6可实现一个8选1的MUX，因此，一个SLICE可实现两个8选1的MUX。4个LUT6、两个F7MUX和F8MUX可实现一个16选1的MUX，因此一个SLICE可实现一个16选1的MUX。</p>
+<h4 id="进位链"><a href="#进位链" class="headerlink" title="进位链"></a>进位链</h4><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171011456.png" alt="image-20221117101101395"></p>
+<p>SLICE中的进位链用于实现加法和减法运算。进位链中包含2输入异或门，这是因为异或运算是加法运算中必不可少的运算。以一位全加器为例，它的输入端是被加数A、加数B和较低位的进位Cin；输出端是本位和S及向较高位的进位Cout。输出和输入的逻辑关系可表示为：</p>
+<p><code>S=A^B^C; Cout=(A&amp;B)|(B&amp;Cin)|(A&amp;Cin)</code></p>
+<p>通过综合后的示意图我们可以看到，Slice将4bit组成一组，使用进位链资源计算出结果以及这4bit的进位对第5bit结果的影响，进行级联加法的运算。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171011416.png" alt="image-20221117101124349"></p>
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171014153.png" alt="image-20221117101403219"></p>
+<p>每个SLICE中有8个触发器，这8个触发器可分为两大类，其中4个只能配置为边沿敏感的D触发器，而另外4个既可以配置为边沿敏感的D触发器又可以配置为电平敏感的锁存器。但是当后者被配置为锁存器时，前者将无法使用。当使用低有效置位或复位时，会占用额外的查找表资源以实现极性翻转。</p>
+<table>
+<thead>
+<tr>
+<th align="center">原语</th>
+<th align="center">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">FDCE</td>
+<td align="center">同步使能，异步复位</td>
+</tr>
+<tr>
+<td align="center">FDPE</td>
+<td align="center">同步使能，异步置位</td>
+</tr>
+<tr>
+<td align="center">FDRE</td>
+<td align="center">同步使能，同步复位</td>
+</tr>
+<tr>
+<td align="center">FDSE</td>
+<td align="center">同步使能，同步置位</td>
+</tr>
+</tbody></table>
+<h3 id="BRAM"><a href="#BRAM" class="headerlink" title="BRAM"></a>BRAM</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171028323.png" alt="image-20221117102830246"></p>
+<p>每个BRAM的大小为36Kb（RAMB36E1），由两个独立的18Kb BRAM（RAMB18E1）构成，因此一个36Kb的BRAM可以配置为4种情形。因为两个18Kb的BRAM无法共享其中的FIFO Logic（用于生成FIFO控制信号包括读&#x2F;写地址等），因此无法将一个36Kb的BRAM当作两个18Kb的Built-in FIFO来使用。</p>
+<p>在真双口（True Dual-port）模式下，BRAM18K的最大数据位宽为18bit，此时深度为1024；在简单双口（Simple Dual-port）模式下，BRAM18K的最大数据位宽可以double到36bit，此时深度为512。在Single Port RAM下，我们就可以认为BRAM18K的数据位宽是18，深度为1024。</p>
+<p>Vivado提供了IP：Block Memory Generator用于将BRAM配置为RAM或ROM。在该IP中对RAM的输出提供了两个可选输出寄存器，即图中的Primitives Output Register和Core Output Register。其中前者位于BRAM内部，后者为CLB中的触发器。需要注意的是，在这里这两个触发器只支持同步高有效复位。这两个触发器可大大降低时钟到输出的延迟，建议在高速设计中这两个触发器都使用，尽管会使读操作的Latency增大为3个时钟周期。</p>
+<p>BRAM还可以配置为FIFO（同步FIFO或者异步FIFO），同时提供了专用的FIFO Logic用于生成FIFO的控制信号（如读写地址）和状态信号（如空满标志信号）。使用专用FIFO Logic的FIFO成为Built-in FIFO。Vivado提供了IP：FIFO Generator，既可以将BRAM配置为Built-in FIFO，也可以采用CLB资源生成FIFO控制逻辑结合BRAM构成FIFO。</p>
+<p>BRAM资源除了可以被配置成各种模式的RAM或FIFO，其本身就是一个先天的查找表，对于一些普通LUT难以应付的大容量表格情况，使用Block RAM可以很好解决。</p>
+<h3 id="DSP"><a href="#DSP" class="headerlink" title="DSP"></a>DSP</h3><p>如果有大量简单的运算需要处理，FPGA可以利用自身并行运算的特点，迅速搞定。这点相比于其他处理器芯片非常具有优势。不过，FPGA对于复杂的运算并不擅长，例如乘法运算，如果用逻辑资源块来实现乘法器，不仅资源消耗较大，并且运算速度太慢，虽然利用流水线的思路可以为运算提速，但是带来的副作用就是给资源消耗再次带来成倍的增长。而乘法运算几乎可以说是数字信号处理的基本运算，如果FPGA不能很好地解决高效的乘法问题，那么其在数字处理界的地位必将受到极大抑制。因此，为了FPGA芯片的可持续发展，各大厂商又相继在它们的FPGA芯片产品里集成了高性能的硬件 DSP核。拥有了DSP后的FPGA，犹如猛虎添翼，自此开始了称霸数字信号处理江湖的传奇历程。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171029187.png" alt="image-20221117102948102"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171029211.png" alt="image-20221117102931161"></p>
+<p>DSP硬核中的核心资源就是一个高性能的硬件乘法器，外加一些累加器和寄存器，复用器等资源。DSP硬核通过将这些高性能的资源紧密地结合在一起，从而让FPGA芯片具有强大的数字信号处理运算的能力。</p>
+<h3 id="接口资源"><a href="#接口资源" class="headerlink" title="接口资源"></a>接口资源</h3><p>接口资源是FPGA芯片的门户，它决定了FPGA芯片与外界交互的能力，因此接口资源是FPGA必须具备的一种资源。按照功能来划分，FPGA的外围接口有负责供电的，有负责接地的，有负责芯片配置的，有负责用户IO的，等等。而这其中最重要的就是负责用户IO的接口资源，按其承载信号的类型又可以细分为用户时钟管脚(一般仅指输入)和用户数据IO。一般来说，用户时钟管脚兼具用户数据IO的功能,但绝大多数数据IO不能兼具用户时钟管脚的特性。区分用户时钟IO和数据IO的关键，就是看其是否有直接连接到时钟网络资源的通路。如果有直接连接到全局时钟网络资源的通路，那么这是一个全局时钟管脚；如果有直接连接到区域时钟网络资源的通路，那么这是一个区域时钟管脚；如果有直接连接到IO时钟网络资源的通路，那么这是一个IO时钟管脚。当然﹐做为FPGA芯片制作厂商,它会提供详细的管脚属性资料供大家区分这些管脚，以便用户正确、恰当地使用。</p>
+<p>针对用户IO资源，Xilinx公司的IOB（Input Output Block）是其中的代表。用户IO资源最基本的功能就是必须支持单端或差分的输入、输出、双向以及三态模式，所以用户IO的基本原理图如图所示，其中PAD代表FPGA芯片的金属管脚。</p>
+<p>除此之外，当传输速度较高时，从用户IO资源到内部逻辑资源块之间的延迟就会显得不可忽略，因此，为了配合较高速度的接口传输，用户IO资源中必须集成一些专有的寄存器和精确的延迟调整功能，来完成较高速度的SDR或者DDR的输入、输出功能。</p>
+<p>为了进一步提升接口传输的性能，增加用户使用的便利性，各大FPGA厂商又在用户IO资源中集成了名为SERDES的串并转换器，其中用于输入的叫做ISERDES，用于输出的叫OSERDES。相比于SDR，DDR的模式，SERDES能够做到1∶6甚至更高的串并转换比率。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171030340.png" alt="image-20221117103015283"></p>
+<p>最后，用户IO资源还必须支持LVTTL、LVCMOS、LVDS等多种数字电平，有的用户IO资源甚至内部嵌入了用于高频匹配的电阻，这样在电路板布线时，可以省去一些板载的匹配电阻。</p>
+<p>在项目中需要注意的一些点，对于输入信号，想使用Input Buffer器件，则输入进来先打拍，别进行逻辑运算。对于输出信号，想使用Output Buffer器件，则需保证输出信号的fanout为1。</p>
+<h3 id="布线资源"><a href="#布线资源" class="headerlink" title="布线资源"></a>布线资源</h3><p>布线资源的目的是为了能够让位于不同位置的逻辑资源块、时钟处理单元、BLOCK RAM、DSP和接口模块等资源能够相互通信，从而协调合作，完成所需功能。FPGA中的布线资源，就好比绘制PCB板时的连线资源一样，虽然器件A和器件B的位置和连接关系没有任何改变，但很可能因为周边电路的布局、布线的一些变化，使得前后两次A、B之间的连线形态发生很大的变化。因此，与采用固定长度的金属线将所有宏单元连接在一起的CPLD不同，FPGA中任意两点之间的线延迟是无法预测的，必须等到布局、布线完成之后才能确定。这也是为什么在FPGA的开发中，时序约束和时序分析这两样工作是必不可少的。</p>
+<h3 id="时钟网络资源"><a href="#时钟网络资源" class="headerlink" title="时钟网络资源"></a>时钟网络资源</h3><p>时钟信号是时序逻辑的灵魂,也是整个FPGA设计的核心。在某些情况下，它几乎要作用于整个FPGA芯片上的所有寄存器和相关存储单元，而FPGA内部布线资源的时间不可确定性，会使得时钟信号到达各个寄存器的延迟时间有很大出入，因此极易造成时序问题，从而导致系统行为不符合预期。为了避免这种情况，使大规模、高性能、高速度的FPGA设计成为可能，各大厂商都在自己的FPGA芯片中引入了专门的时钟网络资源用于时钟信号的载体。按照应用的区域范围的不同，时钟网络资源一般被分为三大类。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171035717.png" alt="image-20221117103530658"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171035859.png"></p>
+<h4 id="全局时钟网络资源"><a href="#全局时钟网络资源" class="headerlink" title="全局时钟网络资源"></a>全局时钟网络资源</h4><p>全局时钟网络资源作用的范围覆盖整个FPGA芯片，它能保证其上所承载的时钟信号到达FPGA芯片上任意两个地方的延迟时间偏差最小。从而保证大型的FPGA设计能够被高速的时钟信号正确驱动。一般来说,全局时钟网络资源是比较珍贵的，一些小型的FPGA中可能仅有几个全局时钟网络，因此在使用的时候一定要节省。</p>
+<h4 id="区域时钟网络资源"><a href="#区域时钟网络资源" class="headerlink" title="区域时钟网络资源"></a>区域时钟网络资源</h4><p>随着FPGA芯片的集成度越来越高，规模大一点的FPGA又被划分为多个区域(一般来说，一个FPGA区域只包含一个IO bank)。与全局时钟网络不同，每一个FPGA区域都有若干个属于自己的区域时钟网络，它所能覆盖的范围是整个区域甚至还包括与本区域相邻的区域。区域时钟网络能保证其上所承载的时钟信号到达FPGA芯片上该时钟网络作用域中任意两个地方的时间偏差最小。这种区域时钟网络资源对于源同步的接口逻辑十分有效。</p>
+<h4 id="IO时钟网络资源"><a href="#IO时钟网络资源" class="headerlink" title="IO时钟网络资源"></a>IO时钟网络资源</h4><p>前面所述的两种时钟网络资源针对的主要都是FPGA内部的一些资源，例如逻辑资源块、BLOCK RAM、DSP等，而对于接口资源，则有专门的IO时钟网络资源来完成时钟信号承载工作。这主要有三点原因：首先，接口资源中的寄存器数量较少，不需要大型的树状时钟网络来减少时钟到达各个目的地之间的延迟时间差。其次，内部的时钟网络资源由于作用的范围广，所以网络较庞大，一般上面都不能承载频率太高的时钟信号，而一些通信接口的时钟速率很高，远远超出了全局或区域时钟网络的承受范围，因此需要使用专有的IO时钟网络资源。第三，高速的接口逻辑一般都使用专有的接口资源，它的布局布线已经固定，能够力保外部信号到达寄存器的延迟最短，为了配合达到高速度的信号传输，也必须要求我们的时钟信号所走的路径最短，但全局或区域时钟网络的特点是保证时钟到达各个地方的延迟差最小，而不是延迟最短，因此并不适用高速接口的数据情况，那么这种情况下只有使用专有的IO时钟网络资源。</p>
+<h4 id="时钟处理单元"><a href="#时钟处理单元" class="headerlink" title="时钟处理单元"></a>时钟处理单元</h4><p>时钟是时序逻辑的灵魂，因此时钟信号非常重要。而在实际的使用中，经常会碰到外部送给我们的时钟信号在频率或相位上并不满足直接使用的要求，而内部时序逻辑又只能对时钟信号进行整数倍的分频，且不能保证产生新时钟信号的相位稳定性，所以这时就需要用到时钟处理单元。</p>
+<p>时钟处理单元可以对时钟信号进行高精度的倍频、分频和相位调整，所以对时序逻辑的设计非常重要。FPGA中的时钟处理单元共有两种：PLL和DCM。注意使用时关注一下时钟处理单元出来的时钟属性，是否需要级联DCM生成时钟等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202211171036130.png" alt="image-20221117103603075"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/">http://david-luge.cn/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫和小王的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FPGA-Tools/">FPGA_Tools</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/xilinx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/"><img class="prev-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Physical aware synthesis是什么</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-09</div><div class="title">FPGA输入输出信号的IOB约束方式</div></div></a></div><div><a href="/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="Questasim安装与破解教程"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Questasim安装与破解教程</div></div></a></div><div><a href="/2022/09/02/FPGA/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/" title="Synplify中如何调用Xilinx网表IP"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Synplify中如何调用Xilinx网表IP</div></div></a></div><div><a href="/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/" title="Vivado与Modelsim联合仿真"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Vivado与Modelsim联合仿真</div></div></a></div><div><a href="/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/" title="Vivado中RTL封装IP流程"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Vivado中RTL封装IP流程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2"><span class="toc-number">1.</span> <span class="toc-text">FPGA设计流程及基本结构扫盲</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">FPGA设计流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FPGA%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">FPGA内部结构分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CLB"><span class="toc-number">1.2.1.</span> <span class="toc-text">CLB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Slice"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">Slice</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LUT6"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">LUT6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiplexer"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">Multiplexer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E4%BD%8D%E9%93%BE"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">进位链</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">触发器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BRAM"><span class="toc-number">1.2.2.</span> <span class="toc-text">BRAM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DSP"><span class="toc-number">1.2.3.</span> <span class="toc-text">DSP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.4.</span> <span class="toc-text">接口资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E7%BA%BF%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.5.</span> <span class="toc-text">布线资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.6.</span> <span class="toc-text">时钟网络资源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E6%97%B6%E9%92%9F%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">全局时钟网络资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E6%97%B6%E9%92%9F%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">区域时钟网络资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IO%E6%97%B6%E9%92%9F%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">IO时钟网络资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83"><span class="toc-number">1.2.6.4.</span> <span class="toc-text">时钟处理单元</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/" title="FPGA设计流程及基本结构扫盲"><img src="/img/Page_Cover/xilinx.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="FPGA设计流程及基本结构扫盲"/></a><div class="content"><a class="title" href="/2022/11/17/FPGA/FPGA%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E6%89%AB%E7%9B%B2/" title="FPGA设计流程及基本结构扫盲">FPGA设计流程及基本结构扫盲</a><time datetime="2022-11-17T01:54:39.000Z" title="发表于 2022-11-17 09:54:39">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="Physical aware synthesis是什么"/></a><div class="content"><a class="title" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么">Physical aware synthesis是什么</a><time datetime="2022-11-04T01:15:39.000Z" title="发表于 2022-11-04 09:15:39">2022-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="RTL Coding Style"/></a><div class="content"><a class="title" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style">RTL Coding Style</a><time datetime="2022-10-10T11:15:39.000Z" title="发表于 2022-10-10 19:15:39">2022-10-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫和小王的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
