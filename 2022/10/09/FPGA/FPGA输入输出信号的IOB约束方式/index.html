@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>FPGA输入输出信号的IOB约束方式 | 大卫和小王的博客园</title><meta name="keywords" content="FPGA IOB"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="FPGA输入输出信号的IOB约束方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPGA输入输出信号的IOB约束方式">
+<meta property="og:url" content="http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="大卫和小王的博客园">
+<meta property="og:description" content="FPGA输入输出信号的IOB约束方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg">
+<meta property="article:published_time" content="2022-10-09T08:54:39.000Z">
+<meta property="article:modified_time" content="2022-10-09T08:54:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="FPGA_Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫和小王的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FPGA输入输出信号的IOB约束方式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-09 16:54:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫和小王的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/xilinx.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫和小王的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FPGA输入输出信号的IOB约束方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-09T08:54:39.000Z" title="发表于 2022-10-09 16:54:39">2022-10-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-09T08:54:39.000Z" title="更新于 2022-10-09 16:54:39">2022-10-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/">FPGA</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/FPGA-Tools/">FPGA_Tools</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">926</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FPGA输入输出信号的IOB约束方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>笔者在做实验室FPGA项目时，遇到输入输出信号相关的约束问题。在请教老师后，总结以下内容，供以后遇到类似问题时翻阅。</p>
+<p>对于FPGA的输入信号，我们要以异步信号来看待，输入信号进来先打拍，使用打拍后的数据。第一次打拍的FF要约束到IOB中的IFF中，第二个FF就可以放到Slice中，这样每次布局布线不会因为FF的位置不同导致时序出问题，且解决了输入信号的异步问题；</p>
+<p>对于FPGA的输出信号，我们也要打拍输出，确保扇出为1，将其放到IOB中的OFF中。这样OFF到PAD的路径延迟固定，每次布局布线不会因为FF位置不同导致时序出问题。</p>
+<p>对于inout信号，当该信号作为输入信号时，我们需要对其打两拍进行使用；当需要向总线上放数据时，需注意要用三态的方式放置数据<code>assign inout_data = sel ? dout : &#39;bz;</code>，且要保证sel信号是reg类型。</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>输入信号没有使用IOB约束，在ISE的IOB Properties中未见输入信号部署到IFF中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091732502.png" alt="img"></p>
+<h2 id="尝试步骤"><a href="#尝试步骤" class="headerlink" title="尝试步骤"></a>尝试步骤</h2><p>在ISE工具的Implement的property选项中，对-pr选项要选择For Inputs and Outputs选项；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091735357.png" alt="img"></p>
+<p>修复跟输入相关的模块，对输入信号要做打拍处理，使用打拍后的数据进行内部的逻辑运算；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091736236.png" alt="img"></p>
+<h3 id="修改Implement的选项报错"><a href="#修改Implement的选项报错" class="headerlink" title="修改Implement的选项报错"></a>修改Implement的选项报错</h3><p>修复后在Map阶段报错，报错具体位置在8b10b解码IP：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091737591.png" alt="img"></p>
+<p>打开8b10b的IP网表进行分析：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091737650.png" alt="img"></p>
+<p>其中rx为输入的多光谱数据线，<strong>猜测为8b10b的IP网表中对ff_c0和ff_d1有布局上的约束，ff_c0和ff_d1需要pack在一起，而如果使用输入IOB的话，ff_c0需要布局在IOB中，而ff_d1无法布局在IOB中，导致报错。</strong></p>
+<p>所以解决方案中不能使用Implement的property。</p>
+<h3 id="Inout信号的处理方式"><a href="#Inout信号的处理方式" class="headerlink" title="Inout信号的处理方式"></a>Inout信号的处理方式</h3><p>要改变总线上的数据时，使用三态控制；</p>
+<p><code>assign   cpu_data       = (rd_latchn == 1&#39;b0) ? cpu_rdata_mux : 16&#39;bz;</code></p>
+<p>要使用总线上的数据时，直接打拍总线上的数据（cpu_data）使用；</p>
+<p>增加上述约束后，查看ISE报告，cpu_data仍然是OFF，输入信号没有约束到IFF上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091738262.png" alt="img"></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="对于输入信号"><a href="#对于输入信号" class="headerlink" title="对于输入信号"></a>对于输入信号</h3><p>对于输入信号而言，进来先打两拍，第一拍的数据别用，用第二拍的数据。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091738401.png" alt="img"></p>
+<p>如果在ISE的Implement选项里可以选择<code>For Input and Outputs</code>的选项的话，那后续可以不用管了，注意该选项是针对全局的设计的。如果像上文这种有个lvds接口无法放置到IOB中的话，需要考虑以下的做法。</p>
+<p>1、使用Verilog的attribute语法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091739313.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091739332.png" alt="img"></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(* IOB = <span class="string">&quot;TRUE&quot;</span> *) <span class="keyword">reg</span> [<span class="number">8</span>:<span class="number">0</span>] cpu_data_d1;</span><br></pre></td></tr></table></figure>
+
+<p>2、在UCF文件里添加约束</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091741530.png" alt="img"></p>
+<p>ISE工具默认会把接口上的数据放置到IOB内。如果默认的放置方式没有起作用的话，我们这里采用的是第二种做法。</p>
+<h3 id="对于输出信号"><a href="#对于输出信号" class="headerlink" title="对于输出信号"></a>对于输出信号</h3><p><strong>保证扇出为1</strong>，在ISE的Implement选项中设置-pr选项，使用I&#x2F;O Register；或者使用verilog中attribute的方式或是UCF文件中添加约束的方式；</p>
+<h3 id="对于inout信号"><a href="#对于inout信号" class="headerlink" title="对于inout信号"></a>对于inout信号</h3><p>把inout信号当输入使用时，注意打两拍再使用；</p>
+<p>把inout信号当输出时，注意采用三态写法，且sel信号需要是reg类型；</p>
+<p><code>assign   cpu_data       = (rd_latchn == 1&#39;b0) ? cpu_rdata_mux : 16&#39;bz;</code></p>
+<p>对于inout信号，最好在UCF文件中显式的对io信号做IOB的约束；</p>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INST <span class="string">&quot;u_cpu_top/cpu_data_d1*&quot;</span> IOB=FORCE;</span><br></pre></td></tr></table></figure>
+
+<p>ps：PR之后的信号名可以到ISE中的FPGA Editor去查询。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091743114.png" alt="img"></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>input、output、inout信号均正确约束到IOB中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202210091743675.png" alt="img"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.xilinx.com/content/dam/xilinx/support/documents/sw_manuals/xilinx14_7/cgd.pdf">UG625</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/">http://david-luge.cn/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫和小王的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FPGA-Tools/">FPGA_Tools</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/xilinx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/"><img class="prev-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">为什么需要门级仿真</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/"><img class="next-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RTL Coding Style</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="Questasim安装与破解教程"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Questasim安装与破解教程</div></div></a></div><div><a href="/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/" title="Vivado与Modelsim联合仿真"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Vivado与Modelsim联合仿真</div></div></a></div><div><a href="/2022/09/02/FPGA/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/" title="Synplify中如何调用Xilinx网表IP"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Synplify中如何调用Xilinx网表IP</div></div></a></div><div><a href="/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/" title="Vivado中RTL封装IP流程"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Vivado中RTL封装IP流程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">尝试步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9Implement%E7%9A%84%E9%80%89%E9%A1%B9%E6%8A%A5%E9%94%99"><span class="toc-number">3.1.</span> <span class="toc-text">修改Implement的选项报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inout%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">Inout信号的处理方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">4.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%85%A5%E4%BF%A1%E5%8F%B7"><span class="toc-number">4.1.</span> <span class="toc-text">对于输入信号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7"><span class="toc-number">4.2.</span> <span class="toc-text">对于输出信号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8Einout%E4%BF%A1%E5%8F%B7"><span class="toc-number">4.3.</span> <span class="toc-text">对于inout信号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">5.</span> <span class="toc-text">结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="Physical aware synthesis是什么"/></a><div class="content"><a class="title" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么">Physical aware synthesis是什么</a><time datetime="2022-11-04T01:15:39.000Z" title="发表于 2022-11-04 09:15:39">2022-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="RTL Coding Style"/></a><div class="content"><a class="title" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style">RTL Coding Style</a><time datetime="2022-10-10T11:15:39.000Z" title="发表于 2022-10-10 19:15:39">2022-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式"><img src="/img/Page_Cover/xilinx.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="FPGA输入输出信号的IOB约束方式"/></a><div class="content"><a class="title" href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式">FPGA输入输出信号的IOB约束方式</a><time datetime="2022-10-09T08:54:39.000Z" title="发表于 2022-10-09 16:54:39">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫和小王的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

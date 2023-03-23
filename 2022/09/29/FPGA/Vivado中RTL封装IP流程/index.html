@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Vivado中RTL封装IP流程 | 大卫和小王的博客园</title><meta name="keywords" content="RTL IP"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="Vivado中RTL封装IP流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vivado中RTL封装IP流程">
+<meta property="og:url" content="http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="大卫和小王的博客园">
+<meta property="og:description" content="Vivado中RTL封装IP流程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg">
+<meta property="article:published_time" content="2022-09-29T05:54:39.000Z">
+<meta property="article:modified_time" content="2022-09-29T05:54:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="FPGA_Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/xilinx.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫和小王的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vivado中RTL封装IP流程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-29 13:54:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫和小王的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/xilinx.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫和小王的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vivado中RTL封装IP流程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-29T05:54:39.000Z" title="发表于 2022-09-29 13:54:39">2022-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-29T05:54:39.000Z" title="更新于 2022-09-29 13:54:39">2022-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/">FPGA</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/FPGA-Tools/">FPGA_Tools</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">915</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vivado中RTL封装IP流程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Vivado中RTL封装IP流程"><a href="#Vivado中RTL封装IP流程" class="headerlink" title="Vivado中RTL封装IP流程"></a>Vivado中RTL封装IP流程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文记录自己将RTL代码封装成IP的流程，以供之后查阅使用。最近一个月在做一个数据仲裁与转发的项目，已经完成功能仿真，准备将其封装成IP在Block Design中进行调用。实验平台为Vivado 2018.3，编程语言为Verilog，IP的接口主要是一个AXI-Lite接口和一个AXI-Full接口。闲言少叙，我们直接开始。</p>
+<h2 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>新建一个文件夹<code>ip_test</code>，在该文件夹下新建文件夹<code>rtl</code>，将所有RTL源码放入该文件夹，完成准备工作；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgv2ss3jgj30n105bdg2.jpg" alt="1.jpg"></p>
+<p>新建一个文件夹<code>top_module</code>，里面仅存放RTL源码的最顶层的.v文件，便于IP生成正确的接口。(<strong>之前尝试将所有的RTL源码一次导入，发现vivado不能正确识别顶层模块，从而导致IP接口一直不对</strong>)</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvvrglj9j30rl05cwez.jpg" alt="15.jpg"></p>
+<h3 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h3><p>双击打开vivado 2018.3，选择<code>Tasks-&gt;Manage IP-&gt;New IP Location</code>,按下图所示顺序进行操作；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgv5o4aebj30to0nggnq.jpg" alt="2.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgv63vif8j30lu0ikmyf.jpg" alt="3.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvsvp4j9j30lu0ik3zr.jpg" alt="4.jpg"></p>
+<p>上图中的<code>IP location</code>选择之前建立的<code>ip_test</code>文件夹路径，选完后点击<code>Finish</code>完成工程的创建；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgve7ev3oj30p90cltak.jpg" alt="5.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvevhixuj30nc0ftq4b.jpg" alt="6.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvf8r2qoj30ne0fw403.jpg" alt="7.jpg"></p>
+<p>因为本项目已有RTL源码，所以上图中我们选<code>Package a specified directory</code>；如果没有源码想创建一个带AXI接口的空IP往里写功能的话就选择<code>Create a new AXI4 Peripheral</code>；</p>
+<p>此处一定注意下图中的路径，选择<strong>RTL顶层模块源码</strong>的路径</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvwpb90yj30nc0fsgmd.jpg" alt="8.jpg"></p>
+<p>指定项目的名称，本示例工程名字为<code>ip_test</code>;</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvh3vhwdj30ne0fwq49.jpg" alt="9.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgvxrqsfej30ne0fwmyq.jpg" alt="10.jpg"></p>
+<p>点击<code>Finish</code>后我们看到封装IP的界面，此时看到IP的名称与顶层模块相同，且接口也与顶层模块的一致，只是此时除了顶层模块外，其余模块均未添加到<code>Design Sources</code>中。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw0hmazij319v0h90x0.jpg" alt="17.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw0xrfgaj317b0h478s.jpg" alt="18.jpg"></p>
+<p>下面进行剩余源码的添加，将<code>rtl</code>文件夹中的代码添加到<code>Design Sources</code>中。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw1zj2fjj30b9098757.jpg" alt="19.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw2cs1q8j30nc0fuwf9.jpg" alt="20.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw2pj0w3j30nc0fvjsk.jpg" alt="21.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw3zozggj30nc0fswh3.jpg" alt="22.jpg"></p>
+<p>选择IP封装模块的<code>File Groups</code>选项，点击<code>Merge changes from File Groups Wizard</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw4i5z0rj319v0gk0w5.jpg" alt="23.jpg"></p>
+<p>可以看到此时的IP已经包含了所有的源码；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw5qzgcej30sv0gq41k.jpg" alt="24.jpg"></p>
+<h3 id="属性配置"><a href="#属性配置" class="headerlink" title="属性配置"></a>属性配置</h3><p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgw6zi0flj30yb0gxwgy.jpg" alt="25.jpg"></p>
+<p>在<code>Ports and Interfaces</code>界面中，我们可以看到，vivado工具自动将时钟复位信号、AXI-Full信号和AXI-Lite信号进行打包处理(<em>vivado永远的神！</em>)，但还有一些属性需要设置，否则vivado会报warning。如复位信号的低电平复位属性、时钟与AXI协议的相关属性等；</p>
+<p>添加复位信号的低电平复位属性流程如下：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwb6jybjj31270g2ad7.jpg" alt="26.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwc6eo99j30kq0jj40c.jpg" alt="27.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwcp05afj30ko0in0ub.jpg" alt="28.jpg"></p>
+<p>将<code>clk</code>时钟与<code>rst_clk_n</code>绑定起来，并指定AXI-Lite接口用<code>clk</code>时钟</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwetcou0j31270g2juj.jpg" alt="29.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwgee94kj313c0injtx.jpg" alt="30.jpg"></p>
+<p>具体各参数的属性配置情况大家可以参考<strong>vivado官方教程ug1118</strong>。完成上面时钟或者复位的绑定配置后，最后进行IP核的导出。</p>
+<h3 id="导出IP"><a href="#导出IP" class="headerlink" title="导出IP"></a>导出IP</h3><p>在封装IP界面选择<code>Review and Package</code>，先进行打包IP的配置，点击<code>Edit packaging settings</code>；</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwkcotqsj30ye0h0tas.jpg" alt="31.jpg"></p>
+<p>进行上图所示的配置，其中<code>Delete project after packaging</code>选项可以不选，因为导出IP可能之后还要继续，要对RTL代码进行修改上板测试来迭代更新，所以我们一般保留导出IP的项目工程。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwm3hswfj30n80kntbj.jpg" alt="32.jpg"></p>
+<p>最后回到封装IP的界面，点击<code>Package IP</code>选项即可。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwntovx7j30yg0ha0uv.jpg" alt="33.jpg"></p>
+<p>已经成功打包，询问是否关闭项目工程，<code>Yes</code>或者<code>No</code>均可。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwoi6xkvj30d205vmxh.jpg" alt="34.jpg"></p>
+<p>到指定的路径下查看，发现已经生成我们所需的IP。至此，封装IP圆满结束。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006AXXmQly1gqgwpqwqtpj30og09z752.jpg" alt="35.jpg"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文为笔者打包IP的经验分享帖，其中不免错误不足之处，如果其中步骤有误还望大家指正出来，一起交流进步。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2017_2/ug1118-vivado-creating-packaging-custom-ip.pdf">Vivado Design Suite User Guide: Creating and Packaging Custom IP (UG1118)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/">http://david-luge.cn/2022/09/29/FPGA/Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫和小王的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FPGA-Tools/">FPGA_Tools</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/xilinx.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/29/Proj/NVDLA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="/img/Page_Cover/NVIDIA_cover.png" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NVDLA阅读笔记</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/"><img class="next-cover" src="/img/Page_Cover/xilinx.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vivado与Modelsim联合仿真</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-09</div><div class="title">FPGA输入输出信号的IOB约束方式</div></div></a></div><div><a href="/2022/09/29/FPGA/Questasim%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="Questasim安装与破解教程"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Questasim安装与破解教程</div></div></a></div><div><a href="/2022/09/29/FPGA/Vivado%E4%B8%8EModelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F/" title="Vivado与Modelsim联合仿真"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Vivado与Modelsim联合仿真</div></div></a></div><div><a href="/2022/09/02/FPGA/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/" title="Synplify中如何调用Xilinx网表IP"><img class="cover" src="/img/Page_Cover/xilinx.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Synplify中如何调用Xilinx网表IP</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vivado%E4%B8%ADRTL%E5%B0%81%E8%A3%85IP%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">Vivado中RTL封装IP流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">详细流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.2.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">创建工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.3.</span> <span class="toc-text">属性配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAIP"><span class="toc-number">1.2.4.</span> <span class="toc-text">导出IP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">1.3.</span> <span class="toc-text">结语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.4.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="Physical aware synthesis是什么"/></a><div class="content"><a class="title" href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么">Physical aware synthesis是什么</a><time datetime="2022-11-04T01:15:39.000Z" title="发表于 2022-11-04 09:15:39">2022-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="RTL Coding Style"/></a><div class="content"><a class="title" href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style">RTL Coding Style</a><time datetime="2022-10-10T11:15:39.000Z" title="发表于 2022-10-10 19:15:39">2022-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式"><img src="/img/Page_Cover/xilinx.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="FPGA输入输出信号的IOB约束方式"/></a><div class="content"><a class="title" href="/2022/10/09/FPGA/FPGA%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E4%BF%A1%E5%8F%B7%E7%9A%84IOB%E7%BA%A6%E6%9D%9F%E6%96%B9%E5%BC%8F/" title="FPGA输入输出信号的IOB约束方式">FPGA输入输出信号的IOB约束方式</a><time datetime="2022-10-09T08:54:39.000Z" title="发表于 2022-10-09 16:54:39">2022-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫和小王的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
