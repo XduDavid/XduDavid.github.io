@@ -153,7 +153,7 @@
 </head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/NVIDIA_cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫和小王的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://disk.david-luge.cn/"><i class="fa-fw fas fa-cloud-upload-alt"></i><span> 网盘</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NVDLA阅读笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-29T02:04:39.000Z" title="发表于 2022-09-29 10:04:39">2022-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-29T02:04:39.000Z" title="更新于 2022-09-29 10:04:39">2022-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Proj/">Proj</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="NVDLA阅读笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="NVDLA阅读笔记"><a href="#NVDLA阅读笔记" class="headerlink" title="NVDLA阅读笔记"></a>NVDLA阅读笔记</h1><h2 id="Unit-Description"><a href="#Unit-Description" class="headerlink" title="Unit Description"></a>Unit Description</h2><h3 id="System-Architecture"><a href="#System-Architecture" class="headerlink" title="System Architecture"></a>System Architecture</h3><p>NVDLA作为深度学习加速器可以集成在SoC中作为一个协处理器；</p>
 <p>NVDLA有许多数据处理Engine，各Engine都是独立的且可以自由配置，比如不需要池化的网络可以移除Planar Data Processor，各Engine的调度操作可以委托给Microcontroller或者CPU；其中用Microcontroller来调度的方式称为“headed” implementation，用CPU来调度的方式称为“headless” implementation；</p>
 <p>图中左边的框图展示了“headless” implementation的示例，是一个小型的NVDLA系统，成本较低；右边的框图展示了“headed” implementation的示例，是一个大型的NVDLA系统，主要是添加了Microcontroller和高带宽的SRAM，适合于高性能的物联网设备。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v0w6nccyj31hq11ggoh.jpg" alt="System_Arch.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232141331.png" alt="1"></p>
 <p>NVDLA主要有4个接口，其中SRAMIF是可选项；</p>
 <ul>
 <li>CSB（Configuration Space Bus）：这个接口是一个同步、低带宽、低功耗的32位控制总线，主要用来访问NVDLA的配置寄存器；</li>
@@ -162,12 +162,12 @@
 <li>SRAMIF（SRAM Interface）：DBB接口还有一个可选的接口，在设计上与DBB接口相同，目的在于结合片上的SRAM来提供更高的数据吞吐量以及更低的访问延迟；</li>
 </ul>
 <h3 id="DLA-Core-Architecture"><a href="#DLA-Core-Architecture" class="headerlink" title="DLA Core Architecture"></a>DLA Core Architecture</h3><p>DLA的结构框图如图所示；内部主要有两个接口模块，其中Configuration Interface用于访问NVDLA的配置寄存器，Memory Interface用于读写特征数据、权重、像素数据等；</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v0wv5ecvj317w0zmn11.jpg" alt="DLA_Core_Architecture.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232141690.png" alt="2"></p>
 <p>Convolution buffer主要用于缓存像素数据、特征数据、权重数据等，供卷积核中的卷积序列控制器模块读取；Convolution core主要完成卷积中的乘加运算；SDP主要负责对单个数据执行后处理操作，包括bias加法、ReLU、Sigmoid、双曲正切、BN、逐元素操作等；PDP是平面数据处理器，主要完成池化相关的操作；CDP主要在通道方向上执行操作，旨在解决局部响应归一化层；RUBIK模块的功能与BDMA类似，它在不进行任何数据计算的情况下转换数据的映射格式，因为它的功能是变换特征数据立方体的尺寸，所以又被称为魔方单元；BDMA模块在外部DRAM和片上SRAM之间提供了一条移动数据的通道，它有两条独立的路径，一条是将数据从外部DRAM复制&#x2F;移动到内部SRAM，另一条是将数据从内部SRAM复制&#x2F;移动到外部DRAM，两条路径不能同时工作；</p>
 <p>NVDLA有两种工作模式，独立模式（Independent Mode）和结合模式（Fused Mode）。独立模式下，各Engine分别通过两组数据接口完成各自分配的任务；结合模式可以将Convolution Core、SDP和PDP连接在一起作为一个整体流水线完成分配的任务；</p>
 <h3 id="Convolution-Pipeline"><a href="#Convolution-Pipeline" class="headerlink" title="Convolution Pipeline"></a>Convolution Pipeline</h3><p>流水线卷积模块是NVDLA的核心逻辑，用于加速卷积算法，同时在卷积流水线中引入了Winograd算法和Multi-batch，提高MAC效率。Convolution Pipeline有五个阶段，分别是Convolution DMA、Convolution Buffer、Convolution Sequence Controller、Convolution MAC和Convolution Accumulator，各阶段都有自己的CSB来接收来自CPU的配置数据。CDMA从SRAM&#x2F;DRAM中获取数据来进行卷积操作，并按卷积Engine所需的数据顺序存储到CBUF中；CBUF缓存来自CDMA模块的像素、特征和权重等数据，由CSC模块进行读取；CSC模块负责从CBUF加载数据并发送到CMAC单元，它是卷积序列控制的关键模块；CMAC模块从CSC接收输入数据和权重，执行乘法和加法运算，并将结果输出给CACC；CACC模块用于对CMAC模块的部分和进行累加，并在发送给SDP模块前对数据进行舍入操作。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1d9vnjaj31m20o842e.jpg" alt="Conv_Pipeline.jpg"></p>
-<h3 id="CDMA"><a href="#CDMA" class="headerlink" title="CDMA"></a>CDMA</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1dl85r0j31hu0ugn1o.jpg" alt="CDMA.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232141311.png" alt="3"></p>
+<h3 id="CDMA"><a href="#CDMA" class="headerlink" title="CDMA"></a>CDMA</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232141023.png" alt="4"></p>
 <p>CDMA主要负责从SRAM&#x2F;DRAM中获取数据来进行卷积操作，读取的数据主要有以下数据类型：</p>
 <ul>
 <li>像素数据（Pixel Data）</li>
@@ -187,11 +187,11 @@
 <li>更新CDMA_STATUS子模块中CBUF的状态；</li>
 </ul>
 <h3 id="CBUF"><a href="#CBUF" class="headerlink" title="CBUF"></a>CBUF</h3><p>CBUF模块有16个32KB的Bank，每个Bank由两个512位宽、256深度的双口RAM组成，存储空间共512KB；CBUF缓存来自CDMA的像素、特征、权重和WMB数据，并由CSC模块进行读取；CBUF有两个写端口和三个读端口。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1dth8tcj31r81am472.jpg" alt="CBUF.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232141424.png" alt="5"></p>
 <p>如果权重被压缩，那么Bank15分配给WMB数据，Bank0~14分配给特征、权重进行缓存。如果权重没被压缩，那么特征、权重缓冲区可以使用16个Bank；</p>
 <p>每个Bank都是循环缓冲区，新的数据进来时地址都会进行自增，当地址达到最大值后会回到0重新自加；</p>
 <h3 id="CSC"><a href="#CSC" class="headerlink" title="CSC"></a>CSC</h3><p>卷积序列控制器（CSC）负责从CBUF加载输入特征数据、像素数据和权重数据，并将其发送到CMAC单元，主要包含三个模块：CSC_SG、CSC_WL和CSC_DL。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1e2wtl0j31500jsdic.jpg" alt="CSC.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142001.png" alt="6"></p>
 <h4 id="CSC-SG"><a href="#CSC-SG" class="headerlink" title="CSC_SG"></a>CSC_SG</h4><p>CSC_SG模块用来生成序列来控制卷积操作，它的工作流程如下：</p>
 <ol>
 <li>在CBUF中轮询足够的数据和权重；</li>
@@ -202,7 +202,7 @@
 <li>如果所有条件都准备就绪，就将weight和data包发送给CSC_WL和CSC_DL；</li>
 </ol>
 <h4 id="CSC-DL"><a href="#CSC-DL" class="headerlink" title="CSC_DL"></a>CSC_DL</h4><p>CSC_DL（Data loader）负责执行feature&#x2F;image加载序列的逻辑，他从CSC_SG接收包，从CBUF加载feature&#x2F;image data，并将其发送到CMAC；且它还维护CBUF的状态，并与CDMA通信以保持状态最新。对于Winograd模式，它还执行预加法来转换输入数据；</p>
-<p>以DC mode为例说明CSC_DL的工作流程：											&#x2F;&#x2F;先别讲</p>
+<p>以DC mode为例说明CSC_DL的工作流程：											</p>
 <ol>
 <li>每个Atomic Operation，DL从CBUF读取一个data atom，并发送给CMAC；</li>
 <li>每个Stripe Operation，DL从CBUF读取16~32个data atom，并发送给CMAC；</li>
@@ -213,7 +213,7 @@
 </ol>
 <p>注：16 or 32取决于数据精度。</p>
 <h4 id="CSC-WL"><a href="#CSC-WL" class="headerlink" title="CSC_WL"></a>CSC_WL</h4><p>CSC_WL（Weight loader）执行weight加载序列的逻辑，它从CSC_SG接收包，从CBUF加载weight，并进行必要的解压缩并将其发送到CMAC。它帮助维护权重缓冲区状态，并与CDMA_WT通信，来使状态及时更新。</p>
-<p>以DC mode为例说明CSC_WL的工作流程：											&#x2F;&#x2F;先别讲</p>
+<p>以DC mode为例说明CSC_WL的工作流程：											</p>
 <ol>
 <li>每个atomic operation，WL不需要操作；</li>
 <li>每个stripe operation，WL从CBUF读取1个group的16&#x2F;32个weight atom，并发送给CMAC；</li>
@@ -223,11 +223,11 @@
 <li>WL重复kernel_num&#x2F;（16~32）次group operation，完成所有kernel group的读取；</li>
 </ol>
 <h3 id="CMAC"><a href="#CMAC" class="headerlink" title="CMAC"></a>CMAC</h3><p>CMAC（Convolution Multiply Accumulate）模块是流水线卷积操作的一个阶段，它从CSC接收输入数据和权重，进行乘法和加法运算，并将输出结果输出到卷积累加器。当在Winograd模式下工作时，CMAC在输出上执行POA(post addition)将结果转换为标准激活格式。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1ec6xnhj30z20uswh3.jpg" alt="CMAC.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142273.png" alt="7"></p>
 <p>CMAC有16个相同的MAC Cell，每个MAC Cell包含64个用于16bit的16位乘法器，还包含72个16bit的加法器，用于Winograd的POA。每个16位宽的乘法器和加法器都可以拆分成int8格式的两个计算单元，所以int8的吞吐量是int16的两倍；MAC Cell的流水线深度为7个Cycle。</p>
 <p>为了Physical Design Optimization，CMAC被分为两部分CMAC_A和CMAC_B，每个都有单独的CSB接口。</p>
 <h3 id="CACC"><a href="#CACC" class="headerlink" title="CACC"></a>CACC</h3><p>卷积累加器（CACC）是卷积流水线在CMAC之后的阶段，它用于累加CMAC模块的部分和，并在发送到SDP之前对结果进行舍入&#x2F;饱和。它支持不同位宽的数据输入，对于INT16输入而言结果位宽为48位，对于INT8输入而言结果位宽为34位。CACC和SDP模块之间的数据位宽是32，所以在将结果发送给SDP之前需要执行一个舍入和饱和运算。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1eio9szj31qa0qmtf8.jpg" alt="CACC.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142043.png" alt="8"></p>
 <p>CACC中的组件如图所示，工作流程主要如下：</p>
 <ol>
 <li>从assembly SRAM中预取累加和；</li>
@@ -240,7 +240,7 @@
 <li>从delivery SRAM中加载结果并将它们发送给SDP；</li>
 </ol>
 <p>为支持Direct Convolution模式下的Multi-Batch选项，CACC在交付SRAM组中应用了data remapping功能；为了防止数据溢出，CACC使用相关协议来反压CSC模块。</p>
-<h3 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1gubd2qj323k16847d.jpg" alt="SDP.jpg"></p>
+<h3 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142835.png" alt="9"></p>
 <p>SDP是单点数据处理器，意在对单个数据元素级别执行后处理操作，主要完成以下的操作：</p>
 <ol>
 <li>**<u>Bias加法</u>**的公式为<code>y=x+bias</code>，bias是一个预先训练的参数，可以是以下3种之一：如果整个data cube都是同一bias的话可以从寄存器获取；per-channel模式下，同一channel内bias共享；per-element模式下，不同的element的bias都不同。</li>
@@ -251,15 +251,15 @@
 <li>Format Conversion：NVDLA支持INT8、INT16和FP16精度，较低的精度可提供较高的性能，而较高的精度可提供更好的推理结果。</li>
 </ol>
 <h3 id="PDP"><a href="#PDP" class="headerlink" title="PDP"></a>PDP</h3><p>PDP主要沿宽×高的平面执行操作，PDP模块旨在完成池化层，支持MAX、MIN和AVERAGE池化操作。PDP单元接收来自SDP或者MCIF&#x2F;SRAMIF的数据，并将数据发送给MCIF&#x2F;SRAMIF。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1h43gdfj322u1720zr.jpg" alt="PDP.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142274.png" alt="10"></p>
 <p>支持的尺寸如下：Pooling Kernel Size：1<del>8；Pooling Kernel Stride：1</del>16；</p>
 <p>on-the-fly模式下输入数据直接从SDP获取，off-fly模式下输入数据从PDMA获取；</p>
 <p>Pre-processing模块主要完成最大、最小操作以及部分和的求和操作；</p>
 <p>Pos-processing模块主要针对Average Pooling进行相关的后处理操作，如果是MAX&#x2F;MIN Pooling操作的话，那么Share Line Buffer存储的就是最终结果；如果是Average Pooling的话，需要取出Share Line Buffer中的数进行除法操作，并且为方便硬件实现将除法转换为乘法操作；</p>
 <h3 id="CDP"><a href="#CDP" class="headerlink" title="CDP"></a>CDP</h3><p>CDP模块旨在解决局部响应归一化层，LRN通过在通道方向上对局部输入区域进行归一化。CDP模块始终与其它处理子单元<u><strong>独立工作</strong></u>，它从PDMA接收输入数据并将输出数据发送回PDMA。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1hcoqg0j323414stee.jpg" alt="CDP.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232142860.png" alt="11"></p>
 <p>LRN的计算公式中涉及到除法和指数运算，使用硬件实现代价较大，所以内部用LUT实现功能。</p>
-<h3 id="RUBIK"><a href="#RUBIK" class="headerlink" title="RUBIK"></a>RUBIK</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1hibdesj310m0wedhq.jpg" alt="RUBIK.jpg"></p>
+<h3 id="RUBIK"><a href="#RUBIK" class="headerlink" title="RUBIK"></a>RUBIK</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143590.png" alt="12"></p>
 <p>RUBIK的功能是转换数据的映射格式，主要有三种工作模式：</p>
 <ul>
 <li>contract data cube</li>
@@ -267,29 +267,29 @@
 <li>merge multi-planar formats to data cube</li>
 </ul>
 <h3 id="BDMA"><a href="#BDMA" class="headerlink" title="BDMA"></a>BDMA</h3><p>NVDLA一般将输入图像和处理结果存储在外部DRAM中，但受限于DRAM的带宽和延迟，NVDLA不能提高MAC阵列的效率，所以NVDLA配置了一个到片上SRAM的辅助存储器接口。</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1hx1u79j30jo0jodgs.jpg" alt="BDMA.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143215.png" alt="13"></p>
 <p>NVDLA使用BDMA来在外部DRAM和内部SRAM之间移动数据，有两个独立的路径，一个是从DRAM到SRAM，另一个是从SRAM到DRAM，两个方向不能同时工作。同时BDMA还可以将数据从DRAM移动到DRAM，或者从SRAM移动到SRAM。</p>
 <p>两个接口的数据位宽均为512位，最大突发长度为4。</p>
-<h3 id="MCIF-amp-SRAMIF"><a href="#MCIF-amp-SRAMIF" class="headerlink" title="MCIF&amp;SRAMIF"></a>MCIF&amp;SRAMIF</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1i5gz01j30yc0kg76p.jpg" alt="mcif.jpg"></p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1iu7glpj30y60kcdi5.jpg" alt="SRAMIF.jpg"></p>
+<h3 id="MCIF-amp-SRAMIF"><a href="#MCIF-amp-SRAMIF" class="headerlink" title="MCIF&amp;SRAMIF"></a>MCIF&amp;SRAMIF</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143502.png" alt="14"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143212.png" alt="15"></p>
 <p>MCIF用于仲裁多个内部子模块的请求，并转换为AXI协议来连接到外部DRAM。MCIF是同时支持读写通道的仲裁的，但有些NVDLA的子模块只有读请求，如图中的CDMA0和CDMA1只有读请求，其它5个接口均需要读写。</p>
 <p>SRAMIF与MCIF接口功能类似，但预计总线延迟更低。</p>
 <h2 id="Convolution-in-NVDLA"><a href="#Convolution-in-NVDLA" class="headerlink" title="Convolution in NVDLA"></a>Convolution in NVDLA</h2><p>下面简单说一下NVDLA中直接卷积的流程。输入的Data Cube为W×H×C；共K个kernel，每个kernel的尺寸为S×R×C；输出的Data Cube尺寸为W’×H’×C’；其中W’和H’与Padding和Stride有关，C’与Kernel数量相等；</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1jncrkmj322k0ko0vh.jpg" alt="DC_pic1.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143782.png" alt="16"></p>
 <p>下图显示了Stride和Zero Padding的示意图，其中黑色虚线框出的是Padding之前的Feature Data；Kernel字母表示卷积核的中间位置，可以看到在X方向和Y方向上分别以SX和SY为距离进行步进；</p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1jthk5sj31pk0ystdl.jpg" alt="DC_pic2.jpg"></p>
-<h3 id="Data-Format"><a href="#Data-Format" class="headerlink" title="Data Format"></a>Data Format</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1kiatvhj31za0uwadz.jpg" alt="feature_data_format.jpg"></p>
-<p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1ksep93j321k0rcwjh.jpg" alt="weight_format.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143564.png" alt="17"></p>
+<h3 id="Data-Format"><a href="#Data-Format" class="headerlink" title="Data Format"></a>Data Format</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232143069.png" alt="18"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144717.png" alt="19"></p>
 <p>这张图显示了Direct Convolution模式下特征数据与权重的数据格式，特征数据以32Byte为单位，在W-H-C方向上进行扫描并对数据进行存储，如果原始特征数据不是C方向上的32字节对齐，则将数据添加到通道末尾；</p>
 <p>权重数据是在卷积操作之前很久就生成的，软件应将权重数据按DLA中的计算顺序进行映射。权重是在通道方向上以128Byte为单位进行划分，不足128Byte的话要进行一个补零操作，在C’-W-H-C方向上进行扫描并对数据进行存储。</p>
-<h3 id="Atomic-Operation"><a href="#Atomic-Operation" class="headerlink" title="Atomic Operation"></a>Atomic Operation</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1kzupm6j31eg192ahi.jpg" alt="atomic_operation.jpg"></p>
+<h3 id="Atomic-Operation"><a href="#Atomic-Operation" class="headerlink" title="Atomic Operation"></a>Atomic Operation</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144637.png" alt="20"></p>
 <p>在一个原子操作中，每个MAC Cell都取一个1×1×64的weight cube（16bit）来与1×1×64的feature data做运算，**<u>完成64个数的乘加运算操作（64个Channel）</u><strong>。因为有16个MAC Cell，所以一次能并行计算16个kernel，MAC Cell乘加运算后的结果叫做部分和，所以</strong><u>每个Cycle我们可以得到16个部分和（partial sum）</u>**。得到的部分和被送往CACC模块进行累积和的计算。</p>
-<h3 id="Stripe-Operation"><a href="#Stripe-Operation" class="headerlink" title="Stripe Operation"></a>Stripe Operation</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1l6jx85j31e81c8n59.jpg" alt="stripe_operation.jpg"></p>
+<h3 id="Stripe-Operation"><a href="#Stripe-Operation" class="headerlink" title="Stripe Operation"></a>Stripe Operation</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144640.png" alt="21"></p>
 <p>条带操作是原子操作的组合，在一次条带操作的过程中，**<u>MAC Cell中的权重数据保持不变</u>**，特征数据沿着input data cube滑动。（首先沿着W方向进行滑动）</p>
 <p>由于条带操作MAC Cell中权重数据保持不变，所以**<u>一次条带操作中的部分和不能进行累加操作</u>**，因为它们来自不同的卷积核；这就是说需要在CACC模块对部分和进行缓存。</p>
 <p><strong><u>由于CACC模块的缓冲区受限，所以Stripe Operation的Length有上限，上限为32。</u><strong>同时Stripe Operation的Length也有下限，</strong><u>因为要更新下一次Stripe Operation的权重数据至少要16个Cycle，所以下限为16。</u></strong></p>
 <p>即1次Stripe Operation&#x3D;16~32次Atomic Operation，其中Weight Data不变，滑动Feature Data。</p>
-<h3 id="Block-Operation"><a href="#Block-Operation" class="headerlink" title="Block Operation"></a>Block Operation</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1lfh83yj311s1aeajm.jpg" alt="block_operation.jpg"></p>
+<h3 id="Block-Operation"><a href="#Block-Operation" class="headerlink" title="Block Operation"></a>Block Operation</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144564.png" alt="22"></p>
 <p>Block Operation是由一系列的Stripe Operation组成，**<u>次数为（Weight Width×Weight Height）</u>**，每次Stripe Operation的部分和结果都被发送到CACC模块进行累加和的计算。</p>
 <!--NVDLA文档上写的是16-32 element accumulator，我理解的是可以对16-32路进来的数据进行累加，在一次Block Operation中每路的数据量应该是（Weight Width×Weight Height），每个数据都是Atomic Operation的部分和。-->
 
@@ -297,11 +297,11 @@
 <p>The partial sums from the same block operation are added together per stripe operation in the convolution accumulator.</p>
 </blockquote>
 <p>累加和的计算公式如下：<br>$$<br>AS_{w,h,k,c}&#x3D;\sum_{r&#x3D;0}^{R-1}\sum_{s&#x3D;0}^{S-1}\sum_{i&#x3D;c}^{min(c+63,C-1)}x_{(w<em>SX-LP+r),(h</em>SY-TP+s),i}*wt_{r,s,i,k}<br>$$<br>在公式中，AS指accumulative sum，其中第一个和第二个求和应该是由CACC模块进行，第三个求和应该是MAC Cell进行。</p>
-<h3 id="Channel-Operation"><a href="#Channel-Operation" class="headerlink" title="Channel Operation"></a>Channel Operation</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1obm0bij312y1agwoc.jpg" alt="channel_operation.jpg"></p>
+<h3 id="Channel-Operation"><a href="#Channel-Operation" class="headerlink" title="Channel Operation"></a>Channel Operation</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144295.png" alt="23"></p>
 <p>每次Block Operation完成64个kernel的运算，Channel Operation是一系列Block Operation的组合，次数共有<code>(C+63)/64</code>，完成Channel方向上的所有运算。**<u>在同一个Channel Operation中的部分和应该以卷积核为单位继续进行累加操作</u>**，在Channel Operation完成后，存储的累加和才是卷积的最终结果，才会从CACC模块中的assembly SRAM卸载到delivery SRAM，送给后续的处理模块。</p>
 <!--CACC模块对16-32路进来的数据进行累加，在一次Block Operation中每路的数据量应该是（Weight Width×Weight Height）×[(C+63)/64]，每个数据都是Atomic Operation的部分和。-->
 
-<h3 id="Group-Operation"><a href="#Group-Operation" class="headerlink" title="Group Operation"></a>Group Operation</h3><p><img src="http://tva1.sinaimg.cn/large/006AXXmQgy1h1v1onf817j31c80rmade.jpg" alt="group_operation.jpg"></p>
+<h3 id="Group-Operation"><a href="#Group-Operation" class="headerlink" title="Group Operation"></a>Group Operation</h3><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303232144454.png" alt="24"></p>
 <p>Group Operation是Channel Operation的组合，需要重复<code>(data_width*data_height)/(16~32)</code>次。在Group Operation后，输出的数据尺寸为<code>W×H×K&#39;</code>，其中K’为一次Kernel Group中Kernel的数量，对于16-bit的数据而言为16个，对于8-bit的数据而言为32个。</p>
 <p>Direct Convolution重复<code>kernel_num/(16~32)</code>次Group Operation即可完成卷积运算，每次的feature data都是相同的。</p>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="权重压缩"><a href="#权重压缩" class="headerlink" title="权重压缩"></a>权重压缩</h3><ul>
