@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>修Timing Violation的若干方法 | 大卫和小王的博客园</title><meta name="keywords" content="Timing Violation"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="简要介绍了修Timing Violation的若干方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修Timing Violation的若干方法">
+<meta property="og:url" content="http://david-luge.cn/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="大卫和小王的博客园">
+<meta property="og:description" content="简要介绍了修Timing Violation的若干方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b">
+<meta property="article:published_time" content="2023-03-23T01:15:39.000Z">
+<meta property="article:modified_time" content="2023-03-23T01:15:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Basics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫和小王的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '修Timing Violation的若干方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-23 09:15:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫和小王的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫和小王的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">修Timing Violation的若干方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-23T01:15:39.000Z" title="发表于 2023-03-23 09:15:39">2023-03-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-23T01:15:39.000Z" title="更新于 2023-03-23 09:15:39">2023-03-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/IC/">IC</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/IC/Basics/">Basics</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="修Timing Violation的若干方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>本文转载自<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/DCMRXW-bF8Z7r7SPnRC5jQ">探STA|修timing violation的二十一种方法</a></p>
+<p>如有任何版权问题请联系博主。</p>
+</blockquote>
+<p>其实修setup violation和hold violation是对立统一的，例如我们通过insert buffer修一个setup violation，那么有时我们也可以通过remove buffer修一个hold violation。</p>
+<h1 id="Fix-setup-violation"><a href="#Fix-setup-violation" class="headerlink" title="Fix setup violation"></a>Fix setup violation</h1><p>Setup violation的本质是一个时钟周期内上一级寄存器锁存的数据无法正确地传输到下一级寄存器并被正确地锁存，也就是数据跑的太慢了。或者换个思路，是当前寄存器的时钟跑的快了。</p>
+<p>插buffer来fix setup violation主要从信号的slew考虑，减buffer来fix setup violation主要从cell delay的角度考虑。选择何种方式主要看load capacitance。</p>
+<p>首先看一下slew的解释，以及与cell delay的相关参数。</p>
+<blockquote>
+<p>A slew rate is defined as a rate of change.</p>
+<p>A simple timing model is a linear delay model, where the delay and the output transition time of the cell are represented as linear functions of the two parameters: input transition time and the output load capacitance.</p>
+<p>—《Static timing analysis for nanometer designs》</p>
+</blockquote>
+<p>下面两个评论是从插buffer的角度考虑</p>
+<blockquote>
+<p>Buffers increases drive strength of signal and so delay decreases. This is like a repeater in a communication systems .  where repeater will re-shape the signal to match it to ideal one and thus time taken by signal to transition from 1-&gt;0 and 0-&gt;1 decreases.</p>
+</blockquote>
+<blockquote>
+<p>If you insert the buffer, the signal strength will be improved. This will charge the load Cap fast. When the Cap gets charged fast, you will have less rise &amp; fall delay. This will reduce the delay. That’s it.</p>
+</blockquote>
+<p>下面的评论是从减buffer的角度考虑</p>
+<blockquote>
+<p>Decrese the load Cap. can decrease the cell delay. until the load Cap, is much smaller than the output Cap, of the cell itself, the delay will nearly not change at all. We can call the delay instrinsic delay.<br>If a timing path consists of cells with instrinsic delay, insert buffer will just increase the delay.</p>
+</blockquote>
+<h2 id="减少Data-Path上的Buffer数量"><a href="#减少Data-Path上的Buffer数量" class="headerlink" title="减少Data Path上的Buffer数量"></a>减少Data Path上的Buffer数量</h2><p>这会减少cell delay。cell级数减少了，这种减小也不是单纯地几何倍数的减小，减小的程度应该是<strong>小于</strong>remove buffer的数量×原来的cell delay；因为net wire变长之后，电流从net一端传播到net另一端衰减更加严重，对器件的充电速度变慢。</p>
+<p>但是该方式会增加net delay，net wire总长度变大，RC参数变大，RC曲线更加绵长。</p>
+<h2 id="使用一对inverter替换Buffer"><a href="#使用一对inverter替换Buffer" class="headerlink" title="使用一对inverter替换Buffer"></a>使用一对inverter替换Buffer</h2><p>我们知道buffer的结构基本上等价于两个inverter，使用一对inverter替换buffer可以减少data path上总的delay。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241516536.png" alt="1"></p>
+<p>和只用一个buffer相比，一对反相器会两倍的减少信号的transition time，这会减少RC delay。而一个buffer的cell delay约等于一对inverter的cell delay，所以总的delay减少了。</p>
+<h2 id="Swap-VT"><a href="#Swap-VT" class="headerlink" title="Swap VT"></a>Swap VT</h2><p>这就是换cell的阈值电压(voltage threshold)，就是把HVT(High)换成SVT&#x2F;RVT(Standard&#x2F;Regular)或者LVT(Low)。</p>
+<p>相同情况下low VT的cell的栅极阈值电压更低，所以对于该cell本身其slew更小；相同情况下low VT的cell的栅极导通电流更大，所以其对于后续的net wire的充电速度更快。</p>
+<p>所以low VT的cell相当于从cell delay和net delay两种角度去减小了总的delay。</p>
+<p>不过，Low VT的cell静态电流更大，静态功耗也更大。</p>
+<h2 id="Size-up-cell"><a href="#Size-up-cell" class="headerlink" title="Size-up cell"></a>Size-up cell</h2><p>一般来说大驱动的cell具有更高的speed，但是可能某些cell类型，更大的cell可能速度更慢。</p>
+<p>不过，这样也会使得power更高，area更大。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241522391.png" alt="2"></p>
+<h2 id="Insert-buffer"><a href="#Insert-buffer" class="headerlink" title="Insert buffer"></a>Insert buffer</h2><p>插buffer会减小transition time，这会减小net delay。如果总的net delay的减小 大于 cell delay的增加；那么总的delay就会减小。</p>
+<p>不过，这也会导致power和area增加。</p>
+<h2 id="Insert-repeater"><a href="#Insert-repeater" class="headerlink" title="Insert repeater"></a>Insert repeater</h2><p>这跟insert buffer类似，不过区别在于场景的不同。</p>
+<p>Long net wire会导致大的RC delay，如果insert repeater可以将net wire切分成多段可以减少总的net delay；因为总的net delay的减少 大于 cell delay的增加，所以这是一种有效的方法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241525219.png" alt="3"></p>
+<h2 id="调整cell在版图的location"><a href="#调整cell在版图的location" class="headerlink" title="调整cell在版图的location"></a>调整cell在版图的location</h2><p>本质也是减少net delay.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241527977.png" alt="4"></p>
+<h2 id="调整clock-skew"><a href="#调整clock-skew" class="headerlink" title="调整clock skew"></a>调整clock skew</h2><p>就是通过skew的调整向后一级接setup的余量。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241531184.png" alt="5"></p>
+<h2 id="给critial-path用NDR走线"><a href="#给critial-path用NDR走线" class="headerlink" title="给critial path用NDR走线"></a>给critial path用NDR走线</h2><p>与CTS绕线原理类似，就是减少net wire的RC和cross-talk。</p>
+<p>NDR全称是Non default routing rule，非默认绕线规则。默认的绕线规则都是单位宽度，对于clock path或者critial path可以采取双倍宽度的绕线宽度。</p>
+<h2 id="手动走线"><a href="#手动走线" class="headerlink" title="手动走线"></a>手动走线</h2><p>手动换高层走线或者手动把net wire捋直。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241552917.jpg" alt="6"></p>
+<p>直观感受一下，上图中橘色的为金属，高层的走线粗，电阻小，所以RC小，delay小。</p>
+<h2 id="修crosstalk"><a href="#修crosstalk" class="headerlink" title="修crosstalk"></a>修crosstalk</h2><p>修crosstalk除了加shielding和NDR rule以外，还有一种方法是：违例点周围的各种走线remove掉或者拉的远一点。</p>
+<h2 id="降频"><a href="#降频" class="headerlink" title="降频"></a>降频</h2><p>如果实在修不下去，该降就降吧。</p>
+<h2 id="换库"><a href="#换库" class="headerlink" title="换库"></a>换库</h2><p>实在不行，也可以选用一些speed更快的库，或者自己定做一些库。</p>
+<p>该方法也分全局换库和局部换库，全局就是整个design都换，局部就是让critical path用一些特殊的库。</p>
+<h2 id="调整floorplan"><a href="#调整floorplan" class="headerlink" title="调整floorplan"></a>调整floorplan</h2><p>通过调整floorplan使得具有交互的module的位置更合理。</p>
+<h2 id="split-multi-bit-flip-flop"><a href="#split-multi-bit-flip-flop" class="headerlink" title="split multi-bit flip-flop"></a>split multi-bit flip-flop</h2><p>因为MBFF cell内部的<strong>公共</strong>走线和<strong>公共</strong>的晶体管更多，所以其本身的load Cap更大，则transition time就更大，delay就更大。因此可以通过拆分MBFF Cell来fix setup violation。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241557552.png" alt="7"></p>
+<h2 id="使用PBA代替GBA"><a href="#使用PBA代替GBA" class="headerlink" title="使用PBA代替GBA"></a>使用PBA代替GBA</h2><p>GBA 的全称是（Graph Base Analysis）。STA工具计算 timing 时，默认是采用 GBA 模式来报 timing 的，是工具默认的分析方式。它是说工具在从lib中读取cell的delay的时候，永远是读取<strong>由最差transition产生的delay</strong>。PBA是path based analysis，指的是我要分析哪条timing path，就用这条timing path的transition来查cell的delay。pba算法复杂，分析时间大大提高，但结果更为精确。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241558706.png" alt="8"></p>
+<h2 id="打拍"><a href="#打拍" class="headerlink" title="打拍"></a>打拍</h2><p>打拍就是在reg2reg path中间再加一个reg，一个周期搞不定的事情，分成两个周期来做。</p>
+<h2 id="改RTL"><a href="#改RTL" class="headerlink" title="改RTL"></a>改RTL</h2><p>如果RTL综合出来本身的timing path逻辑级数太长或者组合逻辑太多，可以考虑改RTL。</p>
+<h1 id="Fix-Hold-violation"><a href="#Fix-Hold-violation" class="headerlink" title="Fix Hold violation"></a>Fix Hold violation</h1><h2 id="Add-Delay"><a href="#Add-Delay" class="headerlink" title="Add Delay"></a>Add Delay</h2><p>可以使用buffer、inverter pairs、delay cell来修hold violation。</p>
+<p>由于hold violation path的start point和end point可能对应着别的setup violation path（或者setup slack比较紧张），所以add delay时需要格外小心。</p>
+<p>此外，一般不在两条timing path的common path增加delay。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img@main/img/202303241604159.png" alt="9"></p>
+<h2 id="Size-down-cell"><a href="#Size-down-cell" class="headerlink" title="Size-down cell"></a>Size-down cell</h2><p>尽可能去size end-point附近的cell，这样对别的path影响较小。</p>
+<p>另外修crosstalk和手动走线也可修hold。</p>
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>有时候面试官会问，流片完了还是有setup&#x2F;hold violation怎么办，可以从以下角度去考虑回答。</p>
+<p>Fix setup violation：降频使用；</p>
+<p>Fix hold violation：在setup margin比较足的情况下可以降压，不足的情况下可以降频降压使用；</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/">http://david-luge.cn/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫和小王的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Basics/">Basics</a></div><div class="post_share"><div class="social-share" data-image="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/"><img class="prev-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Physical aware synthesis是什么</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/24/IC/Basic/%E8%8A%AF%E7%89%87%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0/"><img class="next-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">芯片设计流程简述</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/24/IC/Basic/FPGA%E4%B8%8EASIC%E7%9A%84%E5%8C%BA%E5%88%AB/" title="FPGA与ASIC的区别"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-24</div><div class="title">FPGA与ASIC的区别</div></div></a></div><div><a href="/2022/11/04/IC/Basic/Physical%20Synthesis%E6%98%AF%E4%BB%80%E4%B9%88/" title="Physical aware synthesis是什么"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-04</div><div class="title">Physical aware synthesis是什么</div></div></a></div><div><a href="/2022/10/10/IC/Basic/RTL%20Coding%20Style/" title="RTL Coding Style"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-10</div><div class="title">RTL Coding Style</div></div></a></div><div><a href="/2022/09/29/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88D%E8%A7%A6%E5%8F%91%E5%99%A8%E9%9C%80%E8%A6%81%E5%BB%BA%E7%AB%8B%E6%97%B6%E9%97%B4%E4%B8%8E%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/" title="为什么D触发器需要建立时间和保持时间"><img class="cover" src="/img/Page_Cover/DFF.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">为什么D触发器需要建立时间和保持时间</div></div></a></div><div><a href="/2022/09/29/IC/Basic/Verilog%E5%90%84%E7%B1%BB%E5%88%86%E9%A2%91%E5%99%A8%E8%AE%BE%E8%AE%A1%E8%AF%A6%E8%A7%A3/" title="Verilog各类分频器设计详解"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">Verilog各类分频器设计详解</div></div></a></div><div><a href="/2022/10/07/IC/Basic/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%97%A8%E7%BA%A7%E4%BB%BF%E7%9C%9F/" title="为什么需要门级仿真"><img class="cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-07</div><div class="title">为什么需要门级仿真</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Fix-setup-violation"><span class="toc-number">1.</span> <span class="toc-text">Fix setup violation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%8F%E5%B0%91Data-Path%E4%B8%8A%E7%9A%84Buffer%E6%95%B0%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">减少Data Path上的Buffer数量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%80%E5%AF%B9inverter%E6%9B%BF%E6%8D%A2Buffer"><span class="toc-number">1.2.</span> <span class="toc-text">使用一对inverter替换Buffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swap-VT"><span class="toc-number">1.3.</span> <span class="toc-text">Swap VT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Size-up-cell"><span class="toc-number">1.4.</span> <span class="toc-text">Size-up cell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insert-buffer"><span class="toc-number">1.5.</span> <span class="toc-text">Insert buffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Insert-repeater"><span class="toc-number">1.6.</span> <span class="toc-text">Insert repeater</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%95%B4cell%E5%9C%A8%E7%89%88%E5%9B%BE%E7%9A%84location"><span class="toc-number">1.7.</span> <span class="toc-text">调整cell在版图的location</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%95%B4clock-skew"><span class="toc-number">1.8.</span> <span class="toc-text">调整clock skew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99critial-path%E7%94%A8NDR%E8%B5%B0%E7%BA%BF"><span class="toc-number">1.9.</span> <span class="toc-text">给critial path用NDR走线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E8%B5%B0%E7%BA%BF"><span class="toc-number">1.10.</span> <span class="toc-text">手动走线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AEcrosstalk"><span class="toc-number">1.11.</span> <span class="toc-text">修crosstalk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E9%A2%91"><span class="toc-number">1.12.</span> <span class="toc-text">降频</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E5%BA%93"><span class="toc-number">1.13.</span> <span class="toc-text">换库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%95%B4floorplan"><span class="toc-number">1.14.</span> <span class="toc-text">调整floorplan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#split-multi-bit-flip-flop"><span class="toc-number">1.15.</span> <span class="toc-text">split multi-bit flip-flop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8PBA%E4%BB%A3%E6%9B%BFGBA"><span class="toc-number">1.16.</span> <span class="toc-text">使用PBA代替GBA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E6%8B%8D"><span class="toc-number">1.17.</span> <span class="toc-text">打拍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9RTL"><span class="toc-number">1.18.</span> <span class="toc-text">改RTL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fix-Hold-violation"><span class="toc-number">2.</span> <span class="toc-text">Fix Hold violation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-Delay"><span class="toc-number">2.1.</span> <span class="toc-text">Add Delay</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Size-down-cell"><span class="toc-number">2.2.</span> <span class="toc-text">Size-down cell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="toc-number">3.</span> <span class="toc-text">题外话</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/24/IC/Basic/FPGA%E4%B8%8EASIC%E7%9A%84%E5%8C%BA%E5%88%AB/" title="FPGA与ASIC的区别"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="FPGA与ASIC的区别"/></a><div class="content"><a class="title" href="/2023/03/24/IC/Basic/FPGA%E4%B8%8EASIC%E7%9A%84%E5%8C%BA%E5%88%AB/" title="FPGA与ASIC的区别">FPGA与ASIC的区别</a><time datetime="2023-03-24T03:39:39.000Z" title="发表于 2023-03-24 11:39:39">2023-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/24/IC/Basic/%E8%8A%AF%E7%89%87%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0/" title="芯片设计流程简述"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="芯片设计流程简述"/></a><div class="content"><a class="title" href="/2023/03/24/IC/Basic/%E8%8A%AF%E7%89%87%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0/" title="芯片设计流程简述">芯片设计流程简述</a><time datetime="2023-03-24T03:38:39.000Z" title="发表于 2023-03-24 11:38:39">2023-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/" title="修Timing Violation的若干方法"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="修Timing Violation的若干方法"/></a><div class="content"><a class="title" href="/2023/03/23/IC/Basic/%E4%BF%AETiming%20Violation%E7%9A%84%E8%8B%A5%E5%B9%B2%E6%96%B9%E6%B3%95/" title="修Timing Violation的若干方法">修Timing Violation的若干方法</a><time datetime="2023-03-23T01:15:39.000Z" title="发表于 2023-03-23 09:15:39">2023-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫和小王的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
