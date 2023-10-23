@@ -4,7 +4,16 @@
   <url>
     <loc>http://david-luge.cn/chats/index.html</loc>
     
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/2023/10/23/IC/EDA/DC%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2023-10-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/about/index.html</loc>
+    <loc>http://david-luge.cn/categories/index.html</loc>
     
     <lastmod>2023-03-23</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/index.html</loc>
+    <loc>http://david-luge.cn/about/index.html</loc>
     
     <lastmod>2023-03-23</lastmod>
     
@@ -461,15 +470,6 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
-    
-    <lastmod>2022-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://david-luge.cn/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(3)_Verilog%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BE%8B%E5%8C%96%E4%B8%8E%E8%B0%83%E7%94%A8/</loc>
     
     <lastmod>2022-09-03</lastmod>
@@ -479,7 +479,16 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/2022/09/02/FPGA/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/</loc>
+    <loc>http://david-luge.cn/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%94%9F%E6%88%90%E9%94%81%E5%AD%98%E5%99%A8/</loc>
+    
+    <lastmod>2022-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/2022/09/02/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(1)_Verilog%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -488,7 +497,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/2022/09/02/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(1)_Verilog%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
+    <loc>http://david-luge.cn/2022/09/02/FPGA/Synplify%E4%B8%AD%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8Xilinx%E7%BD%91%E8%A1%A8IP/</loc>
     
     <lastmod>2022-09-02</lastmod>
     
@@ -508,7 +517,7 @@
 
   <url>
     <loc>http://david-luge.cn/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -516,63 +525,70 @@
   
   <url>
     <loc>http://david-luge.cn/tags/FPGA-Tools/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/interview/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/Git/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/Ubuntu/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/%E6%AF%95%E8%AE%BE/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/photography/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/Proj/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/Basics/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/tags/EDA/</loc>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/tags/HDLBits/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -581,84 +597,91 @@
   
   <url>
     <loc>http://david-luge.cn/categories/FPGA/</loc>
-    <lastmod>2023-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://david-luge.cn/categories/FPGA/FPGA-Tools/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/interview/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/categories/FPGA/FPGA-Tools/</loc>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Misc/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Proj/</loc>
-    <lastmod>2023-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://david-luge.cn/categories/IC/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Misc/Git/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Misc/Ubuntu/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/Misc/photography/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/IC/HDLBits/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <loc>http://david-luge.cn/categories/IC/</loc>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://david-luge.cn/categories/IC/Basics/</loc>
-    <lastmod>2023-07-19</lastmod>
+    <lastmod>2023-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/categories/IC/EDA/</loc>
+    <lastmod>2023-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://david-luge.cn/categories/IC/HDLBits/</loc>
+    <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
