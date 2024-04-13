@@ -576,7 +576,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/interview/</loc>
+    <loc>http://david-luge.cn/tags/Git/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -590,7 +590,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/Git/</loc>
+    <loc>http://david-luge.cn/tags/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -604,14 +604,14 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/%E6%AF%95%E8%AE%BE/</loc>
+    <loc>http://david-luge.cn/tags/photography/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/photography/</loc>
+    <loc>http://david-luge.cn/tags/interview/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -655,13 +655,6 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/interview/</loc>
-    <lastmod>2024-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://david-luge.cn/categories/Misc/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -669,7 +662,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/IC/</loc>
+    <loc>http://david-luge.cn/categories/interview/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -683,6 +676,13 @@
   </url>
   
   <url>
+    <loc>http://david-luge.cn/categories/IC/</loc>
+    <lastmod>2024-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://david-luge.cn/categories/Misc/Git/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -690,14 +690,14 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/Misc/Ubuntu/</loc>
+    <loc>http://david-luge.cn/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/Misc/%E6%AF%95%E8%AE%BE/</loc>
+    <loc>http://david-luge.cn/categories/Misc/Ubuntu/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -718,6 +718,13 @@
   </url>
   
   <url>
+    <loc>http://david-luge.cn/categories/IC/EDA/</loc>
+    <lastmod>2024-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://david-luge.cn/categories/IC/Basics/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -726,13 +733,6 @@
   
   <url>
     <loc>http://david-luge.cn/categories/IC/ALG/</loc>
-    <lastmod>2024-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://david-luge.cn/categories/IC/EDA/</loc>
     <lastmod>2024-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
