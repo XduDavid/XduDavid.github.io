@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>DPD-数字预失真 | 大卫的博客园</title><meta name="keywords" content="WIFI"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="简要介绍了数字预失真技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DPD-数字预失真">
+<meta property="og:url" content="http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="简要介绍了数字预失真技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/wireless.jpg">
+<meta property="article:published_time" content="2025-03-12T02:54:39.000Z">
+<meta property="article:modified_time" content="2025-03-12T02:54:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Communication">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/wireless.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DPD-数字预失真',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-12 10:54:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/wireless.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DPD-数字预失真</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-12T02:54:39.000Z" title="发表于 2025-03-12 10:54:39">2025-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-12T02:54:39.000Z" title="更新于 2025-03-12 10:54:39">2025-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Communication/">Communication</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DPD-数字预失真"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="DPD-数字预失真"><a href="#DPD-数字预失真" class="headerlink" title="DPD-数字预失真"></a>DPD-数字预失真</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>家人们，今天咱来唠唠通信界的一个超重要 “选手”——数字预失真 DPD(Digital Pre-Distortion)，它在通信领域那可是相当有存在感，就像游戏里的神助攻，能让射频放大器变得超厉害！</p>
+<h1 id="DPD-是个啥"><a href="#DPD-是个啥" class="headerlink" title="DPD 是个啥"></a>DPD 是个啥</h1><p>DPD 这名字听起来有点绕，简单来说，就是让正常的数字信号提前 “变个样”。</p>
+<p>“数字” 嘛，说明是在数字的地盘儿搞事情，和模拟域没啥关系；</p>
+<p>“预” 就是提前的意思，在射频功率放大器 “开工” 之前就先行动；</p>
+<p>“失真” 呢，信号在传输过程中走样了就叫失真，DPD 就是故意让原始信号 “失失真” 。这就好比给信号提前做了个 “变形手术”，专门用来对付功率放大器的那些小脾气。</p>
+<p>既然 DPD 是为了对付 PA 的小脾气的，自然在信号处理系统中，DPD 就要放在 PA 的前面。</p>
+<h1 id="为啥需要-DPD"><a href="#为啥需要-DPD" class="headerlink" title="为啥需要 DPD"></a>为啥需要 DPD</h1><p>这就得吐槽一下射频功率放大器啦！它有个让人头疼的毛病，输入功率加到一定程度，就开始 “耍小性子”，进入非线性区。这时候，输入和输出不再是 “铁哥们”，不再成线性关系。增加输入功率，输出功率却不给力，效率直线下降，信号还失真了。就好比你使劲给车加油，车却跑不起来，还跑偏了。</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Oqirbaoknoleu8xUGgscVMTJnge.png" alt="DPD示意图"></p>
+<p>接收端收到失真信号后，还会继续 “捣乱”，把失真加剧。那咋办呢？</p>
+<p>一般有两种办法，要么降低输入信号功率，躲开非线性区这个 “大坑”；要么增加输入信号功率，牺牲点能量换信号不失真。</p>
+<p>DPD 就属于后者，它就像个聪明的 “信号整形师”，让原先的信号朝着和功率放大器相反的方向 “变形”，抵消掉功率放大器的非线性影响 。这么一来，输出和输入信号之间的线性关系区间变宽了，功率放大器效率也提升了，不过功耗也增加了点，就当是给效率提升交的 “小电费” 吧。而且用了 DPD，无线基站的效率能大幅提升，能给网络运营商省下不少钱呢！</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Oqirbaoknoleu8xUGgscVMTJnge1.png" alt="PA特性"></p>
+<h1 id="谁能搞定-DPD？"><a href="#谁能搞定-DPD？" class="headerlink" title="谁能搞定 DPD？"></a>谁能搞定 DPD？</h1><h2 id="设备厂家"><a href="#设备厂家" class="headerlink" title="设备厂家"></a>设备厂家</h2><p>那些大型设备厂家，像华为、中兴、爱立信、诺基亚、三星，都是 DPD 技术的 “大拿”，自家都有厉害的 DPD 技术，就像有独家秘籍一样。</p>
+<p>小厂就有点尴尬啦，大多没有自己的 DPD 技术，毕竟没积累嘛。没办法，只能找学校 “取经”，或者直接买 FPGA 公司提供的 IP core，就像借别人的工具来干活。</p>
+<h2 id="芯片厂家"><a href="#芯片厂家" class="headerlink" title="芯片厂家"></a>芯片厂家</h2><p>FPGA 芯片厂家可就牛了，不仅能提供高性能的 DPD 解决方案，而且 IP 核参数还能自己调，不用手动一点点定制，省了好多事儿，就像给你一把万能钥匙，直接打开 DPD 的大门，还能提供超小占位面积、低成本的 FPGA 解决方案。</p>
+<h1 id="DPD-有什么实现难点？"><a href="#DPD-有什么实现难点？" class="headerlink" title="DPD 有什么实现难点？"></a>DPD 有什么实现难点？</h1><p>DPD 想发挥好作用，也不是一帆风顺的。首先，它的数学模型和参数得和功率放大器（PA）完美匹配，PA 要是变了，DPD 的数学模型或参数也得跟着变，就像脚变了，鞋也得换。</p>
+<p>随着 5G 时代到来，载波带宽越来越宽，都能达到 800MHz。以前 4G 的 DPD 数学模型在 5G 基站 PA 这儿就 “水土不服” 了，性能根本不达标，所以还得深入研究新的数学模型。</p>
+<p>最后，DPD 不管是用 FPGA、CPU 还是 DSP 来实现，都得从实现难度、资源消耗、成本控制、研发周期等多方面综合考虑，这里面的技术门道可多了，一般人还真搞不定。</p>
+<h1 id="功率放大器的模型是什么样？"><a href="#功率放大器的模型是什么样？" class="headerlink" title="功率放大器的模型是什么样？"></a>功率放大器的模型是什么样？</h1><h2 id="“宽带”-功放线性区数学模型"><a href="#“宽带”-功放线性区数学模型" class="headerlink" title="“宽带” 功放线性区数学模型"></a>“宽带” 功放线性区数学模型</h2><p>所谓 “宽带”，就是信号带宽超宽，啥频率都能在功率放大器里畅通无阻。假设输入是 IQ 调制信号，线性区模型就是输出和输入是简单的倍数关系。经过功率放大器后，信号频谱不变，幅度还放大了，就像给信号打了一针 “放大剂”。</p>
+<h2 id="“宽带”-功放非线性区数学模型"><a href="#“宽带”-功放非线性区数学模型" class="headerlink" title="“宽带” 功放非线性区数学模型"></a>“宽带” 功放非线性区数学模型</h2><p>到了非线性区，情况就复杂了。可以用幂指数函数或者幂级数函数来描述。</p>
+<p>幂指数函数的图像如下：</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/WnTobcCD8oiC5px9lqMcRnBCnWc.png" alt="幂指函数"></p>
+<p>幂级数函数是用来模拟非线性特性的</p>
+<p>拿幂级数函数来说，它适合模拟无记忆的弱非线性系统。</p>
+<p>$$<br>y&#x3D;\sum_{n&#x3D;0}^{\infty}a_{n}(x-x_{0})^{n}<br>$$</p>
+<p>上面的公式被称为幂级数，其中$x_{0}$为常数，$a_{0},a_{1},…a_{n}$称为幂级数的系数。</p>
+<p>下面以输出信号为 IQ 调制信号为例，来说明经过功率放大器后会产生很多的谐波分量；</p>
+<p><strong>假设 1</strong>：输入信号为 IQ 调制信号(双音正弦信号)：</p>
+<p>$$<br>x(t)&#x3D;A_{1}cos(wt)+A_{2}sin(wt)<br>$$</p>
+<p><strong>假设 2</strong>：功率放大器是三阶函数：</p>
+<p>$$<br>y(t)&#x3D;a_{1}x(t)+a_{2}x^{2}(t)+a_{3}x^{3}(t)<br>$$</p>
+<p>则输出信号的频谱为：基波分量 W，二阶谐波分量 2W，三阶谐波分量 3W；</p>
+<p>显然，经过功率放大器后，信号有很多的谐波分量，这就会导致信号的失真；</p>
+<ul>
+<li>产生的非基波频谱分量(二次、三次谐波分量)分走了本该作用在全部基波上的功率，造成了能量的损失；</li>
+<li>产生的非基波频谱分量(二次、三次谐波分量)落在信号通带、邻带和其他有用通带内，如果不用滤波器加以滤除，则会对有用信号产生干扰；</li>
+<li>如果产生谐波分量正好落在<strong>信号带宽内</strong>，这就<strong>无法滤除</strong>，产生无法消除的信号干扰；</li>
+</ul>
+<p>因此，如果功率放大器在非线性区对高频信号进行放大，损失能量是小事，最麻烦的问题是，会产生谐波干扰信号；</p>
+<p>因此，要尽量避免功率放大器对输入信号进行非线性放大，要尽量对信号进行线性放大。</p>
+<p>那么可能会有人说，直接让 PA 工作在线性区不就行了吗？实际的通信系统中会面临如下问题：</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Ww2tbZD2zoyDIgxCcrHc4GzpnMh.png" alt="DPD问题"></p>
+<ul>
+<li>信号的幅度变化较大，峰均比（信号峰值与信号均值的比值）比较高，这就意味着即使信号均值落在线性区，信号的峰值也有可能落在非线性区；</li>
+<li>如果信号峰值和均值都落在线性区，这功率放大器的利用率就很低，大部分时间工作在低功率区，对功率放大器是很大的浪费，功率放大器的线性区间越宽，价格越贵，并且价格相差很大；</li>
+<li>移动通信系统中，要增加信号的覆盖区，就需要增大发射功率；</li>
+</ul>
+<p>因此，无论是从成本，还是实际部署的角度考虑，都期望尽可能让输入信号的功率，<strong>工作在接近非线性区附近</strong>。</p>
+<p>有了这些原因，才会有工程师想，能不能在 PA 之前，先对原始的输入信号$X(t)$进行预处理，得到$Z(t)$，使得功率放大器的输入信号$Z(t)$工作在非线性区，输出信号$Y(t)$与$X(t)$之间还是线性关系呢？</p>
+<p>这就是数字预失真 DPD 和削峰 CFR；其中 CFR 的作用是降低信号的峰均比；</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/QkgHbEVYQorlGzxKlcRcCnrEnJh.png" alt="CFR+DPD"></p>
+<p>这样带来两个好处：</p>
+<ul>
+<li>虽然 PA 工作在非线性区，但是如果 DPD+PA，从整体来看，PA 的输出信号和 DPD 的输入信号之间还是线性关系，没有导致输入信号失真；</li>
+<li>从逻辑上看，在不改变功率放大器的情况下，增大了功率放大器的线性区间；</li>
+</ul>
+<h2 id="“带限”-系统的-Volterra-级数模型"><a href="#“带限”-系统的-Volterra-级数模型" class="headerlink" title="“带限” 系统的 Volterra 级数模型"></a>“带限” 系统的 Volterra 级数模型</h2><p>实际系统大多是 “带限” 系统，带宽有限制，DAC 对带宽影响很大。带宽增加，不仅会带来记忆效应，对 ADC 要求也更高。“带限” 系统只关心载带和邻带信号，数学模型是 Volterra 级数模型，不同阶数的非线性多项式对应不同带宽的信号非线性分量。为了让建模更准，还得在传统模型里加带限函数。</p>
+<p>下图是 DPD 结构的一个示意图</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/STW0bDuZUo1cvIx3egycJTjHnie.png" alt="DPD结构示意图"></p>
+<p>我们使用 Volterra 级数模型对 PA 进行建模的话，可以同时考虑到非线性和记忆效应；</p>
+<p>$$<br>F[x(n)]&#x3D;\sum_{k&#x3D;1}^K\sum_{q&#x3D;0}^Qa_{kq}x(n-q)\left|x(n-q)\right|^{k-1}<br>$$</p>
+<p>其中 K 是多项式级数，Q 是记忆深度。</p>
+<blockquote>
+<p>From Xilinx DPD IP Doc，Xilinx 对于$a_{kq}$的求解</p>
+</blockquote>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/whiteboard_exported_image.png" alt="DPD思维导图"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/">http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Communication/">Communication</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/wireless.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/04/15/IC/AXI/AXI%E5%8D%8F%E8%AE%AE/"><img class="prev-cover" src="/img/Page_Cover/AXI.png" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AXI协议概述</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F"><span class="toc-number">1.</span> <span class="toc-text">DPD-数字预失真</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DPD-%E6%98%AF%E4%B8%AA%E5%95%A5"><span class="toc-number">3.</span> <span class="toc-text">DPD 是个啥</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E5%95%A5%E9%9C%80%E8%A6%81-DPD"><span class="toc-number">4.</span> <span class="toc-text">为啥需要 DPD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%81%E8%83%BD%E6%90%9E%E5%AE%9A-DPD%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">谁能搞定 DPD？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E5%8E%82%E5%AE%B6"><span class="toc-number">5.1.</span> <span class="toc-text">设备厂家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%AF%E7%89%87%E5%8E%82%E5%AE%B6"><span class="toc-number">5.2.</span> <span class="toc-text">芯片厂家</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DPD-%E6%9C%89%E4%BB%80%E4%B9%88%E5%AE%9E%E7%8E%B0%E9%9A%BE%E7%82%B9%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">DPD 有什么实现难点？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8%E7%9A%84%E6%A8%A1%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">功率放大器的模型是什么样？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%AE%BD%E5%B8%A6%E2%80%9D-%E5%8A%9F%E6%94%BE%E7%BA%BF%E6%80%A7%E5%8C%BA%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.1.</span> <span class="toc-text">“宽带” 功放线性区数学模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%AE%BD%E5%B8%A6%E2%80%9D-%E5%8A%9F%E6%94%BE%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%8C%BA%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.2.</span> <span class="toc-text">“宽带” 功放非线性区数学模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E5%B8%A6%E9%99%90%E2%80%9D-%E7%B3%BB%E7%BB%9F%E7%9A%84-Volterra-%E7%BA%A7%E6%95%B0%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.3.</span> <span class="toc-text">“带限” 系统的 Volterra 级数模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">8.</span> <span class="toc-text">思维导图</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/" title="DPD-数字预失真"><img src="/img/Page_Cover/wireless.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="DPD-数字预失真"/></a><div class="content"><a class="title" href="/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/" title="DPD-数字预失真">DPD-数字预失真</a><time datetime="2025-03-12T02:54:39.000Z" title="发表于 2025-03-12 10:54:39">2025-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/15/IC/AXI/AXI%E5%8D%8F%E8%AE%AE/" title="AXI协议概述"><img src="/img/Page_Cover/AXI.png" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="AXI协议概述"/></a><div class="content"><a class="title" href="/2024/04/15/IC/AXI/AXI%E5%8D%8F%E8%AE%AE/" title="AXI协议概述">AXI协议概述</a><time datetime="2024-04-15T13:39:39.000Z" title="发表于 2024-04-15 21:39:39">2024-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/15/IC/AXI/AXI4%E4%B8%8EAXI3%E7%9A%84%E5%8C%BA%E5%88%AB/" title="AXI4与AXI3的区别"><img src="/img/Page_Cover/AXI.png" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="AXI4与AXI3的区别"/></a><div class="content"><a class="title" href="/2024/04/15/IC/AXI/AXI4%E4%B8%8EAXI3%E7%9A%84%E5%8C%BA%E5%88%AB/" title="AXI4与AXI3的区别">AXI4与AXI3的区别</a><time datetime="2024-04-15T03:39:39.000Z" title="发表于 2024-04-15 11:39:39">2024-04-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -6,7 +6,7 @@
   <link href="http://david-luge.cn/atom.xml" rel="self"/>
   
   <link href="http://david-luge.cn/"/>
-  <updated>2024-04-15T13:39:39.000Z</updated>
+  <updated>2025-03-12T02:54:39.000Z</updated>
   <id>http://david-luge.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DPD-数字预失真</title>
+    <link href="http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/"/>
+    <id>http://david-luge.cn/2025/03/12/Com/DPD-%E6%95%B0%E5%AD%97%E9%A2%84%E5%A4%B1%E7%9C%9F/</id>
+    <published>2025-03-12T02:54:39.000Z</published>
+    <updated>2025-03-12T02:54:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DPD-数字预失真"><a href="#DPD-数字预失真" class="headerlink" title="DPD-数字预失真"></a>DPD-数字预失真</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>家人们，今天咱来唠唠通信界的一个超重要 “选手”——数字预失真 DPD(Digital Pre-Distortion)，它在通信领域那可是相当有存在感，就像游戏里的神助攻，能让射频放大器变得超厉害！</p><h1 id="DPD-是个啥"><a href="#DPD-是个啥" class="headerlink" title="DPD 是个啥"></a>DPD 是个啥</h1><p>DPD 这名字听起来有点绕，简单来说，就是让正常的数字信号提前 “变个样”。</p><p>“数字” 嘛，说明是在数字的地盘儿搞事情，和模拟域没啥关系；</p><p>“预” 就是提前的意思，在射频功率放大器 “开工” 之前就先行动；</p><p>“失真” 呢，信号在传输过程中走样了就叫失真，DPD 就是故意让原始信号 “失失真” 。这就好比给信号提前做了个 “变形手术”，专门用来对付功率放大器的那些小脾气。</p><p>既然 DPD 是为了对付 PA 的小脾气的，自然在信号处理系统中，DPD 就要放在 PA 的前面。</p><h1 id="为啥需要-DPD"><a href="#为啥需要-DPD" class="headerlink" title="为啥需要 DPD"></a>为啥需要 DPD</h1><p>这就得吐槽一下射频功率放大器啦！它有个让人头疼的毛病，输入功率加到一定程度，就开始 “耍小性子”，进入非线性区。这时候，输入和输出不再是 “铁哥们”，不再成线性关系。增加输入功率，输出功率却不给力，效率直线下降，信号还失真了。就好比你使劲给车加油，车却跑不起来，还跑偏了。</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Oqirbaoknoleu8xUGgscVMTJnge.png" alt="DPD示意图"></p><p>接收端收到失真信号后，还会继续 “捣乱”，把失真加剧。那咋办呢？</p><p>一般有两种办法，要么降低输入信号功率，躲开非线性区这个 “大坑”；要么增加输入信号功率，牺牲点能量换信号不失真。</p><p>DPD 就属于后者，它就像个聪明的 “信号整形师”，让原先的信号朝着和功率放大器相反的方向 “变形”，抵消掉功率放大器的非线性影响 。这么一来，输出和输入信号之间的线性关系区间变宽了，功率放大器效率也提升了，不过功耗也增加了点，就当是给效率提升交的 “小电费” 吧。而且用了 DPD，无线基站的效率能大幅提升，能给网络运营商省下不少钱呢！</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Oqirbaoknoleu8xUGgscVMTJnge1.png" alt="PA特性"></p><h1 id="谁能搞定-DPD？"><a href="#谁能搞定-DPD？" class="headerlink" title="谁能搞定 DPD？"></a>谁能搞定 DPD？</h1><h2 id="设备厂家"><a href="#设备厂家" class="headerlink" title="设备厂家"></a>设备厂家</h2><p>那些大型设备厂家，像华为、中兴、爱立信、诺基亚、三星，都是 DPD 技术的 “大拿”，自家都有厉害的 DPD 技术，就像有独家秘籍一样。</p><p>小厂就有点尴尬啦，大多没有自己的 DPD 技术，毕竟没积累嘛。没办法，只能找学校 “取经”，或者直接买 FPGA 公司提供的 IP core，就像借别人的工具来干活。</p><h2 id="芯片厂家"><a href="#芯片厂家" class="headerlink" title="芯片厂家"></a>芯片厂家</h2><p>FPGA 芯片厂家可就牛了，不仅能提供高性能的 DPD 解决方案，而且 IP 核参数还能自己调，不用手动一点点定制，省了好多事儿，就像给你一把万能钥匙，直接打开 DPD 的大门，还能提供超小占位面积、低成本的 FPGA 解决方案。</p><h1 id="DPD-有什么实现难点？"><a href="#DPD-有什么实现难点？" class="headerlink" title="DPD 有什么实现难点？"></a>DPD 有什么实现难点？</h1><p>DPD 想发挥好作用，也不是一帆风顺的。首先，它的数学模型和参数得和功率放大器（PA）完美匹配，PA 要是变了，DPD 的数学模型或参数也得跟着变，就像脚变了，鞋也得换。</p><p>随着 5G 时代到来，载波带宽越来越宽，都能达到 800MHz。以前 4G 的 DPD 数学模型在 5G 基站 PA 这儿就 “水土不服” 了，性能根本不达标，所以还得深入研究新的数学模型。</p><p>最后，DPD 不管是用 FPGA、CPU 还是 DSP 来实现，都得从实现难度、资源消耗、成本控制、研发周期等多方面综合考虑，这里面的技术门道可多了，一般人还真搞不定。</p><h1 id="功率放大器的模型是什么样？"><a href="#功率放大器的模型是什么样？" class="headerlink" title="功率放大器的模型是什么样？"></a>功率放大器的模型是什么样？</h1><h2 id="“宽带”-功放线性区数学模型"><a href="#“宽带”-功放线性区数学模型" class="headerlink" title="“宽带” 功放线性区数学模型"></a>“宽带” 功放线性区数学模型</h2><p>所谓 “宽带”，就是信号带宽超宽，啥频率都能在功率放大器里畅通无阻。假设输入是 IQ 调制信号，线性区模型就是输出和输入是简单的倍数关系。经过功率放大器后，信号频谱不变，幅度还放大了，就像给信号打了一针 “放大剂”。</p><h2 id="“宽带”-功放非线性区数学模型"><a href="#“宽带”-功放非线性区数学模型" class="headerlink" title="“宽带” 功放非线性区数学模型"></a>“宽带” 功放非线性区数学模型</h2><p>到了非线性区，情况就复杂了。可以用幂指数函数或者幂级数函数来描述。</p><p>幂指数函数的图像如下：</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/WnTobcCD8oiC5px9lqMcRnBCnWc.png" alt="幂指函数"></p><p>幂级数函数是用来模拟非线性特性的</p><p>拿幂级数函数来说，它适合模拟无记忆的弱非线性系统。</p><p>$$<br>y&#x3D;\sum_{n&#x3D;0}^{\infty}a_{n}(x-x_{0})^{n}<br>$$</p><p>上面的公式被称为幂级数，其中$x_{0}$为常数，$a_{0},a_{1},…a_{n}$称为幂级数的系数。</p><p>下面以输出信号为 IQ 调制信号为例，来说明经过功率放大器后会产生很多的谐波分量；</p><p><strong>假设 1</strong>：输入信号为 IQ 调制信号(双音正弦信号)：</p><p>$$<br>x(t)&#x3D;A_{1}cos(wt)+A_{2}sin(wt)<br>$$</p><p><strong>假设 2</strong>：功率放大器是三阶函数：</p><p>$$<br>y(t)&#x3D;a_{1}x(t)+a_{2}x^{2}(t)+a_{3}x^{3}(t)<br>$$</p><p>则输出信号的频谱为：基波分量 W，二阶谐波分量 2W，三阶谐波分量 3W；</p><p>显然，经过功率放大器后，信号有很多的谐波分量，这就会导致信号的失真；</p><ul><li>产生的非基波频谱分量(二次、三次谐波分量)分走了本该作用在全部基波上的功率，造成了能量的损失；</li><li>产生的非基波频谱分量(二次、三次谐波分量)落在信号通带、邻带和其他有用通带内，如果不用滤波器加以滤除，则会对有用信号产生干扰；</li><li>如果产生谐波分量正好落在<strong>信号带宽内</strong>，这就<strong>无法滤除</strong>，产生无法消除的信号干扰；</li></ul><p>因此，如果功率放大器在非线性区对高频信号进行放大，损失能量是小事，最麻烦的问题是，会产生谐波干扰信号；</p><p>因此，要尽量避免功率放大器对输入信号进行非线性放大，要尽量对信号进行线性放大。</p><p>那么可能会有人说，直接让 PA 工作在线性区不就行了吗？实际的通信系统中会面临如下问题：</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/Ww2tbZD2zoyDIgxCcrHc4GzpnMh.png" alt="DPD问题"></p><ul><li>信号的幅度变化较大，峰均比（信号峰值与信号均值的比值）比较高，这就意味着即使信号均值落在线性区，信号的峰值也有可能落在非线性区；</li><li>如果信号峰值和均值都落在线性区，这功率放大器的利用率就很低，大部分时间工作在低功率区，对功率放大器是很大的浪费，功率放大器的线性区间越宽，价格越贵，并且价格相差很大；</li><li>移动通信系统中，要增加信号的覆盖区，就需要增大发射功率；</li></ul><p>因此，无论是从成本，还是实际部署的角度考虑，都期望尽可能让输入信号的功率，<strong>工作在接近非线性区附近</strong>。</p><p>有了这些原因，才会有工程师想，能不能在 PA 之前，先对原始的输入信号$X(t)$进行预处理，得到$Z(t)$，使得功率放大器的输入信号$Z(t)$工作在非线性区，输出信号$Y(t)$与$X(t)$之间还是线性关系呢？</p><p>这就是数字预失真 DPD 和削峰 CFR；其中 CFR 的作用是降低信号的峰均比；</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/QkgHbEVYQorlGzxKlcRcCnrEnJh.png" alt="CFR+DPD"></p><p>这样带来两个好处：</p><ul><li>虽然 PA 工作在非线性区，但是如果 DPD+PA，从整体来看，PA 的输出信号和 DPD 的输入信号之间还是线性关系，没有导致输入信号失真；</li><li>从逻辑上看，在不改变功率放大器的情况下，增大了功率放大器的线性区间；</li></ul><h2 id="“带限”-系统的-Volterra-级数模型"><a href="#“带限”-系统的-Volterra-级数模型" class="headerlink" title="“带限” 系统的 Volterra 级数模型"></a>“带限” 系统的 Volterra 级数模型</h2><p>实际系统大多是 “带限” 系统，带宽有限制，DAC 对带宽影响很大。带宽增加，不仅会带来记忆效应，对 ADC 要求也更高。“带限” 系统只关心载带和邻带信号，数学模型是 Volterra 级数模型，不同阶数的非线性多项式对应不同带宽的信号非线性分量。为了让建模更准，还得在传统模型里加带限函数。</p><p>下图是 DPD 结构的一个示意图</p><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/STW0bDuZUo1cvIx3egycJTjHnie.png" alt="DPD结构示意图"></p><p>我们使用 Volterra 级数模型对 PA 进行建模的话，可以同时考虑到非线性和记忆效应；</p><p>$$<br>F[x(n)]&#x3D;\sum_{k&#x3D;1}^K\sum_{q&#x3D;0}^Qa_{kq}x(n-q)\left|x(n-q)\right|^{k-1}<br>$$</p><p>其中 K 是多项式级数，Q 是记忆深度。</p><blockquote><p>From Xilinx DPD IP Doc，Xilinx 对于$a_{kq}$的求解</p></blockquote><h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/whiteboard_exported_image.png" alt="DPD思维导图"></p>]]></content>
+    
+    
+    <summary type="html">简要介绍了数字预失真技术</summary>
+    
+    
+    
+    <category term="Communication" scheme="http://david-luge.cn/categories/Communication/"/>
+    
+    
+    <category term="Communication" scheme="http://david-luge.cn/tags/Communication/"/>
+    
+  </entry>
   
   <entry>
     <title>AXI协议概述</title>
@@ -450,27 +471,6 @@
     
     
     <category term="photography" scheme="http://david-luge.cn/tags/photography/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的秋招小结</title>
-    <link href="http://david-luge.cn/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/"/>
-    <id>http://david-luge.cn/2022/09/30/Interview/%E7%A7%8B%E6%8B%9B%E5%B0%8F%E7%BB%93/</id>
-    <published>2022-09-30T02:54:39.000Z</published>
-    <updated>2022-09-30T02:54:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>2022年，不知道是不是未来十年最好的一年，不过应该是过去十年最差的一年。听完任总的“寒气论”和字节梁总的“去肥增瘦”理论后，每个2023的应届生应该都能感受到这刺骨的寒意。</p><p>我的秋招经历开始较早，6月陆续开始投递各公司的提前批，7-8月份为面试高峰期，9月陆续收到各家的offer。文章的后面我会大概回忆各面试的问题，梳理校招时面试官关心的共性问题，仅供大家参考，准备后续的秋招笔试面试。</p><p>本文整理的一些知识点后续会慢慢在自己的博客更新（给自己挖了一波大坑），希望后面慢慢填上；</p><h1 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h1><ul><li>准备项目的简要系统架构介绍。可以包括以下要素：项目框图、各模块功能介绍、系统接口、时钟复位网络；可以用Xmind或者MarkDown工具去梳理项目架构。</li><li>提取项目的亮点、难点。部分面试时间不够的话面试官不会给充足的时间详尽介绍项目，可以从时序约束、算法设计、优化方式、计算性能等方向去整理；</li><li>项目中涉及到的点要拓展延伸，了解相关的基础知识。举例说明，我的项目接口信号使用了8b10b编码方式，自己可以考虑如下几点：1、8b10b编码是什么？2、为什么需要8b10b编码，该编码是用来解决什么问题的？3、有其他方式可以解决该问题吗？要带入面试官的角度去思考自己的项目；</li><li>总结在做项目过程中遇到的棘手问题，在给面试官叙述自己解决问题的思路和方式的过程中展现自己的能力。</li><li>项目的验证方式；了解项目涉及的IC&#x2F;FPGA的工艺，面积；</li><li>统计项目中自己负责部分的代码量；</li></ul><h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="跨时钟域"><a href="#跨时钟域" class="headerlink" title="跨时钟域"></a>跨时钟域</h2><ul><li>基本的CMOS、PMOS结构；</li><li>跨时钟域的原因，亚稳态的定义；</li><li>建立时间、保持时间；</li><li>单bit信号跨时钟域，考虑快慢时钟域；</li><li>多bit信号跨时钟域；<ul><li>异步FIFO的假空假满；</li><li>格雷码跨时钟域问题；</li><li>如何考虑FIFO深度；</li><li>FIFO和DMUX的相关时序约束；</li></ul></li><li>何时需要跨时钟，跨时钟方式如何选择；</li><li>关于复位信号的跨时钟域；</li><li>Time Borrow&#x2F;Steal（进阶）</li></ul><h2 id="低功耗设计"><a href="#低功耗设计" class="headerlink" title="低功耗设计"></a>低功耗设计</h2><ul><li>功耗的分类、影响因素、计算公式</li><li>静态低功耗技术，降静态功耗的方法；</li><li>动态低功耗技术，降动态功耗的方法；</li><li>RTL设计中降功耗的方式；</li><li>以反相器为例解释静态功耗和动态功耗；</li></ul><h2 id="时序约束"><a href="#时序约束" class="headerlink" title="时序约束"></a>时序约束</h2><ul><li>时钟相关<ul><li>周期、占空比、管脚；</li><li>Primary Clock、Virtual Clock、Generated Clock、Clock Groups；</li><li>Clock Latency、Jitter、Uncertainty；</li></ul></li><li>IO Delay<ul><li>Input Delay；</li><li>Output Delay；</li></ul></li><li>Time Exceptions<ul><li>Multicycle；</li><li>False Path；</li><li>Max&#x2F;Min Delay；</li></ul></li></ul><h2 id="IC相关"><a href="#IC相关" class="headerlink" title="IC相关"></a>IC相关</h2><ul><li>简述IC设计流程，了解各步骤的目的；</li><li>IC和FPGA的区别；</li><li>修Time Violation的方式；</li></ul><h2 id="AMBA协议"><a href="#AMBA协议" class="headerlink" title="AMBA协议"></a>AMBA协议</h2><ul><li><p>读写架构，信号列表及含义；</p></li><li><p>跨4K问题；</p></li><li><p>握手间的依赖关系；</p></li><li><p>能否提前结束突发传输；</p></li><li><p>窄位宽数据传输、非对齐传输、混合大小端传输；</p></li><li><p>Outstanding的含义，如何考虑Outstanding深度；</p></li><li><p>Out of Order的含义，跟ID信号是否有联系；</p></li><li><p>Interconnect的结构；</p></li><li><p>AXI3、AXI4的区别；</p></li><li><p>AXI Full、AXI Lite的区别；</p></li><li><p>AXI的死锁场景；</p></li></ul><h1 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h1><ul><li>状态机相关：红绿灯、自动售货机、序列检测；</li><li>分频相关：奇偶分频、半整数分频、小数分频；</li><li>仲裁相关：优先级仲裁、固定优先级仲裁、变优先级仲裁、轮询仲裁、加权轮询；</li><li>存储：单口RAM、简单双口RAM、真双口RAM；</li><li>CDC<ul><li>同步FIFO：基于单口RAM、基于双口RAM；</li><li>异步FIFO：Bin2Gray、Gray2Bin；</li><li>脉冲同步器、带反馈的脉冲同步器；</li><li>前向&#x2F;后向Pipe；</li></ul></li><li>门级电路：计数器、全加器、二&#x2F;三分频、占空比1:3的二分频；</li><li>其它：Generate、For语法相关；</li></ul>]]></content>
-    
-    
-    <summary type="html">关于我的秋招小节</summary>
-    
-    
-    
-    <category term="interview" scheme="http://david-luge.cn/categories/interview/"/>
-    
-    
-    <category term="interview" scheme="http://david-luge.cn/tags/interview/"/>
     
   </entry>
   
