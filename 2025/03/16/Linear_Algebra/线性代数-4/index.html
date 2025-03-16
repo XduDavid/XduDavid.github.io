@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性代数04-矩阵LU分解 | 大卫的博客园</title><meta name="keywords" content="Linear Algebra"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="矩阵的LU分解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数04-矩阵LU分解">
+<meta property="og:url" content="http://david-luge.cn/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="矩阵的LU分解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg">
+<meta property="article:published_time" content="2025-03-16T03:14:39.000Z">
+<meta property="article:modified_time" content="2025-03-16T03:14:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Linear_Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性代数04-矩阵LU分解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-16 11:14:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/Linear_Algebra.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性代数04-矩阵LU分解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T03:14:39.000Z" title="发表于 2025-03-16 11:14:39">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-16T03:14:39.000Z" title="更新于 2025-03-16 11:14:39">2025-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linear-Algebra/">Linear_Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性代数04-矩阵LU分解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linear-Algebra-矩阵的-LU-分解-04"><a href="#Linear-Algebra-矩阵的-LU-分解-04" class="headerlink" title="Linear Algebra-矩阵的 LU 分解-04"></a>Linear Algebra-矩阵的 LU 分解-04</h1><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>这一节首先完善之前讲到的逆矩阵内容，然后使用消元矩阵介绍 A 的 LU 分解，即将矩阵 A 分解为矩阵 L 与上三角矩阵 U，介绍这种运算的普遍规律。最后再一次提起之前介绍的“行交换矩阵”，引入置换矩阵的概念。</p>
+<h2 id="逆矩阵性质补充"><a href="#逆矩阵性质补充" class="headerlink" title="逆矩阵性质补充"></a>逆矩阵性质补充</h2><p>首先考虑一个问题：如果 A，B 都是可逆矩阵的话，AB 的逆矩阵是什么呢？这个问题并不复杂，想求出逆矩阵，无非就是令<script type="math/tex">AB\times(AB)^{-1}=I</script>，而我们不难想到<script type="math/tex">ABB^{-1}A^{-1}=I</script>，因此有：</p>
+<script type="math/tex; mode=display">
+(AB)^{-1}=B^{-1}A^{-1}</script><p>由于下一章中要涉及到矩阵的转置问题，我们在这里一起讨论矩阵转置和矩阵的逆的关系。</p>
+<p>首先介绍一下转置矩阵，转置矩阵就是将原矩阵各行转换为各列所得到的新矩阵，如：</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}
+1 & 2\\
+3 & 4\\
+4 & 1
+\end{bmatrix},A^T=\begin{bmatrix}
+1 & 3 & 4\\
+2 & 4 & 1
+\end{bmatrix}</script><p>接下来我们看看转置矩阵和逆矩阵有什么联系。说到逆矩阵，最经典的式子无非就是<script type="math/tex">AA^{-1}=I</script>。为了找到转置矩阵<script type="math/tex">A^T</script>与逆矩阵<script type="math/tex">A^{-1}</script>间的关系，我们对<script type="math/tex">AA^{-1}=I</script>两边同时进行转置运算，得到：</p>
+<script type="math/tex; mode=display">
+(AA^{-1})^T=(A^{-1})^TA^T=I</script><p>为什么<script type="math/tex">(A^{-1})^T</script>会变换到<script type="math/tex">A^T</script>的前面来呢？我们用非方阵 A 来理解一下这个过程，假设 A 是一个 <script type="math/tex">3\times 4</script>的矩阵，则A的右逆<script type="math/tex">A^{-1}</script>是一个<script type="math/tex">4\times 3</script>的矩阵，二者相乘是一个 <script type="math/tex">3\times 3</script> 的单位矩阵。</p>
+<p>对其求转置，如果<script type="math/tex">A^T</script>在<script type="math/tex">(A^{-1})^T</script>前面，则会得到一个 <script type="math/tex">4\times 4</script> 的单位矩阵，矛盾。</p>
+<p>再次观察此式：<script type="math/tex">(A^{-1})^TA^T=I</script>，由于 A 是方阵，则<script type="math/tex">A^{T}</script>必然也是方阵，那么我们就能得到<script type="math/tex">A^T</script>的逆矩阵，即为<script type="math/tex">(A^{-1})^T</script>，也就是说：<script type="math/tex">(A^T)^{-1}=(A^{-1})^T</script></p>
+<p>这个结果告诉我们：<strong>对于单个矩阵，转置和取逆两个运算顺序可以颠倒。</strong></p>
+<h2 id="矩阵的-LU-分解"><a href="#矩阵的-LU-分解" class="headerlink" title="矩阵的 LU 分解"></a>矩阵的 LU 分解</h2><p>我们熟悉的消元法都是直接使用行变换得来的，而由于消元矩阵的存在，说明用矩阵乘法也可以达到与之一样的消元效果。所以，现在假设有可逆矩阵 A，如果有：<script type="math/tex">A-初等行变换->U(上三角矩阵)</script>，就一定有类似于这样的形式：<script type="math/tex">E\times A=U</script>的等式存在，使 A 相当于进行了初等行变换成为了 U。而我们已经学习了逆矩阵，E 这样的矩阵一定有逆矩阵，因为它本身就是由单位阵变化过来的。所以<script type="math/tex">E\times A=U</script>可以写成<script type="math/tex">A=E^{-1}\times U</script>。这一形式即为<script type="math/tex">A=LU</script>形式，这个过程就是 LU 分解过程。</p>
+<p>那么<strong>矩阵 L(下三角矩阵)</strong>是否有什么特别之处呢？我们可以通过一道例题来探讨下：</p>
+<p>【例】现有<script type="math/tex">E_{32}E_{31}E_{21}A=U</script>，已知 <script type="math/tex">E_{32}=\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & -5 & 1\\
+\end{bmatrix}</script>，<script type="math/tex">E_{21}=\begin{bmatrix}
+1 & 0 & 0\\
+-2 & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}</script>，<script type="math/tex">E_{31}=I</script>，求<script type="math/tex">A=LU</script> 分解后的 L。</p>
+<p>思路：</p>
+<ol>
+<li>逆矩阵化简为<script type="math/tex">A=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U</script>；</li>
+<li>后面计算各个矩阵：<script type="math/tex">E_{21}^{-1}=\begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}</script>，<script type="math/tex">E_{32}^{-1}=\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 5 & 1\\
+\end{bmatrix}</script></li>
+<li>直接带入计算：<script type="math/tex">L=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}=\begin{bmatrix}
+1 & 0 & 0\\
+2 & 1 & 0\\
+0 & 5 & 1\\
+\end{bmatrix}</script></li>
+</ol>
+<p>观察发现，L 具有一个非常重要的特点，L 矩阵中各个元素都是<script type="math/tex">E_{21}^{-1}</script>与<script type="math/tex">E_{32}^{-1}</script>中对应位置的元素。</p>
+<p>以上的结论给了我们启示，在使用<script type="math/tex">A=LU</script>分解矩阵的时候，我们只需要从 U 入手，反过来考虑：<strong>看如何通过行变换可以将上三角矩阵 U 变回 A，然后再将单位阵按此形式变化，就得到了 L 矩阵。</strong>这个性质也是<script type="math/tex">A=LU</script>形式分解矩阵的最大优点。</p>
+<h3 id="LU-分解意义"><a href="#LU-分解意义" class="headerlink" title="LU 分解意义"></a>LU 分解意义</h3><p>对于线性方程组 <script type="math/tex">Ax = b</script>，当矩阵 A 可以进行 LU 分解<script type="math/tex">A = LU</script>时，原方程组可转化为 <script type="math/tex">LUx = b</script>。令 <script type="math/tex">Ux = y</script>，则先求解 <script type="math/tex">Ly = b</script>（因为 L 是下三角矩阵，求解相对容易，可通过前代法逐步计算），得到 y；再求解 <script type="math/tex">Ux = y</script>（U 是上三角矩阵，可通过回代法求解），从而得到原方程组的解 x。相比于直接求解 <script type="math/tex">Ax = b</script>，这种方法在计算量上通常更具优势，尤其是对于大型矩阵，可显著减少计算量和计算时间。</p>
+<h3 id="运算量"><a href="#运算量" class="headerlink" title="运算量"></a>运算量</h3><p>以上，我们已经学会了 A=LU 分解矩阵方法，那么现在有一个额外问题，就是消元的运算量问题，比如现在我们有一个 <script type="math/tex">100\times 100</script> 的大矩阵(无 0 元素)。我们需要运算(将一个数乘系数后加到另一数上消元，每一个这样的过程称为一次运算)多少次后，才能将其化为上三角矩阵呢？</p>
+<p>这个问题我们先从列的角度进行考虑，第一列消元运算结束后，矩阵将会变成 <script type="math/tex">\begin{bmatrix}
+1 & ... & ... & ...\\
+0 & ... & ... & ...\\
+... & ... & ... & ...\\
+0 & ... & ... & ...\\
+\end{bmatrix}</script>的形式，这一步中，第一列的元素运算了100次，而第一行一共有100个元素，于是仅第一行与第一列的消元结束后，我们就运算了<script type="math/tex">100^2</script>次。之后我们要研究的就变成了剩下的 <script type="math/tex">99\times 99</script>的矩阵。以此类推，最后的运算量为：<script type="math/tex">\sum_{k=1}^{n}k^2</script></p>
+<p>这种写法看上去比较难计算，我们可以根据微积分中学到的知识，加入我们计算的不是离散点之和，而是连续区域上函数的黎曼和的话，我们可以通过积分来计算区域面积值的和。我们可以采用积分来估计和，也就是这样估算：<script type="math/tex">\sum_{k=1}^{n}k^2=\int_{1}^{n}x^2dx</script>。</p>
+<h2 id="置换矩阵"><a href="#置换矩阵" class="headerlink" title="置换矩阵"></a>置换矩阵</h2><p>我们之前接触过行变换所用到的矩阵，即是将单位阵 I 按照对应行变换方式进行操作之后得到的矩阵。它可以交换矩阵中的两行，代替矩阵行变换。什么时候我们需要使用矩阵行变换呢？一个经典的例子就是：在消元过程中，当矩阵主元位置上面为 0 时，我们就需要用行变换将主元位置换位非 0 数。</p>
+<p>这样的由单位阵变换而来的矩阵，通过矩阵乘法可以使被乘矩阵行交换。我们将这样的矩阵称为置换矩阵 P。我们通过一个例子来熟悉一下置换矩阵。</p>
+<p>【例】求矩阵 <script type="math/tex">\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{bmatrix}</script> 的所有置换矩阵，并判断其性质。</p>
+<p>一共有 6 个置换矩阵：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\\\end{bmatrix}\begin{bmatrix}0 & 1 & 0\\1 & 0 & 0\\0 & 0 & 1\\\end{bmatrix}\begin{bmatrix}1 & 0 & 0\\0 & 0 & 1\\0 & 1 & 0\\\end{bmatrix}\begin{bmatrix}0 & 1 & 0\\0 & 0 & 1\\1 & 0 & 0\\\end{bmatrix}\begin{bmatrix}0 & 0 & 1\\0 & 1 & 0\\1 & 0 & 0\\\end{bmatrix}\begin{bmatrix}0 & 0 & 1\\1 & 0 & 0\\0 & 1 & 0\\\end{bmatrix}</script><p>这可以理解为一个群，很明显，我们任取两个矩阵相乘，结果仍在这个群中。</p>
+<blockquote>
+<p>推广到 n 阶矩阵，n 阶矩阵有(n!)个置换矩阵，就是将单位矩阵 I 各行重新排列后所有可能的情况数量。其中(n!)的计算过程如下：首先单看第一行，有 n 种选择，其次看第二行，有(n-1)中选择，依次到最后一行，因此一共有(n!)个置换矩阵。</p>
+</blockquote>
+<h2 id="学习感悟"><a href="#学习感悟" class="headerlink" title="学习感悟"></a>学习感悟</h2><p>本节我们对矩阵的转置、逆矩阵的性质进行了部分介绍，学习了矩阵的 LU 分解，了解了这种分解方式的优点所在，并学会了直接构造 L 矩阵，简化消元过程。</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/matrix_lu_xmind.png" alt="matrix_lu_xmind"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/">http://david-luge.cn/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linear-Algebra/">Linear_Algebra</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/Linear_Algebra.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-3/"><img class="prev-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性代数03-矩阵乘法和逆矩阵</div></div></a></div><div class="next-post pull-right"><a href="/2025/03/16/IC/Basic/%E8%8A%AF%E7%89%87%E7%9A%84%E5%B7%A5%E8%89%BA%E8%A7%92/"><img class="next-cover" src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">芯片的工艺角</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/15/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-1/" title="线性代数01-方程组的几何解释"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">线性代数01-方程组的几何解释</div></div></a></div><div><a href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-3/" title="线性代数03-矩阵乘法和逆矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-16</div><div class="title">线性代数03-矩阵乘法和逆矩阵</div></div></a></div><div><a href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-2/" title="线性代数02-矩阵消元"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-16</div><div class="title">线性代数02-矩阵消元</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">部分Blog的图片可能裂掉,参考Misc-Git目录下的解决方案</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linear-Algebra-%E7%9F%A9%E9%98%B5%E7%9A%84-LU-%E5%88%86%E8%A7%A3-04"><span class="toc-number">1.</span> <span class="toc-text">Linear Algebra-矩阵的 LU 分解-04</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E7%9F%A9%E9%98%B5%E6%80%A7%E8%B4%A8%E8%A1%A5%E5%85%85"><span class="toc-number">1.2.</span> <span class="toc-text">逆矩阵性质补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84-LU-%E5%88%86%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">矩阵的 LU 分解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LU-%E5%88%86%E8%A7%A3%E6%84%8F%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">LU 分解意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E9%87%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">运算量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%AE%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">1.4.</span> <span class="toc-text">置换矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%82%9F"><span class="toc-number">1.5.</span> <span class="toc-text">学习感悟</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/16/IC/Basic/%E8%8A%AF%E7%89%87%E7%9A%84%E5%B7%A5%E8%89%BA%E8%A7%92/" title="芯片的工艺角"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="芯片的工艺角"/></a><div class="content"><a class="title" href="/2025/03/16/IC/Basic/%E8%8A%AF%E7%89%87%E7%9A%84%E5%B7%A5%E8%89%BA%E8%A7%92/" title="芯片的工艺角">芯片的工艺角</a><time datetime="2025-03-16T03:34:39.000Z" title="发表于 2025-03-16 11:34:39">2025-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/" title="线性代数04-矩阵LU分解"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数04-矩阵LU分解"/></a><div class="content"><a class="title" href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-4/" title="线性代数04-矩阵LU分解">线性代数04-矩阵LU分解</a><time datetime="2025-03-16T03:14:39.000Z" title="发表于 2025-03-16 11:14:39">2025-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-3/" title="线性代数03-矩阵乘法和逆矩阵"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数03-矩阵乘法和逆矩阵"/></a><div class="content"><a class="title" href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-3/" title="线性代数03-矩阵乘法和逆矩阵">线性代数03-矩阵乘法和逆矩阵</a><time datetime="2025-03-16T02:54:39.000Z" title="发表于 2025-03-16 10:54:39">2025-03-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
