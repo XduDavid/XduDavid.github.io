@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性代数-酉矩阵与快速FFT-27 | 大卫的博客园</title><meta name="keywords" content="Linear Algebra"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="酉矩阵与快速FFT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数-酉矩阵与快速FFT-27">
+<meta property="og:url" content="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="酉矩阵与快速FFT">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg">
+<meta property="article:published_time" content="2025-03-29T07:27:39.000Z">
+<meta property="article:modified_time" content="2025-03-29T07:27:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Linear_Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性代数-酉矩阵与快速FFT-27',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-29 15:27:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/Linear_Algebra.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性代数-酉矩阵与快速FFT-27</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-29T07:27:39.000Z" title="发表于 2025-03-29 15:27:39">2025-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-29T07:27:39.000Z" title="更新于 2025-03-29 15:27:39">2025-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linear-Algebra/">Linear_Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性代数-酉矩阵与快速FFT-27"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linear-Algebra-酉矩阵与快速FFT-27"><a href="#Linear-Algebra-酉矩阵与快速FFT-27" class="headerlink" title="Linear Algebra-酉矩阵与快速FFT-27"></a>Linear Algebra-酉矩阵与快速FFT-27</h1><h2 id="一、知识概要"><a href="#一、知识概要" class="headerlink" title="一、知识概要"></a>一、知识概要</h2><p>之前我们提及过复数矩阵，但并未对其运算与性质展开讨论。本节将介绍复数矩阵的运算等特征，并着重讲解一个重要的复数矩阵——傅里叶矩阵。同时，重点介绍快速傅里叶变换，它能够显著减少运算量。</p>
+<h2 id="二、复数矩阵"><a href="#二、复数矩阵" class="headerlink" title="二、复数矩阵"></a>二、复数矩阵</h2><p>我们从最基础的向量说起，如果向量中有分量是虚数，就不能再用常规公式计算长度和内积。例如向量<script type="math/tex">\begin{bmatrix}1\\i\end{bmatrix}</script> ，按照以往的计算方式会得到：<script type="math/tex">\begin{bmatrix}1 & i\end{bmatrix}\begin{bmatrix}1\\i\end{bmatrix}=1\times1 + i\times i = 1 - 1 = 0</script> ，这样计算出的长度为 0，但实际上该向量模长为<script type="math/tex">\sqrt{1^2 + |i|^2}=\sqrt{1 + 1}=\sqrt{2}</script> ，这就产生了矛盾。所以，这里给出复向量的长度与内积计算方法。</p>
+<p>对于复数向量，向量长度计算公式为<script type="math/tex">|z|^{2}=z^{H}z=\overline{z}^{T}z</script> ，同样，复数向量的内积变为<script type="math/tex">y^{H}x=\overline{y}^{T}x</script> 。</p>
+<p>接着讨论对称阵，在实矩阵中，若<script type="math/tex">A^{T}=A</script> ，则<script type="math/tex">A</script>为对称阵。但在复矩阵中，这个定义不再适用。结合上面向量内积的处理方法，我们发现复矩阵中取共轭与取转置常常同时进行。所以，复对称矩阵定义为：若<script type="math/tex">\overline{A}^{T}=A</script> ，则<script type="math/tex">A</script>为对称阵。</p>
+<p>例如矩阵<script type="math/tex">\begin{bmatrix}2 & 3 + i\\3 - i & 5\end{bmatrix}</script> ，主对角线上的元素是实数，沿主对角线对称的两个元素共轭，这样的矩阵我们称为埃尔米特矩阵，即<script type="math/tex">A^{H}=A</script> 。<strong>埃尔米特矩阵的特征值都是实数，且特征向量正交</strong>。</p>
+<p>同理，将特征向量正交的概念推广到复矩阵中，若一组向量<script type="math/tex">q_{1}, q_{2} \cdots \cdots q_{n}</script>满足<script type="math/tex">\overline{q}_{i}^{T}q_{j}=\begin{cases}0 & (i\neq j) \\ 1 & (i = j)\end{cases}</script> ，它们就是一组标准正交基。由这组标准正交基可以构成一个矩阵<script type="math/tex">Q</script> ，<script type="math/tex">Q=\begin{bmatrix}q_{1} & q_{2} & q_{3} & \cdots & q_{n}\end{bmatrix}</script> （<script type="math/tex">q</script>是列向量）。</p>
+<p>此时有<script type="math/tex">Q^{T}Q = I = Q^{H}Q</script> （前一部分是之前的写法，后一部分是类比得出的写法），这样的矩阵<script type="math/tex">Q</script>称为酉矩阵。</p>
+<h2 id="三、傅里叶矩阵与快速傅里叶变换"><a href="#三、傅里叶矩阵与快速傅里叶变换" class="headerlink" title="三、傅里叶矩阵与快速傅里叶变换"></a>三、傅里叶矩阵与快速傅里叶变换</h2><h3 id="3-1-傅里叶矩阵"><a href="#3-1-傅里叶矩阵" class="headerlink" title="3.1 傅里叶矩阵"></a>3.1 傅里叶矩阵</h3><p>傅里叶矩阵<script type="math/tex">F_{n}</script>是一个酉矩阵，其形式为：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+1 & w & w^{2} & \cdots & w^{n - 1} \\
+1 & w^{2} & w^{4} & \cdots & w^{2(n - 1)} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & w^{n - 1} & w^{2(n - 1)} & \cdots & w^{(n - 1)^{2}}
+\end{bmatrix}</script><p>其中<script type="math/tex">w^{n}=1</script> ，<script type="math/tex">w = e^{i\frac{2\pi}{n}}=\cos(\frac{2\pi}{n}) + i\sin(\frac{2\pi}{n})</script> 。</p>
+<p>计算时建议使用<script type="math/tex">e^{i\frac{2\pi}{n}}</script>的形式，而不是<script type="math/tex">a + bi</script>的形式。在复数坐标系中，<script type="math/tex">w = e^{i\frac{2\pi}{n}}</script>表示在单位圆上，<script type="math/tex">n</script>表示将这个圆等分成<script type="math/tex">n</script>部分，对应的点分别为<script type="math/tex">w</script> ，<script type="math/tex">w^{2}</script> ，<script type="math/tex">w^{3}</script> ，<script type="math/tex">\cdots</script> ，<script type="math/tex">w^{n - 1}</script> 。</p>
+<p>假设<script type="math/tex">w = e^{i\frac{2\pi}{4}} = i</script> ，则对应的四阶傅里叶矩阵<script type="math/tex">F_{4}</script>为：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+1 & i & -1 & -i \\
+1 & -1 & 1 & -1 \\
+1 & -i & -1 & i
+\end{bmatrix}</script><p>该矩阵的列向量均正交，其逆矩阵满足<script type="math/tex">F_{4}^{H}F_{4}=4I</script> 。将<script type="math/tex">F_{4}</script>前乘<script type="math/tex">\frac{1}{2}</script>作为新的<script type="math/tex">F_{4}'</script> ，则新<script type="math/tex">F_{4}'</script>的逆矩阵即为<script type="math/tex">F_{4}^{\prime H}</script>。</p>
+<h3 id="3-2-快速傅里叶变换"><a href="#3-2-快速傅里叶变换" class="headerlink" title="3.2 快速傅里叶变换"></a>3.2 快速傅里叶变换</h3><p>快速傅里叶变换的核心在于傅里叶矩阵之间存在关联，以<script type="math/tex">F_{64}</script>与<script type="math/tex">F_{32}</script>为例：</p>
+<p>直接代入公式<script type="math/tex">w = e^{i\frac{2\pi}{n}}</script>可得，<script type="math/tex">F_{32}</script>中的<script type="math/tex">w_{32}</script>=(w_{64})^{2}$$ 。</p>
+<p>构造矩阵转换公式：</p>
+<script type="math/tex; mode=display">
+[F_{64}]=\begin{bmatrix}I & D \\ I & -D\end{bmatrix}\begin{bmatrix}F_{32} & 0 \\ 0 & F_{32}\end{bmatrix}[P]</script><p>下面解释这个式子，其中置换矩阵<script type="math/tex">P</script>的作用是将奇偶行分开，目的是减小计算量；而前面的<script type="math/tex">D</script>代表对角矩阵。</p>
+<p>例如在 4 维时，置换矩阵<script type="math/tex">P=\begin{bmatrix}1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}</script> ，<script type="math/tex">D=\begin{bmatrix}1 & & & \\ & w & & \\ & & w^{2} & \\ & & & w^{3}\end{bmatrix}</script> ，矩阵<script type="math/tex">\begin{bmatrix}I & D \\ I & -D\end{bmatrix}</script>的作用是将<script type="math/tex">F_{32}</script>转化为<script type="math/tex">F_{64}</script> 。</p>
+<p>用傅里叶矩阵乘以一个列向量，原本计算<script type="math/tex">[F_{64}]</script>时，因为它有 64 个元素，所以需要 <script type="math/tex">64×64</script>次运算才能得到结果。而经过快速傅里叶变换，计算量变为<script type="math/tex">2×32×32 + 32</script>次。其中 <script type="math/tex">2×32×32</script>是两个<script type="math/tex">F_{32}</script>的运算量，<script type="math/tex">+ 32</script>是修正项的计算量，修正项的计算量来自于<script type="math/tex">\begin{bmatrix}I & D \\ I & -D\end{bmatrix}</script>中的32阶对角矩阵<script type="math/tex">D</script>的运算。虽然从矩阵形式上看应该计算两次<script type="math/tex">D</script>，但两次运算只是符号相反，具体值只需计算一次，两个位置上的结果改变符号即可。</p>
+<p>如果继续这样分解下去，计算量会变为 <script type="math/tex">2×(2×16×16 + 16)+32</script>次，原因和从<script type="math/tex">F_{32}</script>到<script type="math/tex">F_{64}</script>的变化一样。一共进行<script type="math/tex">\log_{2}64</script>次分解，最后只剩下修正项的运算，<script type="math/tex">F</script>变为<script type="math/tex">I</script> 。所以最后的运算量变为<script type="math/tex">\frac{64}{2}\log_{2}64</script> 。推广到<script type="math/tex">n</script>阶，快速傅里叶变换的运算量为<script type="math/tex">\frac{n}{2}\log_{2}n</script> 。与原本的<script type="math/tex">n^2</script> 次运算量相比，运算量减少显著。</p>
+<h3 id="3-3-验证用的-Matlab-代码"><a href="#3-3-验证用的-Matlab-代码" class="headerlink" title="3.3 验证用的 Matlab 代码"></a>3.3 验证用的 Matlab 代码</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 计算傅里叶矩阵</span></span><br><span class="line"><span class="comment">% 计算F64</span></span><br><span class="line">n = <span class="number">64</span>;</span><br><span class="line">w = <span class="built_in">exp</span>(<span class="number">1</span><span class="built_in">j</span>*<span class="number">2</span>*<span class="built_in">pi</span>/n);</span><br><span class="line">F64 = <span class="built_in">zeros</span>(n);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:n</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:n</span><br><span class="line">        F64(<span class="built_in">i</span>,<span class="built_in">j</span>) = w^((<span class="built_in">i</span> - <span class="number">1</span>)*(<span class="built_in">j</span> - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算F32</span></span><br><span class="line">m = <span class="number">32</span>;</span><br><span class="line">w32 = <span class="built_in">exp</span>(<span class="number">1</span><span class="built_in">j</span>*<span class="number">2</span>*<span class="built_in">pi</span>/m);</span><br><span class="line">F32 = <span class="built_in">zeros</span>(m);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:m</span><br><span class="line">        F32(<span class="built_in">i</span>,<span class="built_in">j</span>) = w32^((<span class="built_in">i</span> - <span class="number">1</span>)*(<span class="built_in">j</span> - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 构造置换矩阵P</span></span><br><span class="line">P = <span class="built_in">eye</span>(n);</span><br><span class="line">P = P([<span class="number">1</span>:<span class="number">2</span>:n, <span class="number">2</span>:<span class="number">2</span>:n], :);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 构造对角矩阵D</span></span><br><span class="line">D = <span class="built_in">diag</span>(w.^(<span class="number">0</span>:m - <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算等式右边的矩阵</span></span><br><span class="line">right_hand_side = [<span class="built_in">eye</span>(m), D; <span class="built_in">eye</span>(m), -D]*[F32, <span class="built_in">zeros</span>(m); <span class="built_in">zeros</span>(m), F32]*P;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 验证等式是否成立</span></span><br><span class="line">error_norm = norm(F64 - right_hand_side);</span><br><span class="line"><span class="keyword">if</span> error_norm &lt; <span class="number">1e-10</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;理论验证通过，两个矩阵在数值上相等。&#x27;</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;理论验证未通过，两个矩阵在数值上不相等。&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、学习感悟"><a href="#三、学习感悟" class="headerlink" title="三、学习感悟"></a>三、学习感悟</h2><p>本节主要研究了复矩阵、复向量的计算以及性质，拓展了向量内积和向量长度的计算方法，还探讨了一种特殊的复矩阵——傅里叶矩阵。最后讲解了本章重点内容快速傅里叶变换，这部分是难点，尤其是对<script type="math/tex">[F_{64}]=\begin{bmatrix}I & D \\ I & -D\end{bmatrix}\begin{bmatrix}F_{32} & 0 \\ 0 & F_{32}\end{bmatrix}[P]</script>这一转换的理解有一定难度。个人理解是转换矩阵<script type="math/tex">P</script>将向量的奇偶行分离，从而减小计算量，而<script type="math/tex">\begin{bmatrix}I & D \\ I & -D\end{bmatrix}</script>的作用是实现两个傅里叶矩阵<script type="math/tex">F</script>之间的转换。快速傅里叶变换（FFT）非常重要，其应用较为复杂，想要彻底理解还需要进一步深入学习这部分知识。</p>
+<h2 id="四、学习总结"><a href="#四、学习总结" class="headerlink" title="四、学习总结"></a>四、学习总结</h2><ol>
+<li>埃尔米特矩阵是复数域的对称矩阵，<script type="math/tex">A=A^H</script>；</li>
+<li>埃尔米特矩阵的特征值都是实数，且特征向量相交；</li>
+<li>酉矩阵是复数域的标准正定矩阵，<script type="math/tex">Q^HQ=I</script>；</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/">http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linear-Algebra/">Linear_Algebra</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/Linear_Algebra.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-26/"><img class="prev-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性代数-对称矩阵及正定性-26</div></div></a></div><div class="next-post pull-right"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/"><img class="next-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">线性代数-正定矩阵和最小值-28</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/15/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-1/" title="线性代数01-方程组的几何解释"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">线性代数01-方程组的几何解释</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-10/" title="线性代数10-四个基本子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数10-四个基本子空间</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-11/" title="线性代数11-矩阵空间,秩1矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数11-矩阵空间,秩1矩阵</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-12/" title="线性代数12-矩阵应用:图与网络"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数12-矩阵应用:图与网络</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-13/" title="线性代数13-复习"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数13-复习</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-14/" title="线性代数14-正交向量与子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数14-正交向量与子空间</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到电子仓鼠的空间</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linear-Algebra-%E9%85%89%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%BF%AB%E9%80%9FFFT-27"><span class="toc-number">1.</span> <span class="toc-text">Linear Algebra-酉矩阵与快速FFT-27</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9F%A5%E8%AF%86%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">一、知识概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%8D%E6%95%B0%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.</span> <span class="toc-text">二、复数矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%82%85%E9%87%8C%E5%8F%B6%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">三、傅里叶矩阵与快速傅里叶变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%82%85%E9%87%8C%E5%8F%B6%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 傅里叶矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 快速傅里叶变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E9%AA%8C%E8%AF%81%E7%94%A8%E7%9A%84-Matlab-%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 验证用的 Matlab 代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%82%9F"><span class="toc-number">1.4.</span> <span class="toc-text">三、学习感悟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">四、学习总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-相似矩阵和若尔当型-29"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29">线性代数-相似矩阵和若尔当型-29</a><time datetime="2025-03-29T07:29:39.000Z" title="发表于 2025-03-29 15:29:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-正定矩阵和最小值-28"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28">线性代数-正定矩阵和最小值-28</a><time datetime="2025-03-29T07:28:39.000Z" title="发表于 2025-03-29 15:28:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-酉矩阵与快速FFT-27"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27">线性代数-酉矩阵与快速FFT-27</a><time datetime="2025-03-29T07:27:39.000Z" title="发表于 2025-03-29 15:27:39">2025-03-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性代数-复习2-25 | 大卫的博客园</title><meta name="keywords" content="Linear Algebra"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="复习14~24课内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数-复习2-25">
+<meta property="og:url" content="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-25/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="复习14~24课内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg">
+<meta property="article:published_time" content="2025-03-29T07:25:39.000Z">
+<meta property="article:modified_time" content="2025-03-29T07:25:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Linear_Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-25/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性代数-复习2-25',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-29 15:25:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/Linear_Algebra.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性代数-复习2-25</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-29T07:25:39.000Z" title="发表于 2025-03-29 15:25:39">2025-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-29T07:25:39.000Z" title="更新于 2025-03-29 15:25:39">2025-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linear-Algebra/">Linear_Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性代数-复习2-25"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linear-Algebra-复习2-25"><a href="#Linear-Algebra-复习2-25" class="headerlink" title="Linear Algebra-复习2-25"></a>Linear Algebra-复习2-25</h1><h2 id="一、知识概要"><a href="#一、知识概要" class="headerlink" title="一、知识概要"></a>一、知识概要</h2><p>本节为习题课，主要回顾了第 14 - 24 课的学习内容，并通过习题练习进行巩固复习。</p>
+<h2 id="二、复习"><a href="#二、复习" class="headerlink" title="二、复习"></a>二、复习</h2><h3 id="2-1-回顾知识"><a href="#2-1-回顾知识" class="headerlink" title="2.1 回顾知识"></a>2.1 回顾知识</h3><h4 id="2-1-1-投影部分"><a href="#2-1-1-投影部分" class="headerlink" title="2.1.1 投影部分"></a>2.1.1 投影部分</h4><p>首先，我们学习了正交性。当矩阵<script type="math/tex">Q = \begin{bmatrix}q_{1} & \cdots & q_{n}\end{bmatrix}</script>中的<script type="math/tex">q</script>都是标准正交基时，<script type="math/tex">Q</script>是正交矩阵，具有性质<script type="math/tex">QQ^{T}=I</script>。</p>
+<p>然后，我们学习了投影相关知识，利用投影解决了<script type="math/tex">Ax = b</script>问题。当方程<script type="math/tex">Ax = b</script>无解时，通过最小二乘拟合寻找最优解。</p>
+<p>我们还介绍了 Gram - Schmidt 正交化方法，它可以将线性无关的向量投影到另一组向量上，使新得到的向量正交，再进行单位化，从而将基变为标准正交基。</p>
+<h4 id="2-1-2-行列式部分"><a href="#2-1-2-行列式部分" class="headerlink" title="2.1.2 行列式部分"></a>2.1.2 行列式部分</h4><p>我们学习了行列式的十个性质，其中前三个性质最为重要，后面的性质都是由前三个推导得出。行列式展开式有<script type="math/tex">n!</script>项，展开时要注意符号问题。</p>
+<p>此外，我们还学习了代数余子式公式，它是计算行列式的简便方法之一。由代数余子式公式我们得到了逆矩阵公式：<script type="math/tex">A^{-1}=\frac{1}{|A|}C^{T}</script>。</p>
+<h4 id="2-1-3-特征值部分"><a href="#2-1-3-特征值部分" class="headerlink" title="2.1.3 特征值部分"></a>2.1.3 特征值部分</h4><p>我们学习了特征值与特征向量的定义，即满足<script type="math/tex">Ax=\lambda x</script>的<script type="math/tex">\lambda</script>和<script type="math/tex">x</script>分别为矩阵<script type="math/tex">A</script>的特征值和特征向量，以及求特征向量的方程。</p>
+<p>如果矩阵有<script type="math/tex">n</script>个线性无关的特征向量，将它们构成矩阵<script type="math/tex">S</script>，可以对矩阵进行对角化处理：<script type="math/tex">A = S\Lambda S^{-1}</script>。利用对角化公式，我们可以计算矩阵幂的问题。特征值在很多应用中都有体现，例如微分方程等问题。</p>
+<h3 id="2-2-例题"><a href="#2-2-例题" class="headerlink" title="2.2 例题"></a>2.2 例题</h3><p>【例 1】现有向量<script type="math/tex">a=\begin{bmatrix}2\\1\\2\end{bmatrix}</script>，试找到向量<script type="math/tex">a</script>所在直线的投影矩阵并讨论其性质（即对于任意的向量<script type="math/tex">b</script>，找到可以将其投影到该直线上的投影矩阵）。</p>
+<p>解：</p>
+<p>根据投影矩阵的公式：</p>
+<script type="math/tex; mode=display">
+P = A(A^{T}A)^{-1}A^{T}</script><p>可得投影矩阵为：</p>
+<script type="math/tex; mode=display">
+P=\frac{1}{9}\begin{bmatrix}4&2&4\\2&1&2\\4&2&4\end{bmatrix}</script><p>很明显这是一个不可逆矩阵，第一列、第三列均是第二列<script type="math/tex">\begin{bmatrix}2\\1\\2\end{bmatrix}</script>的 2 倍，所以这个矩阵<script type="math/tex">P</script>的秩为 1，列空间为 1 维，对应的零空间为 2 维。这意味着它有两个特征值都为 0，最后一个特征值由矩阵的迹可得：<script type="math/tex">\frac{1}{9}(4 + 1 + 4)=1</script>。</p>
+<p>求特征值 1 对应的特征向量：</p>
+<script type="math/tex; mode=display">
+Px = x</script><p>由于<script type="math/tex">P</script>是投影矩阵，从实际意义联想，只有<script type="math/tex">P</script>作用于<script type="math/tex">a</script>向量上时，<script type="math/tex">Pa = a</script>，此时<script type="math/tex">P</script>矩阵对<script type="math/tex">a</script>无影响，所以其对应特征向量为<script type="math/tex">a</script>。</p>
+<p>【延伸】将矩阵<script type="math/tex">P</script>引入差分方程，题目如下：方程<script type="math/tex">u_{k + 1}=Pu_{k}</script>，其对应初值为<script type="math/tex">u_{0}=\begin{bmatrix}9\\9\\0\end{bmatrix}</script>，求解<script type="math/tex">u_{k}</script>。</p>
+<p>解：首先看这个方程中的<script type="math/tex">P</script>的特殊性质，<script type="math/tex">P</script>代表投影，<script type="math/tex">P^{k}</script>与<script type="math/tex">P</script>单独作用在一个向量上的效果相同。所以，求出投影一次后的<script type="math/tex">u_{0}</script>很关键。将<script type="math/tex">P</script>展开，利用已知<script type="math/tex">a=\begin{bmatrix}2\\1\\2\end{bmatrix}</script>，求得：</p>
+<script type="math/tex; mode=display">
+u_{1}=Pu_{0}=a\frac{a^{T}u_{0}}{a^{T}a}=a\frac{27}{9}=\begin{bmatrix}6\\3\\6\end{bmatrix}</script><p>由于矩阵<script type="math/tex">P</script>是投影矩阵，有结论：</p>
+<script type="math/tex; mode=display">
+u_{k}=P^{k}u_{0}=Pu_{0}=\begin{bmatrix}6\\3\\6\end{bmatrix}</script><p>复习一下之前学习差分方程时，当<script type="math/tex">P</script>矩阵不是投影矩阵时，我们使用特征值特征向量展开来求解：</p>
+<script type="math/tex; mode=display">
+u_{0}=c_{1}x_{1}+c_{2}x_{2}+\cdots +c_{n}x_{n}</script><script type="math/tex; mode=display">
+u_{k}=A^{k}u_{0}=c_{1}\lambda_{1}^{k}x_{1}+c_{2}\lambda_{2}^{k}x_{2}+\cdots +c_{n}\lambda_{n}^{k}x_{n}</script><p>而在本题中使用这个公式，对于这里的投影矩阵<script type="math/tex">P</script>，有两个特征值为 0，一个特征值为 1，于是前两项<script type="math/tex">c_{1}\lambda_{1}^{k}x_{1}+c_{2}\lambda_{2}^{k}x_{2}</script>可以舍弃，最后一项 <script type="math/tex">1\times c_{3}x_{3}</script>可以通过初值<script type="math/tex">u_{0}</script>以及三个特征向量<script type="math/tex">x_{1}</script>，<script type="math/tex">x_{2}</script>，<script type="math/tex">x_{3}</script> 来确定。</p>
+<p>【例 2】给定一组点<script type="math/tex">(1,4)</script>，<script type="math/tex">(2,5)</script>，<script type="math/tex">(3,8)</script>，尝试将其拟合到一条<strong>过原点</strong>的直线上。</p>
+<p>解：先设直线<script type="math/tex">y = Dt</script>，只有一个未知数，一个自由度。列出矩阵形式：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}1\\2\\3\end{bmatrix}D=\begin{bmatrix}4\\5\\8\end{bmatrix}</script><p>记作：<script type="math/tex">AD = b</script></p>
+<p>下面求解最优的<script type="math/tex">D</script>：根据之前学习的内容，最优方程为：</p>
+<script type="math/tex; mode=display">
+A^{T}A\hat{D}=A^{T}b</script><p>（本题中<script type="math/tex">AD = b</script>对应前面介绍过的<script type="math/tex">Ax = b</script>）解得：</p>
+<script type="math/tex; mode=display">
+\hat{D}=\frac{38}{14}</script><p>【例 3】已知<script type="math/tex">a_{1}=\begin{bmatrix}1\\2\\3\end{bmatrix}</script>，<script type="math/tex">a_{2}=\begin{bmatrix}1\\1\\1\end{bmatrix}</script>，求一组正交基。</p>
+<p>解：</p>
+<p>将第一个向量设为 A ,求解正交于其的一个向量 B。</p>
+<p>以<script type="math/tex">a_{2}</script>作为模板，可以将<script type="math/tex">B</script>表示为<script type="math/tex">a_{2}</script>减去其在<script type="math/tex">a_{1}</script>上的投影的形式，这样就可以保证<script type="math/tex">B</script>与<script type="math/tex">a_{1}</script>（即<script type="math/tex">A</script>）相垂直：</p>
+<script type="math/tex; mode=display">
+B=\begin{bmatrix}1\\1\\1\end{bmatrix}-\frac{a_{1}^{T}a_{2}}{a_{1}^{T}a_{1}}a_{1}=\begin{bmatrix}1\\1\\1\end{bmatrix}-\frac{6}{14}\begin{bmatrix}1\\2\\3\end{bmatrix}</script><p>【例 4】给定一个 <script type="math/tex">4\times4</script>矩阵，其特征值为<script type="math/tex">\lambda_{1}</script>，<script type="math/tex">\lambda_{2}</script>，<script type="math/tex">\lambda_{3}</script>，<script type="math/tex">\lambda_{4}</script>。</p>
+<p>(1) 特征值在满足什么条件下，矩阵是可逆的？</p>
+<p>答：根据之前的学习，<strong>只有特征值均不为 0 时，矩阵才可逆。</strong>否则，<script type="math/tex">Ax = 0x</script>就会有非零解。</p>
+<p>(2) <script type="math/tex">|A^{-1}|</script>的行列式等于多少？</p>
+<p>答：根据<script type="math/tex">|A||A^{-1}| = 1</script>以及特征值之积为<script type="math/tex">A</script>矩阵行列式的值这两个定理，可知：</p>
+<script type="math/tex; mode=display">
+\left|A^{-1}\right|=\frac{1}{\lambda_{1}\lambda_{2}\lambda_{3}\lambda_{4}}</script><p>(3) 矩阵<script type="math/tex">A + I</script>的迹是多少？（迹等于矩阵特征值之和）</p>
+<p>答：<script type="math/tex">I</script>为四阶单位阵，加上<script type="math/tex">I</script>使得<script type="math/tex">A</script>的迹在基础之上加 4，结果为：</p>
+<script type="math/tex; mode=display">
+\lambda_{1}+\lambda_{2}+\lambda_{3}+\lambda_{4}+4</script><p>【例 5】有一种矩阵<script type="math/tex">A_{4}=\begin{bmatrix}0&1&0&0\\1&0&2&0\\0&2&0&3\\0&0&3&0\end{bmatrix}=A_{4}^{T}</script>，类比<script type="math/tex">A_{3}=\begin{bmatrix}0&1&0\\1&0&2\\0&2&0\end{bmatrix}</script>。</p>
+<p>(1) 求投影到<script type="math/tex">A_{3}</script>列空间的投影矩阵。</p>
+<p>解：由投影公式：</p>
+<script type="math/tex; mode=display">
+P = A(A^{T}A)^{-1}A^{T}</script><p>代入矩阵<script type="math/tex">A_{3}</script>，可以很快得到答案。这里要注意一点，<script type="math/tex">A_{3}</script>是不可逆矩阵，其列空间是一个平面，所以投影矩阵实际上是将另一个空间投影到一个平面上。</p>
+<p>(2) 求<script type="math/tex">A_{3}</script>的特征值和特征向量。</p>
+<p>解：令行列式<script type="math/tex">|A_{3}-\lambda I| = 0</script>，解得特征值为 <script type="math/tex">0,\pm\sqrt{5}</script>。再代入<script type="math/tex">(A-\lambda I)x = 0</script> 可解出特征向量。</p>
+<p>(3) 求投影到<script type="math/tex">A_{4}</script>列空间的投影矩阵。</p>
+<p>解：如果<script type="math/tex">A_{4}</script>矩阵可逆，则其列空间就是<script type="math/tex">R^{4}</script>。因此如果确定了矩阵是可逆矩阵，那么其投影矩阵很简单，即为单位阵<script type="math/tex">I</script>，因为此时向<script type="math/tex">R^{4}</script>投影不影响向量本身。<script type="math/tex">A_{4}</script>矩阵对应的行列式值为 9，于是矩阵可逆，故其投影矩阵为 4 阶单位阵。</p>
+<p>此外，结合<script type="math/tex">A_{3}</script>可提出猜想：此种规律的矩阵，奇数号矩阵都是奇异（不可逆）的，偶数号矩阵都是可逆的。</p>
+<h2 id="三、学习感悟"><a href="#三、学习感悟" class="headerlink" title="三、学习感悟"></a>三、学习感悟</h2><p>这一章学习了很多知识，这些基本求解方法必须掌握，因为它们是我们进一步学习更深层次内容的基础。尤其是特征值的求解、投影矩阵的理解等内容非常重要。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-25/">http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-25/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linear-Algebra/">Linear_Algebra</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/Linear_Algebra.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-24/"><img class="prev-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性代数-马尔可夫矩阵和傅里叶级数-24</div></div></a></div><div class="next-post pull-right"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-26/"><img class="next-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">线性代数-对称矩阵及正定性-26</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/15/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-1/" title="线性代数01-方程组的几何解释"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">线性代数01-方程组的几何解释</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-10/" title="线性代数10-四个基本子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数10-四个基本子空间</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-11/" title="线性代数11-矩阵空间,秩1矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数11-矩阵空间,秩1矩阵</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-12/" title="线性代数12-矩阵应用:图与网络"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数12-矩阵应用:图与网络</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-13/" title="线性代数13-复习"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数13-复习</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-14/" title="线性代数14-正交向量与子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数14-正交向量与子空间</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到电子仓鼠的空间</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linear-Algebra-%E5%A4%8D%E4%B9%A02-25"><span class="toc-number">1.</span> <span class="toc-text">Linear Algebra-复习2-25</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9F%A5%E8%AF%86%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">一、知识概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%8D%E4%B9%A0"><span class="toc-number">1.2.</span> <span class="toc-text">二、复习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%9B%9E%E9%A1%BE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 回顾知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E6%8A%95%E5%BD%B1%E9%83%A8%E5%88%86"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 投影部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E8%A1%8C%E5%88%97%E5%BC%8F%E9%83%A8%E5%88%86"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.1.2 行列式部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E7%89%B9%E5%BE%81%E5%80%BC%E9%83%A8%E5%88%86"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">2.1.3 特征值部分</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BE%8B%E9%A2%98"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%82%9F"><span class="toc-number">1.3.</span> <span class="toc-text">三、学习感悟</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-相似矩阵和若尔当型-29"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29">线性代数-相似矩阵和若尔当型-29</a><time datetime="2025-03-29T07:29:39.000Z" title="发表于 2025-03-29 15:29:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-正定矩阵和最小值-28"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28">线性代数-正定矩阵和最小值-28</a><time datetime="2025-03-29T07:28:39.000Z" title="发表于 2025-03-29 15:28:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-酉矩阵与快速FFT-27"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27">线性代数-酉矩阵与快速FFT-27</a><time datetime="2025-03-29T07:27:39.000Z" title="发表于 2025-03-29 15:27:39">2025-03-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

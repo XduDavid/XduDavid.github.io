@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性代数-特征值和特征向量-21 | 大卫的博客园</title><meta name="keywords" content="Linear Algebra"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="特征值和特征向量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数-特征值和特征向量-21">
+<meta property="og:url" content="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-21/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="特征值和特征向量">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg">
+<meta property="article:published_time" content="2025-03-29T07:21:39.000Z">
+<meta property="article:modified_time" content="2025-03-29T07:21:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Linear_Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-21/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性代数-特征值和特征向量-21',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-29 15:21:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">89</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/Linear_Algebra.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性代数-特征值和特征向量-21</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-29T07:21:39.000Z" title="发表于 2025-03-29 15:21:39">2025-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-29T07:21:39.000Z" title="更新于 2025-03-29 15:21:39">2025-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linear-Algebra/">Linear_Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性代数-特征值和特征向量-21"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linear-Algebra-特征值和特征向量-21"><a href="#Linear-Algebra-特征值和特征向量-21" class="headerlink" title="Linear Algebra-特征值和特征向量-21"></a>Linear Algebra-特征值和特征向量-21</h1><p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img/%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="特征值和特征向量示意图"></p>
+<h2 id="一、知识概要"><a href="#一、知识概要" class="headerlink" title="一、知识概要"></a>一、知识概要</h2><p>本节课讨论了特征值与特征向量。主要目的是掌握求特征值的技巧并对一些特别的情况进行说明。本节内容比较基础。</p>
+<h2 id="二、特征值与特征向量"><a href="#二、特征值与特征向量" class="headerlink" title="二、特征值与特征向量"></a>二、特征值与特征向量</h2><h3 id="2-1-释义"><a href="#2-1-释义" class="headerlink" title="2.1 释义"></a>2.1 释义</h3><p>首先给出特征值与特征向量的定义：对矩阵 A，若有</p>
+<script type="math/tex; mode=display">
+Ax=\lambda x</script><p>则 x 为矩阵 A 的特征向量，λ 为矩阵的特征值。那么如何理解特征值与特征向量所代表的意义呢？</p>
+<p>我们来看<script type="math/tex">Ax</script>这个式子，对于不同的向量 x，<script type="math/tex">Ax</script>这个式子像是一个函数，输入一个向量 x，则输出一个向量<script type="math/tex">Ax</script> 。而在我们输入的众多向量 x 生成的<script type="math/tex">Ax</script>中，会有这样的向量<script type="math/tex">Ax</script>，它们平行于 x，我们即用上面这个式子：<script type="math/tex">Ax=\lambda x</script>来表示这个关系。</p>
+<p>特别注意下特征值为 0 的情况。此时会有：<script type="math/tex">AX = 0</script>。我们可以发现 A 如果是不可逆矩阵，则正好满足此性质。</p>
+<p>我们再研究一下之前提到过的投影矩阵，如果投影矩阵是 A 的话，那么它的特征值是多少呢？</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img/Linear_Algebra210.png" alt="Linear_Algebra210"></p>
+<p>我们取较为特殊的向量：</p>
+<p>(1) 如果对任意平面上的<script type="math/tex">x_1</script>来说，投影矩阵根本不会影响它的大小，所以就有：<script type="math/tex">Ax_1 = x_1</script>恒成立。此时得到一个 λ：1。</p>
+<p>(2) 如果对垂直于平面的任意<script type="math/tex">x_2</script>来说，投影矩阵作用在此向量之后始终会有：<script type="math/tex">Ax_2 = 0</script>恒成立。如此即得到第二个 λ：0。</p>
+<h3 id="2-2-求解方法"><a href="#2-2-求解方法" class="headerlink" title="2.2 求解方法"></a>2.2 求解方法</h3><p>接下来我们给出特征值、特征向量的一般求解方法。我们对方程进行一些处理：</p>
+<script type="math/tex; mode=display">Ax=\lambda x \to (A - \lambda I)x = 0</script><p>即<script type="math/tex">(A - \lambda I)</script>是不可逆矩阵 <script type="math/tex">\to A - \lambda I</script>行列式为 0</p>
+<p>如上即为求解特征值的步骤。n 阶一共应该有 n 个特征值。</p>
+<p>求解特征向量只需要取求解出的一个特征值 λ，此时<script type="math/tex">A - \lambda I</script>是一个不可逆矩阵，利用<script type="math/tex">(A - \lambda I)X = 0</script>求解零空间中的向量即为矩阵的特征向量。</p>
+<p>【例 1】求矩阵<script type="math/tex">\begin{bmatrix}3 & 1\\1 & 3\end{bmatrix}</script>的特征向量与特征值。</p>
+<p>沿袭我们上述思路，构造矩阵<script type="math/tex">\begin{bmatrix}3 - \lambda & 1\\1 & 3 - \lambda\end{bmatrix}</script>。求解行列式 = 0 即可。解得两个特征值：<script type="math/tex">\lambda_1 = 2</script>，<script type="math/tex">\lambda_2 = 4</script> 。</p>
+<p>求解特征向量：直接代入特征值消元。</p>
+<script type="math/tex; mode=display">A - 4I=\begin{bmatrix}-1 & 1\\1 & -1\end{bmatrix}</script><p>即：<script type="math/tex">\begin{bmatrix}-1 & 1\\1 & -1\end{bmatrix}X = 0</script>，解得<script type="math/tex">x_1=\begin{bmatrix}1\\1\end{bmatrix}</script></p>
+<script type="math/tex; mode=display">A - 2I=\begin{bmatrix}1 & 1\\1 & 1\end{bmatrix}</script><p>即：<script type="math/tex">\begin{bmatrix}1 & 1\\1 & 1\end{bmatrix}x = 0</script>，解得<script type="math/tex">x_2=\begin{bmatrix}-1\\1\end{bmatrix}</script></p>
+<p>注：在这里注意一点，我们很容易发现：<script type="math/tex">\lambda_1+\lambda_2 = 6</script>，正好是<script type="math/tex">\begin{bmatrix}3 & 1\\1 & 3\end{bmatrix}</script>对角线上元素的和，称为“迹”。<strong>特征值之和与迹相等</strong>，这也是一个重要的定理。而且又有<script type="math/tex">\lambda_1\lambda_2 = 8</script>，即为行列式<script type="math/tex">\begin{bmatrix}3 & 1\\1 & 3\end{bmatrix}</script>的值，这也是一个普遍规律，<strong>特征值之积为 A 矩阵行列式的值</strong>。</p>
+<p>【例 2】在例 1 的基础上，如果矩阵<script type="math/tex">A=\begin{bmatrix}3 & 1\\1 & 3\end{bmatrix}+3I</script>，那么它的特征值、特征向量将如何变化？</p>
+<p>首先，列出这部分核心的等式：<script type="math/tex">Ax=\lambda x</script>，则根据题意，改变后的方程变为：<script type="math/tex">(A + 3I)x=\lambda x+3x=(\lambda + 3)x</script>。也就是说，新的特征值变为<script type="math/tex">\lambda + 3</script>，而对应的特征向量不会改变，因为等式两边同等的有 <script type="math/tex">3Ix</script>与<script type="math/tex">3x</script>，不会影响特征向量的值。</p>
+<h3 id="2-3-特殊情况说明"><a href="#2-3-特殊情况说明" class="headerlink" title="2.3 特殊情况说明"></a>2.3 特殊情况说明</h3><p>我们通过两个例题说明下这部分求解中可能遇到的特殊情况。</p>
+<p>【例 3】旋转矩阵 Q 使得每个向量旋转 90°，记<script type="math/tex">Q=\begin{bmatrix}0 & -1\\1 & 0\end{bmatrix}</script>（<script type="math/tex">\begin{bmatrix}\cos90^{\circ} & -\sin90^{\circ}\\\sin90^{\circ} & \cos90^{\circ}\end{bmatrix}</script>），求解特征值与特征向量。</p>
+<p>思路：</p>
+<p>这个问题我们如果从迹与 A 行列式的角度分析，得到：<script type="math/tex">\lambda_1\lambda_2 = 1</script></p>
+<script type="math/tex; mode=display">
+\lambda_1+\lambda_2 = 0</script><p>这样特征值不存在么？我们换一种思路：使用<script type="math/tex">Qx=\lambda x</script>这个式子，化简求解<script type="math/tex">Q-\lambda_i</script>的行列式的值，使其为 0。得到<script type="math/tex">\lambda^2 + 1 = 0</script>，解得 λ 为虚数：i 与-i。代入之前的方程，完全满足。</p>
+<p>启示：我们发现 Q 是反对称矩阵<script type="math/tex">(A^T = -A)</script>，而我们之前求的都是对称矩阵的特征值，也就是说，<strong>对称矩阵的特征值为实数，而反对称矩阵的特征值为虚数</strong>，这是两个极端。</p>
+<p>【例 4】<script type="math/tex">A=\begin{bmatrix}3 & 1\\0 & 3\end{bmatrix}</script>，求特征值与特征向量。</p>
+<p>思路：</p>
+<p>这是个上三角矩阵，求解<script type="math/tex">A-\lambda I</script>行列式时会发现，<script type="math/tex">\lambda_1=\lambda_2 = 3</script>，这时的特征向量只会有一个，也就是说，三角矩阵的结构的特殊性导致了其行列式为对角线上元素，而如果对角线上两个元素相等，那么就会造成特征向量短缺情况。</p>
+<h2 id="三、学习感悟"><a href="#三、学习感悟" class="headerlink" title="三、学习感悟"></a>三、学习感悟</h2><p>本节内容不是很困难，重点在于特征值与特征向量的求解，其实只要使用<script type="math/tex">A-\lambda x</script>（这里应该是<script type="math/tex">A - \lambda I</script>）求解就没错，特别注意一下虚数情况就好了。重点是理解特征值如何求解以及特征值到底代表着什么。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/XduDavid/Blog_Img/Linear_Algebra211.png" alt="Linear_Algebra211"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-21/">http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-21/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linear-Algebra/">Linear_Algebra</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/Linear_Algebra.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-20/"><img class="prev-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性代数-克莱姆法则、逆矩阵、体积克莱姆法则、逆矩阵、体积-20</div></div></a></div><div class="next-post pull-right"><a href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-22/"><img class="next-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">线性代数-对角化和A的幂-22</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/15/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-1/" title="线性代数01-方程组的几何解释"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">线性代数01-方程组的几何解释</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-10/" title="线性代数10-四个基本子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数10-四个基本子空间</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-11/" title="线性代数11-矩阵空间,秩1矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数11-矩阵空间,秩1矩阵</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-12/" title="线性代数12-矩阵应用:图与网络"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数12-矩阵应用:图与网络</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-13/" title="线性代数13-复习"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数13-复习</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-14/" title="线性代数14-正交向量与子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数14-正交向量与子空间</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到电子仓鼠的空间</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linear-Algebra-%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F-21"><span class="toc-number">1.</span> <span class="toc-text">Linear Algebra-特征值和特征向量-21</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9F%A5%E8%AF%86%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">一、知识概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E5%BE%81%E5%80%BC%E4%B8%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">二、特征值与特征向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%87%8A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 释义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 求解方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 特殊情况说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%82%9F"><span class="toc-number">1.3.</span> <span class="toc-text">三、学习感悟</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-相似矩阵和若尔当型-29"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/" title="线性代数-相似矩阵和若尔当型-29">线性代数-相似矩阵和若尔当型-29</a><time datetime="2025-03-29T07:29:39.000Z" title="发表于 2025-03-29 15:29:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-正定矩阵和最小值-28"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/" title="线性代数-正定矩阵和最小值-28">线性代数-正定矩阵和最小值-28</a><time datetime="2025-03-29T07:28:39.000Z" title="发表于 2025-03-29 15:28:39">2025-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27"><img src="/img/Page_Cover/Linear_Algebra.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="线性代数-酉矩阵与快速FFT-27"/></a><div class="content"><a class="title" href="/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/" title="线性代数-酉矩阵与快速FFT-27">线性代数-酉矩阵与快速FFT-27</a><time datetime="2025-03-29T07:27:39.000Z" title="发表于 2025-03-29 15:27:39">2025-03-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
