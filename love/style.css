@@ -1,0 +1,91 @@
+/* Love页面图片展示样式 - 适配Hexo Butterfly主题 */
+
+/* 历程项图片容器 */
+.timeline-item .timeline-photos {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 单张图片样式 */
+.timeline-item .timeline-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  max-width: calc(50% - 4px);
+  flex: 0 0 auto;
+}
+
+/* 单张图片独占宽度 */
+.timeline-item .timeline-photo.single {
+  max-width: 100%;
+  width: 100%;
+}
+
+.timeline-item .timeline-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  min-height: 120px;
+  background: var(--hl-bg);
+}
+
+/* 悬停效果 */
+.timeline-item .timeline-photo:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.timeline-item .timeline-photo:hover img {
+  transform: scale(1.05);
+}
+
+/* 懒加载过渡 */
+.timeline-item .timeline-photo img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.timeline-item .timeline-photo img.loaded {
+  opacity: 1;
+}
+
+/* 响应式适配 */
+@media screen and (max-width: 768px) {
+  .timeline-item .timeline-photos {
+    gap: 6px;
+  }
+
+  .timeline-item .timeline-photo {
+    max-width: calc(50% - 3px);
+  }
+
+  .timeline-item .timeline-photo.single {
+    max-width: 100%;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme="dark"] .timeline-item .timeline-photo {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .timeline-item .timeline-photo:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Fancybox适配 - 与主题默认样式统一 */
+.fancybox__container {
+  --fancybox-bg: rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .fancybox__container {
+  --fancybox-bg: rgba(0, 0, 0, 0.95);
+}
