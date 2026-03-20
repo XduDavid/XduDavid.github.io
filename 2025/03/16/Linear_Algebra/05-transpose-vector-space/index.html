@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性代数05-转置矩阵与向量空间 | 大卫的博客园</title><meta name="keywords" content="Linear Algebra"><meta name="author" content="DavidGu"><meta name="copyright" content="DavidGu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="转置矩阵与向量空间——从置换矩阵、转置矩阵到向量空间和子空间的概念引入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数05-转置矩阵与向量空间">
+<meta property="og:url" content="http://david-luge.cn/2025/03/16/Linear_Algebra/05-transpose-vector-space/index.html">
+<meta property="og:site_name" content="大卫的博客园">
+<meta property="og:description" content="转置矩阵与向量空间——从置换矩阵、转置矩阵到向量空间和子空间的概念引入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg">
+<meta property="article:published_time" content="2025-03-16T07:14:39.000Z">
+<meta property="article:modified_time" content="2025-03-16T07:14:39.000Z">
+<meta property="article:author" content="DavidGu">
+<meta property="article:tag" content="Linear_Algebra">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://david-luge.cn/img/Page_Cover/Linear_Algebra.jpg"><link rel="shortcut icon" href="//common.cnblogs.com/favicon.svg"><link rel="canonical" href="http://david-luge.cn/2025/03/16/Linear_Algebra/05-transpose-vector-space/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: DavidGu","link":"链接: ","source":"来源: 大卫的博客园","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性代数05-转置矩阵与向量空间',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-16 15:14:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/icon.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="大卫的博客园" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/HomePage/avatar.jpg" onerror="onerror=null;src='/img/HomePage/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">96</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Page_Cover/Linear_Algebra.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">大卫的博客园</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/statistics/"><i class="fa-fw fa-fw fas fa-chart-line"></i><span> 统计</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tools/"><i class="fa-fw fas fa-tools"></i><span> 百宝箱</span></a></li><li><a class="site-page child" href="/chats/"><i class="fa-fw fas fa-comment-dots"></i><span> 碎碎念</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性代数05-转置矩阵与向量空间</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-16T07:14:39.000Z" title="发表于 2025-03-16 15:14:39">2025-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-16T07:14:39.000Z" title="更新于 2025-03-16 15:14:39">2025-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linear-Algebra/">Linear_Algebra</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性代数05-转置矩阵与向量空间"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="线性代数05：转置矩阵与向量空间"><a href="#线性代数05：转置矩阵与向量空间" class="headerlink" title="线性代数05：转置矩阵与向量空间"></a>线性代数05：转置矩阵与向量空间</h1><p>经过前面四篇文章的学习，我们已经掌握了矩阵消元、矩阵乘法、逆矩阵和LU分解。今天我们要进入线性代数一个更抽象但也更重要的主题——<strong>向量空间</strong>。在开始之前，我们先把之前提到的置换矩阵和转置矩阵做一个完整的总结，然后引出对称矩阵，最后正式进入向量空间的世界。</p>
+<p>向量空间是线性代数的”灵魂”所在。前面我们学习的都是具体的计算，从这篇文章开始，我们要开始建立”空间”的概念——这是理解线性代数几何意义的关键一步。</p>
+<h2 id="知识概要"><a href="#知识概要" class="headerlink" title="知识概要"></a>知识概要</h2><p>本文会涵盖以下内容：</p>
+<ul>
+<li>置换矩阵的回顾和性质总结</li>
+<li>转置矩阵的定义和对称矩阵的性质</li>
+<li>向量空间的定义和核心要求：对线性运算封闭</li>
+<li>子空间的概念和判断方法</li>
+<li>由矩阵构造出的第一个子空间：列空间</li>
+</ul>
+<hr>
+<h2 id="置换矩阵回顾"><a href="#置换矩阵回顾" class="headerlink" title="置换矩阵回顾"></a>置换矩阵回顾</h2><p>我们在上一篇文章介绍LU分解时已经提到了置换矩阵，这里我们再做一个完整的总结。</p>
+<h3 id="什么是置换矩阵"><a href="#什么是置换矩阵" class="headerlink" title="什么是置换矩阵"></a>什么是置换矩阵</h3><p><strong>置换矩阵</strong>P就是完成行交换操作的矩阵。更具体地说，它是由单位矩阵I重新排列行顺序得到的矩阵。左乘一个置换矩阵P的效果就是对原矩阵按照P的行顺序进行交换。</p>
+<p>举个最简单的例子，单位矩阵I本身就是一个置换矩阵，只不过它不改变任何行顺序。对于一个$n$阶单位矩阵，我们对它的行做任意重新排列，得到的都是置换矩阵。那么：</p>
+<blockquote>
+<p><strong>结论</strong>：$n$阶矩阵共有 $\boxed{n!}$ 个不同的置换矩阵。</p>
+</blockquote>
+<p>置换矩阵最重要的一个性质是：</p>
+<script type="math/tex; mode=display">\boxed{P^{-1} = P^T}</script><p>也就是<strong>置换矩阵的逆等于它的转置</strong>。这个性质其实很好理解：</p>
+<p>因为置换矩阵$P$的每一列中只有一个元素是1，其余都是0。我们来看$P^T P$的乘积结果：对角线上的元素都是对应行（列）的内积，也就是1；而非对角线上的元素都是不同行（列）的内积，必然是0。所以$P^T P = I$，根据逆矩阵的定义，$P^{-1} = P^T$。</p>
+<p>换句话说，所有置换矩阵都是<strong>正交矩阵</strong>。这个性质在数值计算中非常有用，求逆只需要转置一下就好了，不需要任何计算。</p>
+<h3 id="置换矩阵的应用"><a href="#置换矩阵的应用" class="headerlink" title="置换矩阵的应用"></a>置换矩阵的应用</h3><p>在高斯消元过程中，如果主元位置是0，我们就需要交换两行来选主元，这个行交换就是由置换矩阵来完成的。因此，完整的LU分解必须把行交换考虑进去，形式就是：</p>
+<script type="math/tex; mode=display">PA = LU</script><p>先用置换矩阵$P$做行交换，使得所有主元位置都不为0，然后再进行LU分解。这就是数值计算中实际使用的带主元LU分解。</p>
+<hr>
+<h2 id="转置矩阵与对称矩阵"><a href="#转置矩阵与对称矩阵" class="headerlink" title="转置矩阵与对称矩阵"></a>转置矩阵与对称矩阵</h2><h3 id="转置矩阵回顾"><a href="#转置矩阵回顾" class="headerlink" title="转置矩阵回顾"></a>转置矩阵回顾</h3><p>我们之前已经接触过转置矩阵。<strong>转置矩阵</strong>就是将原矩阵的行和列互换得到的新矩阵，记为$A^T$。举个例子：</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}
+1 & 3\\
+2 & 3\\
+4 & 1\\
+\end{bmatrix},\quad A^T=\begin{bmatrix}
+1 & 2 & 4\\
+3 & 3 & 1\\
+\end{bmatrix}</script><p>用元素位置来表示就是：</p>
+<script type="math/tex; mode=display">
+(A^T)_{ij} = A_{ji}</script><p>简单来说，原来的第$i$行第$j$列元素，转置后就跑到第$j$行第$i$列去了。这个概念理解起来不难。</p>
+<h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><p>什么是<strong>对称矩阵</strong>呢？顾名思义，如果矩阵$A$满足$A = A^T$，那么$A$就是对称矩阵。也就是说，主对角线两侧的元素对应相等。比如：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+3 & 1 & 7\\
+1 & 2 & 9\\
+7 & 9 & 4\\
+\end{bmatrix}</script><p>这就是一个典型的对称矩阵。</p>
+<p>那么我们怎么得到对称矩阵呢？其实很简单：<strong>任何矩阵$A$，$A^T A$一定是对称矩阵</strong>。我们来证明一下：</p>
+<p>从对称矩阵的定义出发，我们只需要验证$(A^T A)^T = A^T A$：</p>
+<script type="math/tex; mode=display">
+(A^T A)^T = A^T (A^T)^T = A^T A</script><p>利用了转置的运算法则$(AB)^T = B^T A^T$以及$(A^T)^T = A$。完美！所以不管$A$是不是方阵，只要做$A^T A$的乘积，得到的结果一定是对称矩阵。这个构造方法在实际应用中非常常见，比如最小二乘法中就会经常遇到。</p>
+<hr>
+<h2 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h2><p>现在我们进入本篇文章最重要的主题——<strong>向量空间</strong>。这是线性代数中一个核心概念，理解了它，你才能真正说入门了线性代数。</p>
+<h3 id="向量空间的定义"><a href="#向量空间的定义" class="headerlink" title="向量空间的定义"></a>向量空间的定义</h3><p>首先要明确：<strong>向量空间不是随便一堆向量放在一起就能叫向量空间的</strong>。它必须满足一个核心条件：</p>
+<blockquote>
+<p><strong>核心条件</strong>：向量空间对<strong>线性运算</strong>（加法和数乘）封闭。也就是说，对于空间中任意两个向量$v$和$w$：</p>
+<ul>
+<li>$v + w$ 仍然在这个空间中</li>
+<li>$cv$（$c$是任意标量）仍然在这个空间中</li>
+</ul>
+</blockquote>
+<p>只有满足这个条件，才能被称为向量空间。</p>
+<p>我们来看几个最常见的例子：</p>
+<p><strong>例子1：$\mathbb{R}^2$ 空间</strong></p>
+<p>$\mathbb{R}^2$包含了所有二维实向量，比如：</p>
+<script type="math/tex; mode=display">\begin{bmatrix}3\\2\end{bmatrix},\quad \begin{bmatrix}0\\0\end{bmatrix},\quad \begin{bmatrix}\pi\\e\end{bmatrix}</script><p>这些都在$\mathbb{R}^2$中。对任意两个向量做加法或者数乘，得到的结果仍然是二维实向量，所以仍然在$\mathbb{R}^2$中。几何上，$\mathbb{R}^2$就是整个xoy平面。</p>
+<p>特别重要的一点：<strong>零向量一定在任何向量空间中</strong>。因为任何向量乘以0就是零向量，根据封闭性，零向量必须存在。这是一个非常重要的判断依据。</p>
+<p><strong>例子2：$\mathbb{R}^n$ 空间</strong></p>
+<p>推广一下，$\mathbb{R}^n$包含了所有$n$维实向量，每个分量都是实数，显然满足封闭性，所以是一个向量空间。这是我们最常遇到的向量空间。</p>
+<p>我们再来看一个<strong>不是向量空间</strong>的反例：</p>
+<p><strong>反例：$\mathbb{R}^2$中的第一象限</strong></p>
+<p>在$\mathbb{R}^2$中，我们只取第一象限的所有向量，也就是两个分量都大于等于0的向量。这个集合是不是向量空间呢？</p>
+<p>答案是<strong>不是</strong>。因为虽然任意两个向量相加仍然在第一象限，但数乘不封闭：取一个负的系数，比如$c=-1$，结果就跑到第三象限去了，脱离了我们定义的集合。所以它不是向量空间。</p>
+<p>再想一个问题：如果去掉原点，整个$\mathbb{R}^2$去掉$(0,0)$，还是不是向量空间？也不是，因为零向量不在里面了，而零向量必须存在。</p>
+<hr>
+<h2 id="子空间"><a href="#子空间" class="headerlink" title="子空间"></a>子空间</h2><p>向量空间本身对线性运算封闭，但如果我们取它的一部分，这一部分能不能仍然构成向量空间呢？答案是可能的，这样的部分就叫做<strong>子空间</strong>。</p>
+<h3 id="子空间的定义"><a href="#子空间的定义" class="headerlink" title="子空间的定义"></a>子空间的定义</h3><p><strong>子空间</strong>就是向量空间中的一个子集，它本身对加法和数乘运算封闭，所以它自己也是一个向量空间。</p>
+<p>我们还是以$\mathbb{R}^2$为例：$\mathbb{R}^2$本身就是自己的一个子空间。除此之外：</p>
+<ul>
+<li><strong>穿过原点的直线</strong>：直线上任意两个向量相加仍然在直线上，数乘也仍然在直线上，所以它是$\mathbb{R}^2$的一个子空间。但如果直线不穿过原点，那就不是子空间，因为零向量不在里面。</li>
+<li><strong>只有零向量</strong>：${0}$这个集合，只有一个零向量。它也满足封闭性，所以它也是$\mathbb{R}^2$的一个子空间。</li>
+</ul>
+<p>所以$\mathbb{R}^2$的子空间一共有三类：</p>
+<ol>
+<li>$\mathbb{R}^2$本身</li>
+<li>穿过原点的直线</li>
+<li>只有零向量</li>
+</ol>
+<p>推广到$\mathbb{R}^3$，它的子空间有四类：</p>
+<ol>
+<li>$\mathbb{R}^3$本身</li>
+<li>穿过原点的平面</li>
+<li>穿过原点的直线</li>
+<li>只有零向量</li>
+</ol>
+<p>这个规律很清晰吧！维度越低，越靠近原点。</p>
+<blockquote>
+<p>💡 <strong>关键判断</strong>：判断一个子集是不是子空间，就看两条：</p>
+<ol>
+<li>是否包含零向量</li>
+<li>对加法和数乘是否封闭</li>
+</ol>
+<p>只要这两条满足，它就是子空间。</p>
+</blockquote>
+<h3 id="列空间：矩阵构造的子空间"><a href="#列空间：矩阵构造的子空间" class="headerlink" title="列空间：矩阵构造的子空间"></a>列空间：矩阵构造的子空间</h3><p>上面我们都是从几何直观来找子空间，现在我们来看一种非常重要的构造子空间的方法——通过矩阵构造<strong>列空间</strong>。</p>
+<p>假设我们有一个矩阵：</p>
+<script type="math/tex; mode=display">
+A=\begin{bmatrix}
+1 & 3\\
+2 & 3\\
+4 & 1\\
+\end{bmatrix}</script><p>$A$有两列，这两列都是$\mathbb{R}^3$中的三维向量：$\begin{bmatrix}1\2\4\end{bmatrix}$和$\begin{bmatrix}3\3\1\end{bmatrix}$。现在我们考虑这两个向量的<strong>所有线性组合</strong>：</p>
+<script type="math/tex; mode=display">c_1\begin{bmatrix}1\\2\\4\end{bmatrix} + c_2\begin{bmatrix}3\\3\\1\end{bmatrix}</script><p>其中$c_1$和$c_2$是任意实数。这个所有线性组合构成的集合，就是矩阵$A$的<strong>列空间</strong>，记为$C(A)$。</p>
+<p>列空间$C(A)$是不是$\mathbb{R}^3$的子空间呢？是的！因为：</p>
+<ul>
+<li>零向量在里面（$c_1=c_2=0$）</li>
+<li>任意两个线性组合相加还是线性组合，数乘之后也还是线性组合，满足封闭性</li>
+</ul>
+<p>所以$C(A)$确实是$\mathbb{R}^3$的一个子空间。在这个例子中，由于两个列向量不共线，它们张成的列空间几何上就是$\mathbb{R}^3$中<strong>穿过原点且包含这两个向量的一个平面</strong>。</p>
+<p>如果两个列向量共线，那么列空间就是一条穿过原点的直线。不管维度有多高，这个思想都是一样的：</p>
+<blockquote>
+<p><strong>列空间的本质</strong>：矩阵A的列空间C(A)就是A的所有列向量的线性组合构成的空间。它是$\mathbb{R}^m$的一个子空间，其中m是矩阵A的行数。</p>
+</blockquote>
+<p>列空间为什么这么重要呢？因为我们求解线性方程组$Ax = b$，这个方程组有解的充要条件就是：<strong>b在A的列空间C(A)中</strong>。这个等价关系太重要了，我们后面还会深入讨论。</p>
+<p>用Gilbert Strang教授的话说：三维空间我们还可以画图，那十维空间中五个向量张成的列空间呢？你看不见摸不着，但可以理解为它就是十维空间中的一个”五维平面”——这种抽象能力就是学习线性代数需要培养的。</p>
+<hr>
+<h2 id="笔者感悟"><a href="#笔者感悟" class="headerlink" title="笔者感悟"></a>笔者感悟</h2><p>作为一名IC设计工程师，我发现向量空间的概念在工程中无处不在，只是我们平时可能没有意识到：</p>
+<ul>
+<li><strong>信号处理</strong>：一个有限长度的离散信号本身就是$\mathbb{R}^n$中的一个向量，所有可能的信号构成了一个$n$维向量空间，滤波操作就是线性变换。</li>
+<li><strong>电路分析</strong>：线性电路中，所有可能的节点电压向量构成一个向量空间，叠加定理其实就是在说线性组合仍然在空间中，这正是封闭性的体现。</li>
+<li><strong>机器学习</strong>：机器学习中我们把每个样本看作高维空间中的一个向量，整个数据集就在特征空间中，降维、分类都离不开向量空间的概念。AI芯片做的就是在向量空间中做大量的线性运算。</li>
+<li><strong>图像处理</strong>：一张灰度图像可以看作一个矩阵，也可以拉直成一个非常高维的向量，所有图像就在这个高维向量空间中。</li>
+</ul>
+<p>有意思的是，工程中我们遇到的问题往往不是整个$\mathbb{R}^n$，而是某个子空间。比如图像的低秩近似，就是说图像实际上位于一个低维子空间中，我们只需要保留这个子空间就够了。这就是压缩感知的思想基础。</p>
+<p>从计算到空间，这是认识上的一次飞跃。刚开始可能会觉得抽象，但一旦你理解了”空间”的观点，看线性代数的眼光就完全不一样了。后面我们还会逐步引入零空间、行空间、左零空间，这些都是矩阵的四个基本子空间，理解了它们，你就理解了线性代数的大半壁江山。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文要点回顾：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>核心结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>置换矩阵</td>
+<td>由单位矩阵重新排列行得到，满足 $P^{-1} = P^T$，共$n!$个</td>
+</tr>
+<tr>
+<td>转置矩阵</td>
+<td>$(A^T)<em>{ij} = A</em>{ji}$，行列互换</td>
+</tr>
+<tr>
+<td>对称矩阵</td>
+<td>满足 $A = A^T$，$A^T A$一定是对称矩阵</td>
+</tr>
+<tr>
+<td>向量空间</td>
+<td>对加法和数乘封闭，必须包含零向量</td>
+</tr>
+<tr>
+<td>$\mathbb{R}^n$</td>
+<td>所有$n$维实向量构成的向量空间</td>
+</tr>
+<tr>
+<td>子空间</td>
+<td>向量空间的子集，自身对线性运算封闭，必须包含零向量</td>
+</tr>
+<tr>
+<td>列空间C(A)</td>
+<td>A的所有列向量的线性组合构成的子空间，$Ax=b$有解 ⇨ $b \in C(A)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最后放一张学习笔记留作纪念：</p>
+<p><img src="https://raw.githubusercontent.com/XduDavid/Blog_Img/main/linear_algebra_transpose_vectorspace.png" alt="linear_algebra_transpose_vectorspace"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://david-luge.cn">DavidGu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://david-luge.cn/2025/03/16/Linear_Algebra/05-transpose-vector-space/">http://david-luge.cn/2025/03/16/Linear_Algebra/05-transpose-vector-space/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://david-luge.cn" target="_blank">大卫的博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linear-Algebra/">Linear_Algebra</a></div><div class="post_share"><div class="social-share" data-image="/img/Page_Cover/Linear_Algebra.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/HomePage/wechat_pay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/wechat_pay.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/HomePage/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/HomePage/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/16/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-5/"><img class="prev-cover" src="/img/Page_Cover/Linear_Algebra.jpg" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性代数05-转置矩阵与向量空间</div></div></a></div><div class="next-post pull-right"><a href="/2025/03/24/Git/%E5%B1%80%E5%9F%9F%E7%BD%91Git%E6%90%AD%E5%BB%BA/"><img class="next-cover" src="/img/Page_Cover/git.png" onerror="onerror=null;src='/img/HomePage/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">局域网 Git 搭建</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/16/Linear_Algebra/02-matrix-elimination/" title="线性代数02-矩阵消元"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-16</div><div class="title">线性代数02-矩阵消元</div></div></a></div><div><a href="/2025/03/16/Linear_Algebra/03-matrix-multiplication-inverse/" title="线性代数03-矩阵乘法和逆矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-16</div><div class="title">线性代数03-矩阵乘法和逆矩阵</div></div></a></div><div><a href="/2025/03/16/Linear_Algebra/04-matrix-lu-decomposition/" title="线性代数04-矩阵LU分解"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-16</div><div class="title">线性代数04-矩阵LU分解</div></div></a></div><div><a href="/2025/03/15/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-1/" title="线性代数01-方程组的几何解释：从行图像到列图像"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-15</div><div class="title">线性代数01-方程组的几何解释：从行图像到列图像</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-10/" title="线性代数10-四个基本子空间"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数10-四个基本子空间</div></div></a></div><div><a href="/2025/03/28/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-11/" title="线性代数11-矩阵空间,秩1矩阵"><img class="cover" src="/img/Page_Cover/Linear_Algebra.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-28</div><div class="title">线性代数11-矩阵空间,秩1矩阵</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到电子仓鼠的空间</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B005%EF%BC%9A%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">线性代数05：转置矩阵与向量空间</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E6%A6%82%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">知识概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%AE%E6%8D%A2%E7%9F%A9%E9%98%B5%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.2.</span> <span class="toc-text">置换矩阵回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BD%AE%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.1.</span> <span class="toc-text">什么是置换矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%AE%E6%8D%A2%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">置换矩阵的应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.</span> <span class="toc-text">转置矩阵与对称矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5%E5%9B%9E%E9%A1%BE"><span class="toc-number">1.3.1.</span> <span class="toc-text">转置矩阵回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5"><span class="toc-number">1.3.2.</span> <span class="toc-text">对称矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4"><span class="toc-number">1.4.</span> <span class="toc-text">向量空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">向量空间的定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E7%A9%BA%E9%97%B4"><span class="toc-number">1.5.</span> <span class="toc-text">子空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%A9%BA%E9%97%B4%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">子空间的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E7%A9%BA%E9%97%B4%EF%BC%9A%E7%9F%A9%E9%98%B5%E6%9E%84%E9%80%A0%E7%9A%84%E5%AD%90%E7%A9%BA%E9%97%B4"><span class="toc-number">1.5.2.</span> <span class="toc-text">列空间：矩阵构造的子空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%80%85%E6%84%9F%E6%82%9F"><span class="toc-number">1.6.</span> <span class="toc-text">笔者感悟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/Com/WiFi6%E4%B8%A4%E7%A7%8DSounding%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/" title="WiFi 6 (802.11ax) 两种Sounding + 下行MU-MIMO 交互过程对比"><img src="/img/Page_Cover/wireless.jpg" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="WiFi 6 (802.11ax) 两种Sounding + 下行MU-MIMO 交互过程对比"/></a><div class="content"><a class="title" href="/2026/03/20/Com/WiFi6%E4%B8%A4%E7%A7%8DSounding%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/" title="WiFi 6 (802.11ax) 两种Sounding + 下行MU-MIMO 交互过程对比">WiFi 6 (802.11ax) 两种Sounding + 下行MU-MIMO 交互过程对比</a><time datetime="2026-03-20T13:54:39.000Z" title="发表于 2026-03-20 21:54:39">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/Com/WiFi6%E4%BF%A1%E9%81%93%E6%8E%A2%E6%B5%8BSounding%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B%E5%AF%B9%E6%AF%94/" title="WiFi 6 两种Sounding与下行MU-MIMO交互过程对比"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="WiFi 6 两种Sounding与下行MU-MIMO交互过程对比"/></a><div class="content"><a class="title" href="/2026/03/20/Com/WiFi6%E4%BF%A1%E9%81%93%E6%8E%A2%E6%B5%8BSounding%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B%E5%AF%B9%E6%AF%94/" title="WiFi 6 两种Sounding与下行MU-MIMO交互过程对比">WiFi 6 两种Sounding与下行MU-MIMO交互过程对比</a><time datetime="2026-03-19T16:00:00.000Z" title="发表于 2026-03-20 00:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/12/CSAPP/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%AD%98%E5%82%A8%E5%99%A8RAM%EF%BC%9A%E4%BB%8ESRAM%E5%88%B0DRAM%E7%9A%84%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B/" title="深入理解RAM：从SRAM到DRAM的技术演进与性能权衡"><img src="https://picx.zhimg.com/v2-4259bbf8cc3f2fe52caab6ca6a5591d2_r.jpg?source=172ae18b" onerror="this.onerror=null;this.src='/img/HomePage/404.jpg'" alt="深入理解RAM：从SRAM到DRAM的技术演进与性能权衡"/></a><div class="content"><a class="title" href="/2026/03/12/CSAPP/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%AD%98%E5%82%A8%E5%99%A8RAM%EF%BC%9A%E4%BB%8ESRAM%E5%88%B0DRAM%E7%9A%84%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B/" title="深入理解RAM：从SRAM到DRAM的技术演进与性能权衡">深入理解RAM：从SRAM到DRAM的技术演进与性能权衡</a><time datetime="2026-03-12T12:12:39.000Z" title="发表于 2026-03-12 20:12:39">2026-03-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2026  DavidGu <a href="/love/"><i id="heartbeat" class="fa fas fa-heartbeat"></i></a> LugeWang</div><div class="footer_custom_text">欢迎来到大卫的博客园!</div></div><head><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></head></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '4fFz2tMISVCxeHM6f7dDL8hc-gzGzoHsz',
+      appKey: '1KNfIKxigPxTCWkGvMnFysl7',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script type="text/javascript" src="\js\FunnyTitle.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
