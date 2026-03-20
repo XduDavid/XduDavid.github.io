@@ -5,8 +5,8 @@ http://david-luge.cn/statistics/index.html
 http://david-luge.cn/tags/index.html
 http://david-luge.cn/tools/index.html
 http://david-luge.cn/about/index.html
-http://david-luge.cn/categories/index.html
 http://david-luge.cn/chats/index.html
+http://david-luge.cn/categories/index.html
 http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-29/
 http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-28/
 http://david-luge.cn/2025/03/29/Linear_Algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-27/
@@ -119,8 +119,8 @@ http://david-luge.cn/tags/photography/
 http://david-luge.cn/tags/Proj/
 http://david-luge.cn/tags/Reading/
 http://david-luge.cn/tags/Basics/
-http://david-luge.cn/tags/HDLBits/
 http://david-luge.cn/tags/EDA/
+http://david-luge.cn/tags/HDLBits/
 http://david-luge.cn/categories/CSAPP/
 http://david-luge.cn/categories/Communication/
 http://david-luge.cn/categories/Com/
@@ -137,5 +137,5 @@ http://david-luge.cn/categories/Reading/
 http://david-luge.cn/categories/IC/
 http://david-luge.cn/categories/IC/Basics/
 http://david-luge.cn/categories/IC/AXI/
-http://david-luge.cn/categories/IC/HDLBits/
 http://david-luge.cn/categories/IC/EDA/
+http://david-luge.cn/categories/IC/HDLBits/

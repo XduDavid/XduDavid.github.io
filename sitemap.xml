@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/index.html</loc>
+    <loc>http://david-luge.cn/chats/index.html</loc>
     
     <lastmod>2026-03-12</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/chats/index.html</loc>
+    <loc>http://david-luge.cn/categories/index.html</loc>
     
     <lastmod>2026-03-12</lastmod>
     
@@ -1047,14 +1047,14 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/HDLBits/</loc>
+    <loc>http://david-luge.cn/tags/EDA/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://david-luge.cn/tags/EDA/</loc>
+    <loc>http://david-luge.cn/tags/HDLBits/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1175,14 +1175,14 @@
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/IC/HDLBits/</loc>
+    <loc>http://david-luge.cn/categories/IC/EDA/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://david-luge.cn/categories/IC/EDA/</loc>
+    <loc>http://david-luge.cn/categories/IC/HDLBits/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
