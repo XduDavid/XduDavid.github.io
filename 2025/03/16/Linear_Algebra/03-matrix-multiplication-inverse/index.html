@@ -394,7 +394,14 @@ d
 <script type="math/tex; mode=display">E[A \mid I] = [EA \mid EI] = [I \mid A^{-1}]</script><p>看到了吗？$E$ 作用在 $A$ 上得到 $I$，作用在右侧原来的 $I$ 上就得到 $EA^{-1} = A^{-1}A^{-1} = A^{-1}$。所以虚线右侧最终得到的结果就是 $A^{-1}$。</p>
 <p>这就是高斯-若尔当方法的原理，非常简洁优美。</p>
 <p>下面我用流程图总结一下这个过程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    A[要求解A⁻¹] --&gt; B[构造增广矩阵&lt;br&gt;[A | I]]</span><br><span class="line">    B --&gt; C[通过行变换&lt;br&gt;将左侧A化为单位矩阵I]</span><br><span class="line">    C --&gt; D&#123;左侧能化为&lt;br&gt;单位矩阵吗?&#125;</span><br><span class="line">    D -- 是 --&gt; E[右侧矩阵就是A⁻¹]</span><br><span class="line">    D -- 否 --&gt; F[A不可逆&lt;br&gt;不存在逆矩阵]</span><br></pre></td></tr></table></figure>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    A[要求解A⁻¹] --&gt; B[构造增广矩阵&lt;br&gt;[A | I]]
+    B --&gt; C[通过行变换&lt;br&gt;将左侧A化为单位矩阵I]
+    C --&gt; D{左侧能化为&lt;br&gt;单位矩阵吗?}
+    D -- 是 --&gt; E[右侧矩阵就是A⁻¹]
+    D -- 否 --&gt; F[A不可逆&lt;br&gt;不存在逆矩阵]
+  </pre></div>
 <hr>
 <h2 id="笔者感悟"><a href="#笔者感悟" class="headerlink" title="笔者感悟"></a>笔者感悟</h2><p>作为一个IC设计工程师，我在学习线性代数的时候经常会思考这些数学知识在实际工程中的应用。矩阵乘法和逆矩阵在IC设计中真的无处不在：</p>
 <ul>

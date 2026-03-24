@@ -269,7 +269,15 @@ x+2y+z=2 \\
 </ul>
 <p>这样就得到了原方程组的解：$x=2, y=1, z=-2$。这个从下往上求解的过程就叫”回带”。</p>
 <p>整个消元法的过程可以用一张图总结一下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    A[原方程组 Ax=b] --&gt; B[构造增广矩阵&lt;br&gt; A|b]</span><br><span class="line">    B --&gt; C[正向消元&lt;br&gt; 逐步将系数矩阵&lt;br&gt; 化为上三角U]</span><br><span class="line">    C --&gt; D&#123;主元全非零?&#125;</span><br><span class="line">    D -- 是 --&gt; E[从下往上回带&lt;br&gt; 依次求解x]</span><br><span class="line">    D -- 否 --&gt; F[矩阵不可逆&lt;br&gt; 解不唯一或无解]</span><br><span class="line">    E --&gt; G[得到最终解]</span><br></pre></td></tr></table></figure>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    A[原方程组 Ax&#x3D;b] --&gt; B[构造增广矩阵&lt;br&gt; A|b]
+    B --&gt; C[正向消元&lt;br&gt; 逐步将系数矩阵&lt;br&gt; 化为上三角U]
+    C --&gt; D{主元全非零?}
+    D -- 是 --&gt; E[从下往上回带&lt;br&gt; 依次求解x]
+    D -- 否 --&gt; F[矩阵不可逆&lt;br&gt; 解不唯一或无解]
+    E --&gt; G[得到最终解]
+  </pre></div>
 <h2 id="消元矩阵"><a href="#消元矩阵" class="headerlink" title="消元矩阵"></a>消元矩阵</h2><p>刚才我们是从直观变换的角度介绍了消元操作，现在我们要更进一步——用矩阵乘法来表示每一步消元过程。这非常重要，因为它让我们从”操作”层面上升到”代数”层面，真正理解消元的数学本质。</p>
 <h3 id="行向量与矩阵的乘法"><a href="#行向量与矩阵的乘法" class="headerlink" title="行向量与矩阵的乘法"></a>行向量与矩阵的乘法</h3><p>上一节我们讲过，矩阵乘以列向量，结果是矩阵列向量的线性组合：</p>
 <script type="math/tex; mode=display">

@@ -238,7 +238,13 @@ A=\begin{bmatrix}
 <p>在LU分解中，L矩阵记录了消元过程中所有的乘数信息。消元时用了多少倍数消去某个位置，L矩阵就在那个位置放上那个倍数。</p>
 </blockquote>
 <h3 id="LU分解的计算流程"><a href="#LU分解的计算流程" class="headerlink" title="LU分解的计算流程"></a>LU分解的计算流程</h3><p>我们用流程图总结一下LU分解的完整过程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    A[从矩阵A出发] --&gt; B[按高斯消元步骤&lt;br&gt;将A消元得到上三角U]</span><br><span class="line">    B --&gt; C[将消元过程中&lt;br&gt;所有乘数记录下来]</span><br><span class="line">    C --&gt; D[构造L矩阵：&lt;br&gt;对角线全为1&lt;br&gt;乘数放在对应位置&lt;br&gt;其余位置为0]</span><br><span class="line">    D --&gt; E[得到A = LU分解]</span><br></pre></td></tr></table></figure>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+    A[从矩阵A出发] --&gt; B[按高斯消元步骤&lt;br&gt;将A消元得到上三角U]
+    B --&gt; C[将消元过程中&lt;br&gt;所有乘数记录下来]
+    C --&gt; D[构造L矩阵：&lt;br&gt;对角线全为1&lt;br&gt;乘数放在对应位置&lt;br&gt;其余位置为0]
+    D --&gt; E[得到A &#x3D; LU分解]
+  </pre></div>
 <h3 id="LU分解的意义"><a href="#LU分解的意义" class="headerlink" title="LU分解的意义"></a>LU分解的意义</h3><p>为什么我们需要LU分解呢？它直接求解线性方程组 $Ax = b$ 有什么优势？</p>
 <p>当我们把 $A$ 分解为 $A = LU$ 后，原方程组 $Ax = b$ 变为：</p>
 <script type="math/tex; mode=display">LUx = b</script><p>我们令 $y = Ux$，那么可以分两步求解：</p>
