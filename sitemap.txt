@@ -1,3 +1,4 @@
+http://david-luge.cn/2026/03/20/Com/WiFi6%E4%BF%A1%E9%81%93%E6%8E%A2%E6%B5%8BSounding%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B%E5%AF%B9%E6%AF%94/
 http://david-luge.cn/2022/09/02/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(1)_Verilog%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(10)_D%E8%A7%A6%E5%8F%91%E5%99%A8%E3%80%81%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D%E3%80%81%E8%84%89%E5%86%B2%E8%BE%B9%E6%B2%BF%E6%A3%80%E6%B5%8B/
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(11)_Verilog%E8%AE%A1%E6%95%B0%E5%99%A8/
@@ -21,10 +22,8 @@ http://david-luge.cn/2022/09/03/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(4)_%E5%A6%8
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(5)_Generate%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%A8%A1%E5%9D%97/
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(6)_%E7%A1%AC%E4%BB%B6%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F/
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(7)_Verilog%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8/
-http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(8)_Verilog%E5%8D%8A%E5%8A%A0%E5%99%A8%E3%80%81%E5%85%A8%E5%8A%A0%E5%99%A8%E5%92%8C%E8%A1%8C%E6%B3%A2%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/
 http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(9)_%E5%8D%A1%E8%AF%BA%E5%9B%BE%E4%B8%8E%E6%9C%80%E7%AE%80SOP%E5%BC%8F/
-http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88%E6%B1%87%E6%80%BB/
-http://david-luge.cn/2026/03/20/Com/WiFi6%E4%BF%A1%E9%81%93%E6%8E%A2%E6%B5%8BSounding%E4%BA%A4%E4%BA%92%E8%BF%87%E7%A8%8B%E5%AF%B9%E6%AF%94/
+http://david-luge.cn/2022/09/12/IC/HDLBits/HDLBits%E7%AD%94%E6%A1%88(8)_Verilog%E5%8D%8A%E5%8A%A0%E5%99%A8%E3%80%81%E5%85%A8%E5%8A%A0%E5%99%A8%E5%92%8C%E8%A1%8C%E6%B3%A2%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/
 http://david-luge.cn/2026/03/12/CSAPP/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%AD%98%E5%82%A8%E5%99%A8RAM%EF%BC%9A%E4%BB%8ESRAM%E5%88%B0DRAM%E7%9A%84%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B/
 http://david-luge.cn/love/index.html
 http://david-luge.cn/statistics/index.html
@@ -131,11 +130,11 @@ http://david-luge.cn/categories/interview/
 http://david-luge.cn/categories/Linear-Algebra/
 http://david-luge.cn/categories/Misc/
 http://david-luge.cn/categories/Proj/
-http://david-luge.cn/categories/Misc/Ubuntu/
-http://david-luge.cn/categories/Misc/photography/
 http://david-luge.cn/categories/Reading/
 http://david-luge.cn/categories/IC/
-http://david-luge.cn/categories/IC/Basics/
+http://david-luge.cn/categories/Misc/Ubuntu/
+http://david-luge.cn/categories/Misc/photography/
 http://david-luge.cn/categories/IC/AXI/
+http://david-luge.cn/categories/IC/Basics/
 http://david-luge.cn/categories/IC/EDA/
 http://david-luge.cn/categories/IC/HDLBits/
